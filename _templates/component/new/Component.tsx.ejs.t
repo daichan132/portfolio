@@ -1,5 +1,5 @@
 ---
-to: <%= path %>/index.tsx
+to: <%= path %>/<%= name%>.tsx
 ---
 import { type FC } from "react";
 <% if (have_props) { -%>

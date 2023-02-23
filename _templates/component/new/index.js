@@ -18,15 +18,15 @@ module.exports = {
         choices: ['Yes', 'No'],
         initial: 'Yes',
       },
-    ]
+    ];
     return inquirer.prompt(questions).then((answers) => {
-      const { dir, name, have_props } = answers
-      const { join } = require('node:path')
+      const { dir, name, have_props } = answers;
+      const { join } = require('node:path');
 
-      const path = join(`${dir || 'src/'}`, '/', name)
-      const type_annotate = have_props ? `FC<${name}Props>` : 'FC'
-      const props = have_props ? '(props)' : '()'
-      return { ...answers, path, type_annotate, props }
-    })
+      const path = join(`${dir || 'src/'}`, '/', name);
+      const type_annotate = have_props ? `FC<${name}Props>` : 'FC';
+      const props = have_props ? '(props)' : '()';
+      return { ...answers, path, type_annotate, props };
+    });
   },
-}
+};
