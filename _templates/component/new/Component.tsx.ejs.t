@@ -1,7 +1,7 @@
 ---
 to: <%= path %>/<%= name%>.tsx
 ---
-import { type FC } from "react";
+import { type FC } from 'react';
 <% if (have_props) { -%>
 
 export type <%= name%>Props = {};

@@ -1,3 +1,4 @@
+import { LogoText } from '@/components/elements/LogoText';
 import Head from 'next/head';
 
 const Home = () => {
@@ -9,7 +10,30 @@ const Home = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>a</main>
+      <main>
+        <div
+          style={{
+            position: 'fixed',
+            top: '0',
+            zIndex: 10,
+            filter: 'invert(100%)',
+            mixBlendMode: 'exclusion',
+          }}
+        >
+          <LogoText text="Daichan 132" />
+        </div>
+        <div style={{ backgroundColor: 'white', height: '200px' }} />
+        <div style={{ backgroundColor: 'black', height: '200px' }} />
+        <div style={{ backgroundColor: 'white', height: '200px' }} />
+        <div style={{ backgroundColor: 'black', height: '200px' }} />
+        <div style={{ backgroundColor: 'white', height: '200px' }} />
+        <div style={{ backgroundColor: 'black', height: '200px' }} />
+        <div style={{ backgroundColor: 'white', height: '200px' }} />
+        <div style={{ backgroundColor: 'black', height: '200px' }} />
+        <div style={{ backgroundColor: 'white', height: '200px' }} />
+        <div style={{ backgroundColor: 'black', height: '200px' }} />
+        <div style={{ backgroundColor: 'white', height: '200px' }} />
+      </main>
     </>
   );
 };

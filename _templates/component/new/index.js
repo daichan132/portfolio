@@ -4,7 +4,7 @@ module.exports = {
       {
         type: 'input',
         name: 'dir',
-        message: 'Where is tha directory? ex: src/common/components/',
+        message: 'Where is tha directory? ex: src/components/elements',
       },
       {
         type: 'input',
