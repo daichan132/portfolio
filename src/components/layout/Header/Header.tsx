@@ -1,7 +1,10 @@
 import { LogoText } from '@/components/elements';
 import { css } from '@emotion/react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { Container } from '@mantine/core';
+import { AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { LinkItem } from './LinkItem';
 
 const style = css`
   position: fixed;
@@ -10,37 +13,25 @@ const style = css`
   mix-blend-mode: exclusion;
   color: black;
   z-index: 100;
-  width: 100vw;
-  padding: 28px 36px 28px 24px;
+  width: 100%;
+  padding: 28px 0px;
   box-sizing: border-box;
 
   .container {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     .linkItem {
+      font-size: 18px;
       display: flex;
-      gap: 30px 30px;
-    }
-  }
-
-  .linkText {
-    overflow: hidden;
-    a {
-      font-size: 16px;
-      text-decoration: none;
-      color: black;
+      gap: 0px 30px;
+      overflow: hidden;
     }
   }
 `;
 
 const scrollTop = (): number => {
   return Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
-};
-
-const linkAnim = {
-  hidden: { opacity: 0, y: -100 },
-  show: { opacity: 1, y: 0 },
 };
 
 export const Header = () => {
@@ -62,37 +53,38 @@ export const Header = () => {
 
   return (
     <header css={style}>
-      <div className="container">
-        <LogoText text="Daichan 132" initialism={!isTop} id="header" fontSize={isTop ? 40 : 60} />
-        <div className="linkItem">
-          <div>All works</div>
-          <div>About me</div>
-          <div>Contact me</div>
+      <Container size="lg" px={50}>
+        <div className="container">
+          <Link
+            href="/"
+            css={css`
+              color: black;
+            `}
+          >
+            <LogoText
+              text="Daichan 132"
+              initialism={!isTop}
+              id="header"
+              fontSize={isTop ? 30 : 40}
+            />
+          </Link>
+          <AnimatePresence>
+            {isTop ? (
+              <div className="linkItem">
+                <LinkItem>
+                  <Link href="/works">All works</Link>
+                </LinkItem>
+                <LinkItem>
+                  <div>About me</div>
+                </LinkItem>
+                <LinkItem>
+                  <div>Contact</div>
+                </LinkItem>
+              </div>
+            ) : null}
+          </AnimatePresence>
         </div>
-      </div>
-      <AnimatePresence>
-        {isTop ? (
-          <div className="linkText">
-            <motion.a
-              variants={linkAnim}
-              initial="hidden"
-              animate="show"
-              exit="hidden"
-              transition={{
-                duration: 0.3,
-              }}
-              style={{
-                display: 'inline-block',
-              }}
-              href="https://github.com/daichan132"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              github
-            </motion.a>
-          </div>
-        ) : null}
-      </AnimatePresence>
+      </Container>
     </header>
   );
 };

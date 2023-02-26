@@ -15,8 +15,8 @@ const style = (fontSize: number) => css`
 
 const listItem = (index: number) => {
   return {
-    hidden: { opacity: 0, y: -5, x: -10 },
-    show: { opacity: 1, y: 0, x: 0, transition: { delay: 0.2 + index * 0.015 } },
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { delay: 0.2 + index * 0.015 } },
   };
 };
 
@@ -42,8 +42,8 @@ export const LogoText: FC<LogoTextProps> = ({
                   initial="hidden"
                   animate="show"
                   transition={{
-                    duration: 0.8,
-                    type: 'spring',
+                    duration: 0.35,
+                    type: 'tween',
                   }}
                   style={{
                     display: 'inline-block',
