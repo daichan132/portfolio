@@ -1,4 +1,4 @@
-import { TwilightGrayColor, NihonkaiColor, SharpGrayColor } from '@/utils/Colors';
+import { TwilightGrayColor, NihonkaiColor } from '@/utils/Colors';
 import { css } from '@emotion/react';
 import { Center, Container, Grid, SimpleGrid, Stack, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
@@ -6,9 +6,9 @@ import Head from 'next/head';
 import Image from 'next/image';
 
 const introduceStyle = (reverse: boolean) => css`
-  .grayBox {
+  .box {
     position: relative;
-    background-color: ${SharpGrayColor};
+    background-color: ${TwilightGrayColor};
     height: 300px;
     div {
       height: 100%;
@@ -45,7 +45,7 @@ const IntroduceItem = ({
       breakpoints={[{ maxWidth: 'sm', cols: 1 }]}
       css={introduceStyle(reverse)}
     >
-      <div className="grayBox">
+      <div className="box">
         <Center className="content">aa</Center>
       </div>
       <div className="textBox">
@@ -75,10 +75,8 @@ const Home = () => {
             <div
               css={css`
                 position: relative;
-                height: ${PRIMARY_COL_HEIGHT};
                 .image {
                   object-fit: cover;
-                  height: ${PRIMARY_COL_HEIGHT};
                   width: 100%;
                   position: relative !important;
                 }
@@ -105,18 +103,42 @@ const Home = () => {
                 <Grid.Col span={8}>
                   <div
                     css={css`
-                      background-color: ${SharpGrayColor};
-                      height: ${SECONDARY_COL_HEIGHT - 30}px;
+                      position: relative;
+                      .image {
+                        object-fit: cover;
+                        width: 100%;
+                        position: relative !important;
+                      }
                     `}
-                  />
+                  >
+                    <Image
+                      className="image"
+                      src="/grayknit.jpg"
+                      alt="denim image"
+                      height={SECONDARY_COL_HEIGHT - 30}
+                      width={10000}
+                    />
+                  </div>
                 </Grid.Col>
                 <Grid.Col span={4}>
                   <div
                     css={css`
-                      background-color: ${NihonkaiColor};
-                      height: ${SECONDARY_COL_HEIGHT - 30}px;
+                      position: relative;
+                      .image {
+                        object-fit: cover;
+                        width: 100%;
+                        position: relative !important;
+                      }
                     `}
-                  />
+                  >
+                    <Image
+                      className="image"
+                      src="/denim.jpg"
+                      alt="denim image"
+                      height={SECONDARY_COL_HEIGHT - 30}
+                      width={10000}
+                    />
+                  </div>
                 </Grid.Col>
               </Grid>
             ) : null}
@@ -126,23 +148,11 @@ const Home = () => {
               position: relative;
             `}
           >
-            <div
-              css={css`
-                position: absolute;
-                top: -20px;
-                left: -20px;
-                background-color: ${SharpGrayColor};
-                height: 100px;
-                width: 300px;
-                z-index: 0;
-              `}
-            />
             <Stack
               spacing={300}
               css={css`
-                margin-top: 200px;
-                padding: 300px 50px;
-                background-color: ${TwilightGrayColor};
+                margin-top: 150px;
+                padding: 150px 50px;
               `}
             >
               <IntroduceItem

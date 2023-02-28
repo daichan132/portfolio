@@ -25,7 +25,6 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
           exit="exit"
           transition={{
             duration: 0.5,
-            type: 'spring',
           }}
           key={path}
         >

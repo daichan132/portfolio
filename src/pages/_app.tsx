@@ -3,10 +3,10 @@ import type { AppProps } from 'next/app';
 import '@/styles/globals.css';
 import { Layout } from '@/components/layout';
 // eslint-disable-next-line camelcase
-import { Noto_Sans_JP } from '@next/font/google';
+import { Shippori_Mincho } from '@next/font/google';
 
-const notoSansJP = Noto_Sans_JP({
-  weight: ['100', '400', '700'],
+const font = Shippori_Mincho({
+  weight: ['400', '700'],
   style: ['normal'],
   subsets: ['latin'],
 });
@@ -16,7 +16,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     <Layout>
       <style jsx global>{`
         html {
-          font-family: ${notoSansJP.style.fontFamily};
+          font-family: ${font.style.fontFamily};
         }
       `}</style>
       <Component {...pageProps} />

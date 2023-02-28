@@ -53,7 +53,7 @@ export const Header = () => {
 
   return (
     <header css={style}>
-      <Container size="lg" px={50}>
+      <Container size="xl">
         <div className="container">
           <Link
             href="/"
@@ -65,7 +65,7 @@ export const Header = () => {
               text="Daichan 132"
               initialism={!isTop}
               id="header"
-              fontSize={isTop ? 30 : 40}
+              fontSize={isTop ? 28 : 36}
             />
           </Link>
           <AnimatePresence>

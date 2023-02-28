@@ -2,7 +2,7 @@ import { Container } from '@mantine/core';
 
 const Home = () => {
   return (
-    <Container>
+    <Container size="lg">
       <h1>qq</h1>
     </Container>
   );
