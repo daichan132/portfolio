@@ -3,3 +3,4 @@ public/
 **/coverage/
 **/node_modules/
 _templates/**/index.js
+next.config.js
