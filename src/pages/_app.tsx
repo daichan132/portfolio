@@ -1,11 +1,11 @@
 /* eslint-disable react/no-unknown-property */
 import type { AppProps } from 'next/app';
-import '@/styles/globals.css';
+import '@/styles/globals.scss';
 import { Layout } from '@/components/layout';
 // eslint-disable-next-line camelcase
-import { Shippori_Mincho } from '@next/font/google';
+import { Noto_Sans_JP } from '@next/font/google';
 
-const font = Shippori_Mincho({
+const font = Noto_Sans_JP({
   weight: ['400', '700'],
   style: ['normal'],
   subsets: ['latin'],

@@ -1,10 +1,20 @@
 import { css } from '@emotion/react';
+import { useIsomorphicEffect } from '@mantine/hooks';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
-import { useCallback, useLayoutEffect, useRef, useState, type FC } from 'react';
+import { useCallback, useRef, useState, type FC } from 'react';
 
-export type SmoothScrollProps = { children: React.ReactNode };
+const style = css`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  will-change: transform;
+`;
 
-export const SmoothScroll: FC<SmoothScrollProps> = ({ children }) => {
+export type SmoothScrollProps = { children: React.ReactNode; enabled?: boolean };
+
+export const SmoothScroll: FC<SmoothScrollProps> = ({ children, enabled = true }) => {
   const scrollRef = useRef(null);
   const [pageHeight, setPageHeight] = useState(0);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -14,32 +24,25 @@ export const SmoothScroll: FC<SmoothScrollProps> = ({ children }) => {
       setPageHeight(entry.contentRect.height);
     }
   }, []);
-  useLayoutEffect(() => {
+  useIsomorphicEffect(() => {
     const resizeObserver = new ResizeObserver((entries) => resizePageHeight(entries));
     if (scrollRef.current) {
       resizeObserver.observe(scrollRef.current);
     }
     return () => resizeObserver.disconnect();
-  }, [scrollRef, resizePageHeight]);
+  }, [scrollRef, resizePageHeight, enabled]);
   const { scrollY } = useScroll();
   const transform = useTransform(scrollY, [0, pageHeight], [0, -pageHeight]);
   const physics = { damping: 15, mass: 0.27, stiffness: 55 };
   const spring = useSpring(transform, physics);
 
+  if (!enabled) {
+    // eslint-disable-next-line react/jsx-no-useless-fragment
+    return <div>{children}</div>;
+  }
   return (
     <>
-      <motion.div
-        ref={scrollRef}
-        style={{ y: spring }}
-        css={css`
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          overflow: hidden;
-          will-change: transform;
-        `}
-      >
+      <motion.div ref={scrollRef} style={{ y: spring }} css={style}>
         {children}
       </motion.div>
       <div style={{ height: pageHeight }} />
