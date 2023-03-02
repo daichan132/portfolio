@@ -4,8 +4,8 @@ import { type FC } from 'react';
 
 const style = (rem: number) => css`
   white-space: nowrap;
-  height: 50px;
-  line-height: 50px;
+  height: 2.5rem;
+  line-height: 2.5rem;
   .text {
     transition: all 0.3s 0s ease-out;
     font-size: ${rem}rem;

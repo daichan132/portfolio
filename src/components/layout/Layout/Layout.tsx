@@ -36,8 +36,8 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
             <Box
               sx={() => ({
                 minHeight: '100vh',
-                paddingTop: '110px',
-                paddingBottom: '100px',
+                paddingTop: `10rem`,
+                paddingBottom: `5rem`,
               })}
             >
               {children}

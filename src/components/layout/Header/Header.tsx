@@ -15,7 +15,7 @@ const style = css`
   color: black;
   z-index: 100;
   width: 100%;
-  padding: 28px 0px;
+  padding: 1.4rem 0.5rem;
   box-sizing: border-box;
 
   .container {
@@ -23,7 +23,7 @@ const style = css`
     justify-content: space-between;
     align-items: center;
     .linkItem {
-      font-size: 16px;
+      font-size: 1rem;
       display: flex;
       gap: 0px 30px;
       overflow: hidden;
@@ -66,14 +66,14 @@ export const Header = () => {
 
   return (
     <header css={style}>
-      <Container size="xl" className="container">
+      <Container size="lg" className="container">
         <Link
           href="/"
           css={css`
             color: black;
           `}
         >
-          <LogoText text="Daichan 132" initialism={!isTop} id="heaader" rem={isTop ? 2 : 3} />
+          <LogoText text="Daichan 132" initialism={!isTop} id="heaader" rem={isTop ? 1.7 : 2.2} />
         </Link>
         <AnimatePresence initial={false} mode="wait">
           {isTop && !sm ? (
