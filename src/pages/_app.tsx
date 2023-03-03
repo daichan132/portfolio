@@ -1,27 +1,32 @@
 /* eslint-disable react/no-unknown-property */
 import type { AppProps } from 'next/app';
-import 'normalize.css/normalize.css';
 import '@/styles/globals.css';
 import { Layout } from '@/components/layout';
 // eslint-disable-next-line camelcase
-import { Noto_Serif_JP } from '@next/font/google';
+import { Kiwi_Maru } from '@next/font/google';
+import { MantineProvider } from '@mantine/core';
 
-const font = Noto_Serif_JP({
-  weight: ['400', '700'],
+const font = Kiwi_Maru({
+  weight: ['300', '400', '500'],
   style: ['normal'],
   subsets: ['latin'],
 });
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
-    <Layout>
-      <style jsx global>{`
-        html {
-          font-family: ${font.style.fontFamily};
-        }
-      `}</style>
-      <Component {...pageProps} />
-    </Layout>
+    <MantineProvider
+      withGlobalStyles
+      withNormalizeCSS
+      theme={{
+        /** Put your mantine theme override here */
+        colorScheme: 'light',
+        fontFamily: font.style.fontFamily,
+      }}
+    >
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </MantineProvider>
   );
 };
 

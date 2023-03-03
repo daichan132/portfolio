@@ -4,21 +4,9 @@ body {
 
 html {
   box-sizing: border-box;
-  font-size: 15px;
+  font-size: 17px;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  line-height: 1.8
+  line-height: 2;
+  transition: all 0.3s ease-in-out;
 }
-
-@media screen and (min-width: 576px) {
-  html {
-      font-size:16px
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  html {
-      font-size:17px
-  }
-}
-

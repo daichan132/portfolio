@@ -1,9 +1,20 @@
 import { SmoothScroll } from '@/components/elements/SmoothScroll';
-import { Box, useMantineTheme } from '@mantine/core';
+import { createStyles, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { Header } from '../Header';
+
+const useStyles = createStyles((theme) => ({
+  main: {
+    minHeight: '100vh',
+    paddingBottom: `5rem`,
+    marginTop: '10rem',
+    [theme.fn.smallerThan('sm')]: {
+      marginTop: '3.2em',
+    },
+  },
+}));
 
 const variants = {
   hidden: { opacity: 0 },
@@ -13,7 +24,8 @@ const variants = {
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
   const theme = useMantineTheme();
-  const sm = useMediaQuery(`(max-width: ${theme.breakpoints.sm}px)`);
+  const sm = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
+  const { classes } = useStyles();
 
   const router = useRouter();
   const path = router.pathname;
@@ -33,15 +45,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
           key={path}
         >
           <SmoothScroll enabled={!sm}>
-            <Box
-              sx={() => ({
-                minHeight: '100vh',
-                paddingTop: `10rem`,
-                paddingBottom: `5rem`,
-              })}
-            >
-              {children}
-            </Box>
+            <div className={classes.main}>{children}</div>
           </SmoothScroll>
         </motion.main>
       </AnimatePresence>

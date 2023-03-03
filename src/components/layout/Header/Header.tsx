@@ -1,39 +1,52 @@
 import { LogoText } from '@/components/elements';
-import { css } from '@emotion/react';
-import { Container, useMantineTheme } from '@mantine/core';
+import { scrollTop } from '@/utils/scrollTop';
+import { Container, createStyles, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { HambergerMenu } from './HambergerMenu';
 
-const style = css`
-  position: fixed;
-  top: 0;
-  filter: invert(100%);
-  mix-blend-mode: exclusion;
-  color: black;
-  z-index: 100;
-  width: 100%;
-  padding: 1.4rem 0.5rem;
-  box-sizing: border-box;
-
-  .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    .linkItem {
-      font-size: 1rem;
-      display: flex;
-      gap: 0px 30px;
-      overflow: hidden;
-    }
-  }
-`;
-
-const scrollTop = (): number => {
-  return Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
-};
+const useStyles = createStyles((theme, { isTop }: { isTop: boolean }) => ({
+  header: {
+    position: 'fixed',
+    top: 0,
+    filter: 'invert(100%)',
+    mixBlendMode: 'exclusion',
+    color: 'black',
+    zIndex: 100,
+    width: '100%',
+    boxSizing: 'border-box',
+    marginTop: '2em',
+    padding: '0 2em',
+    [theme.fn.smallerThan('sm')]: {
+      marginTop: '0.5em',
+      padding: '0 0em',
+    },
+  },
+  container: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  linkItem: {
+    display: 'flex',
+    flexDirection: 'column',
+    fontSize: '1.1rem',
+    gap: '12px 0px',
+    overflow: 'hidden',
+    lineHeight: '1',
+  },
+  logo: {
+    color: 'black',
+    fontSize: '2rem',
+    transition: 'all 0.2s ease-in-out',
+    fontWeight: isTop ? 400 : 900,
+    lineHeight: '1',
+    [theme.fn.smallerThan('sm')]: {
+      fontSize: '1.7rem',
+    },
+  },
+}));
 
 const linkVariants = {
   hidden: { opacity: 0, y: -20 },
@@ -41,15 +54,15 @@ const linkVariants = {
 };
 
 const hambergerVariants = {
-  hidden: { opacity: 0, x: 30 },
-  show: { opacity: 1, x: 0 },
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0 },
 };
 
 export const Header = () => {
-  const [isTop, setIsTop] = useState<boolean>(true);
   const theme = useMantineTheme();
-  const sm = useMediaQuery(`(max-width: ${theme.breakpoints.sm}px)`);
+  const sm = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
 
+  const [isTop, setIsTop] = useState<boolean>(true);
   const onScroll = (): void => {
     const position = scrollTop();
     if (position >= 80) {
@@ -64,16 +77,13 @@ export const Header = () => {
     return (): void => document.removeEventListener('scroll', onScroll);
   });
 
+  const { classes } = useStyles({ isTop });
+
   return (
-    <header css={style}>
-      <Container size="lg" className="container">
-        <Link
-          href="/"
-          css={css`
-            color: black;
-          `}
-        >
-          <LogoText text="Daichan 132" initialism={!isTop} id="heaader" rem={isTop ? 1.7 : 2.2} />
+    <header className={classes.header}>
+      <Container size="lg" className={classes.container}>
+        <Link href="/" className={classes.logo}>
+          <LogoText text="DAICHAN 132" initialism={!isTop} id="header" enabled={!sm} />
         </Link>
         <AnimatePresence initial={false} mode="wait">
           {isTop && !sm ? (
@@ -88,7 +98,7 @@ export const Header = () => {
                 type: 'tween',
               }}
             >
-              <div className="linkItem">
+              <div className={classes.linkItem}>
                 <Link href="/works">All works</Link>
                 <div>About me</div>
                 <div>Contact</div>
@@ -106,7 +116,7 @@ export const Header = () => {
                 type: 'tween',
               }}
             >
-              <HambergerMenu size={30} />
+              <HambergerMenu size={sm ? 25 : 30} />
             </motion.div>
           )}
         </AnimatePresence>
