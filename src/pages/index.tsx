@@ -1,10 +1,11 @@
+import { ExternalLink } from '@/components/elements/ExternalLink';
 import { IntroduceItem } from '@/components/pages/main/IntroduceItem';
 import { Container, createStyles, Stack, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import Head from 'next/head';
 import Image from 'next/image';
 
-const useStyles = createStyles(() => ({
+const useStyles = createStyles((theme) => ({
   mainImage: {
     position: 'relative',
     width: '100%',
@@ -12,6 +13,10 @@ const useStyles = createStyles(() => ({
     margin: '0 auto',
     objectFit: 'contain',
     aspectRatio: '16 / 9',
+    marginTop: '1rem',
+    [theme.fn.smallerThan('sm')]: {
+      marginTop: '0em',
+    },
   },
 }));
 
@@ -32,8 +37,19 @@ const Home = () => {
         <div className={classes.mainImage}>
           <Image className="image" src="/wall.jpg" alt="wall image" fill />
         </div>
-        <Container size="lg" px="xs" mt={sm ? '3rem' : '8rem'}>
-          <Stack py={sm ? '3rem' : '7.5rem'} spacing={sm ? '2rem' : '5rem'}>
+
+        <Container size="lg" px="xs">
+          <div>
+            Photo by{' '}
+            <ExternalLink href="https://unsplash.com/it/@mailchimp?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+              Mailchimp
+            </ExternalLink>{' '}
+            for{' '}
+            <ExternalLink href="https://unsplash.com/ja/%E5%86%99%E7%9C%9F/VLpRa5tFdNY?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+              Unsplash
+            </ExternalLink>
+          </div>
+          <Stack py={sm ? '3rem' : '8rem'} spacing={sm ? '2rem' : '5rem'}>
             <IntroduceItem
               text="私はdaichan132です。大学院でアルゴリズムの研究をしています。"
               subText="Hello, my name is daichan132. I am a graduate student studying algorithms."

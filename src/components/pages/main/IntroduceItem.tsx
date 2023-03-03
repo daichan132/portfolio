@@ -1,4 +1,4 @@
-import { Parallax } from '@/components/elements';
+import { ParallaxPc } from '@/components/elements';
 import { TwilightGrayColor } from '@/utils/Colors';
 import { css } from '@emotion/react';
 import { Center, createStyles, SimpleGrid, useMantineTheme } from '@mantine/core';
@@ -15,18 +15,12 @@ const useStyles = createStyles((theme) => ({
   box: {
     backgroundColor: TwilightGrayColor,
   },
-  content: {
-    transform: 'translate(0, -30px)',
-    [theme.fn.smallerThan('sm')]: {
-      transform: 'none',
-    },
-  },
+  content: {},
 
   textBox: {
-    transform: 'translate(0, 50px)',
-    [theme.fn.smallerThan('sm')]: {
-      transform: 'none',
-    },
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
   mainText: {
     fontSize: 'x-large',
@@ -70,13 +64,13 @@ export const IntroduceItem = ({
           }
         `}
       >
-        <Parallax offset={20} enabled={!sm}>
+        <ParallaxPc offset={10}>
           <div className={classes.box} />
-        </Parallax>
+        </ParallaxPc>
 
-        <Parallax offset={-30} enabled={!sm}>
+        <ParallaxPc offset={-30}>
           <Center className={classes.content}>aa</Center>
-        </Parallax>
+        </ParallaxPc>
       </div>
       <div
         className={classes.textBox}
@@ -88,10 +82,10 @@ export const IntroduceItem = ({
             : undefined
         }
       >
-        <Parallax offset={50} enabled={!sm}>
+        <ParallaxPc offset={50}>
           <div className={classes.mainText}>{text}</div>
           <div className={classes.subText}>{subText}</div>
-        </Parallax>
+        </ParallaxPc>
       </div>
     </SimpleGrid>
   );

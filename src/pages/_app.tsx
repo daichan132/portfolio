@@ -20,6 +20,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       theme={{
         colorScheme: 'light',
         fontFamily: `${font.style.fontFamily}`,
+        lineHeight: 1.5,
       }}
     >
       <Layout>

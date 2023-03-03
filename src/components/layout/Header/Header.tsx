@@ -1,5 +1,7 @@
 import { LogoText } from '@/components/elements';
+import { ExternalLink } from '@/components/elements/ExternalLink';
 import { scrollTop } from '@/utils/scrollTop';
+import { css } from '@emotion/react';
 import { Container, createStyles, Flex, Space, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -29,12 +31,12 @@ const useStyles = createStyles((theme, { isTop }: { isTop: boolean }) => ({
     justifyContent: 'space-between',
   },
   linkItem: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '12px 0px',
+    display: 'block',
     overflow: 'hidden',
     color: 'black',
     textDecoration: 'none',
+    fontSize: '1.1rem',
+    transform: 'translate(0,-0.2rem)',
   },
   logo: {
     color: 'black',
@@ -65,7 +67,7 @@ export const Header = () => {
   const [isTop, setIsTop] = useState<boolean>(true);
   const onScroll = (): void => {
     const position = scrollTop();
-    if (position >= 80) {
+    if (position >= 30) {
       setIsTop(false);
     } else {
       setIsTop(true);
@@ -99,12 +101,14 @@ export const Header = () => {
                   type: 'tween',
                 }}
               >
-                <Flex>
+                <Flex
+                  css={css`
+                    line-height: 2;
+                  `}
+                >
                   Links:
                   <Space w="md" />
-                  <Link href="/" className={classes.linkItem}>
-                    github
-                  </Link>
+                  <ExternalLink href="https://github.com/daichan132">github</ExternalLink>
                 </Flex>
               </motion.div>
             ) : null}
@@ -128,8 +132,8 @@ export const Header = () => {
                 <Link href="/works" className={classes.linkItem}>
                   All works
                 </Link>
-                <div>About me</div>
-                <div>Contact</div>
+                <div className={classes.linkItem}>About me</div>
+                <div className={classes.linkItem}>Contact</div>
               </div>
             </motion.div>
           ) : (
