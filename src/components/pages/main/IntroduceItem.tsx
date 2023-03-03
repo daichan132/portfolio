@@ -1,4 +1,4 @@
-import { Parallax } from '@/components/elements/Parallax';
+import { Parallax } from '@/components/elements';
 import { TwilightGrayColor } from '@/utils/Colors';
 import { css } from '@emotion/react';
 import { Center, createStyles, SimpleGrid, useMantineTheme } from '@mantine/core';

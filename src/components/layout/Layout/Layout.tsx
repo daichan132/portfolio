@@ -9,10 +9,15 @@ const useStyles = createStyles((theme) => ({
   main: {
     minHeight: '100vh',
     paddingBottom: `5rem`,
-    marginTop: '10rem',
+    paddingTop: '10rem',
     [theme.fn.smallerThan('sm')]: {
-      marginTop: '3.2em',
+      paddingTop: '3.2em',
     },
+  },
+  graphPaperPattern: {
+    backgroundImage:
+      'linear-gradient(0deg, transparent 31px, #cccccc 32px), linear-gradient(90deg,  transparent 31px, #cccccc 32px)',
+    backgroundSize: '32px 32px',
   },
 }));
 
@@ -43,6 +48,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
             duration: 0.5,
           }}
           key={path}
+          className={classes.graphPaperPattern}
         >
           <SmoothScroll enabled={!sm}>
             <div className={classes.main}>{children}</div>

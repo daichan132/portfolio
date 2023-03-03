@@ -3,10 +3,10 @@ import type { AppProps } from 'next/app';
 import '@/styles/globals.css';
 import { Layout } from '@/components/layout';
 // eslint-disable-next-line camelcase
-import { Kiwi_Maru } from '@next/font/google';
+import { Noto_Sans_JP } from '@next/font/google';
 import { MantineProvider } from '@mantine/core';
 
-const font = Kiwi_Maru({
+const font = Noto_Sans_JP({
   weight: ['300', '400', '500'],
   style: ['normal'],
   subsets: ['latin'],
@@ -18,9 +18,8 @@ const App = ({ Component, pageProps }: AppProps) => {
       withGlobalStyles
       withNormalizeCSS
       theme={{
-        /** Put your mantine theme override here */
         colorScheme: 'light',
-        fontFamily: font.style.fontFamily,
+        fontFamily: `${font.style.fontFamily}`,
       }}
     >
       <Layout>

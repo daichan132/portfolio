@@ -1,2 +1,3 @@
-export * from './Button';
 export * from './LogoText';
+export * from './Parallax';
+export * from './SmoothScroll';

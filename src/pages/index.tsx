@@ -13,11 +13,6 @@ const useStyles = createStyles(() => ({
     objectFit: 'contain',
     aspectRatio: '16 / 9',
   },
-  graphPaperPattern: {
-    backgroundImage:
-      'linear-gradient(0deg, transparent 31px, #dddddd 32px), linear-gradient(90deg,  transparent 31px, #dddddd 32px)',
-    backgroundSize: '32px 32px',
-  },
 }));
 
 const Home = () => {
@@ -35,14 +30,9 @@ const Home = () => {
       </Head>
       <div>
         <div className={classes.mainImage}>
-          <Image className="image" src="/grayknit.jpg" alt="grayknit image" fill />
+          <Image className="image" src="/wall.jpg" alt="wall image" fill />
         </div>
-        <Container
-          size="lg"
-          px="xs"
-          mt={sm ? '3rem' : '8rem'}
-          className={classes.graphPaperPattern}
-        >
+        <Container size="lg" px="xs" mt={sm ? '3rem' : '8rem'}>
           <Stack py={sm ? '3rem' : '7.5rem'} spacing={sm ? '2rem' : '5rem'}>
             <IntroduceItem
               text="私はdaichan132です。大学院でアルゴリズムの研究をしています。"

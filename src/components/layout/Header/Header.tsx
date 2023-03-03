@@ -1,6 +1,6 @@
 import { LogoText } from '@/components/elements';
 import { scrollTop } from '@/utils/scrollTop';
-import { Container, createStyles, useMantineTheme } from '@mantine/core';
+import { Container, createStyles, Flex, Space, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
@@ -31,10 +31,10 @@ const useStyles = createStyles((theme, { isTop }: { isTop: boolean }) => ({
   linkItem: {
     display: 'flex',
     flexDirection: 'column',
-    fontSize: '1.1rem',
     gap: '12px 0px',
     overflow: 'hidden',
-    lineHeight: '1',
+    color: 'black',
+    textDecoration: 'none',
   },
   logo: {
     color: 'black',
@@ -82,9 +82,35 @@ export const Header = () => {
   return (
     <header className={classes.header}>
       <Container size="lg" className={classes.container}>
-        <Link href="/" className={classes.logo}>
-          <LogoText text="DAICHAN 132" initialism={!isTop} id="header" enabled={!sm} />
-        </Link>
+        <div>
+          <Link href="/" className={classes.logo}>
+            <LogoText text="DAICHAN 132" initialism={!isTop} id="header" enabled={!sm} />
+          </Link>
+          <AnimatePresence initial={false} mode="wait">
+            {isTop && !sm ? (
+              <motion.div
+                key="linkItem"
+                variants={linkVariants}
+                initial="hidden"
+                animate="show"
+                exit="hidden"
+                transition={{
+                  duration: 0.3,
+                  type: 'tween',
+                }}
+              >
+                <Flex>
+                  Links:
+                  <Space w="md" />
+                  <Link href="/" className={classes.linkItem}>
+                    github
+                  </Link>
+                </Flex>
+              </motion.div>
+            ) : null}
+          </AnimatePresence>
+        </div>
+
         <AnimatePresence initial={false} mode="wait">
           {isTop && !sm ? (
             <motion.div
@@ -98,8 +124,10 @@ export const Header = () => {
                 type: 'tween',
               }}
             >
-              <div className={classes.linkItem}>
-                <Link href="/works">All works</Link>
+              <div>
+                <Link href="/works" className={classes.linkItem}>
+                  All works
+                </Link>
                 <div>About me</div>
                 <div>Contact</div>
               </div>

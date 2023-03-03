@@ -72,7 +72,13 @@
         ],
         "import/prefer-default-export": "off",
         "react/no-unknown-property": ["error", { "ignore": ["css"] }],
-        "react/require-default-props": "off"
+        "react/require-default-props": "off",
+        "no-restricted-imports": [
+            "error",
+            {
+                "patterns": ["@/components/element/*"]
+            }
+        ]
     },
     "settings": {
         "import/resolver": {
