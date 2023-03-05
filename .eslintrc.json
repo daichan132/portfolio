@@ -76,7 +76,7 @@
         "no-restricted-imports": [
             "error",
             {
-                "patterns": ["@/components/element/*"]
+                "patterns": ["@/components/elements/*"]
             }
         ]
     },

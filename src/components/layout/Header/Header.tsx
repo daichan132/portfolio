@@ -1,7 +1,5 @@
-import { LogoText } from '@/components/elements';
-import { ExternalLink } from '@/components/elements/ExternalLink';
+import { LogoText, Clock, ExternalLink } from '@/components/elements';
 import { scrollTop } from '@/utils/scrollTop';
-import { css } from '@emotion/react';
 import { Container, createStyles, Flex, Space, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -9,7 +7,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { HambergerMenu } from './HambergerMenu';
 
-const useStyles = createStyles((theme, { isTop }: { isTop: boolean }) => ({
+const useStyles = createStyles((theme) => ({
   header: {
     position: 'fixed',
     top: 0,
@@ -31,24 +29,37 @@ const useStyles = createStyles((theme, { isTop }: { isTop: boolean }) => ({
     justifyContent: 'space-between',
   },
   linkItem: {
+    fontWeight: 'bold',
     display: 'block',
     overflow: 'hidden',
     color: 'black',
     textDecoration: 'none',
     fontSize: '1.1rem',
-    transform: 'translate(0,-0.2rem)',
   },
   logo: {
     color: 'black',
     fontSize: '2rem',
     transition: 'all 0.2s ease-in-out',
-    fontWeight: isTop ? 400 : 900,
+    fontWeight: 'bold',
     lineHeight: '1',
     [theme.fn.smallerThan('sm')]: {
       fontSize: '1.7rem',
     },
   },
 }));
+
+const containerLinkVariants = {
+  hidden: {
+    transition: {
+      staggerChildren: 0.05,
+    },
+  },
+  show: {
+    transition: {
+      staggerChildren: 0.05,
+    },
+  },
+};
 
 const linkVariants = {
   hidden: { opacity: 0, y: -20 },
@@ -67,7 +78,7 @@ export const Header = () => {
   const [isTop, setIsTop] = useState<boolean>(true);
   const onScroll = (): void => {
     const position = scrollTop();
-    if (position >= 30) {
+    if (position >= 80) {
       setIsTop(false);
     } else {
       setIsTop(true);
@@ -79,7 +90,7 @@ export const Header = () => {
     return (): void => document.removeEventListener('scroll', onScroll);
   });
 
-  const { classes } = useStyles({ isTop });
+  const { classes } = useStyles();
 
   return (
     <header className={classes.header}>
@@ -92,7 +103,7 @@ export const Header = () => {
             {isTop && !sm ? (
               <motion.div
                 key="linkItem"
-                variants={linkVariants}
+                variants={containerLinkVariants}
                 initial="hidden"
                 animate="show"
                 exit="hidden"
@@ -101,15 +112,17 @@ export const Header = () => {
                   type: 'tween',
                 }}
               >
-                <Flex
-                  css={css`
-                    line-height: 2;
-                  `}
-                >
-                  Links:
-                  <Space w="md" />
-                  <ExternalLink href="https://github.com/daichan132">github</ExternalLink>
-                </Flex>
+                <Space h="xs" />
+                <motion.div variants={linkVariants}>
+                  <Clock />
+                </motion.div>
+                <motion.div variants={linkVariants}>
+                  <Flex>
+                    Links:
+                    <Space w="md" />
+                    <ExternalLink href="https://github.com/daichan132">github</ExternalLink>
+                  </Flex>
+                </motion.div>
               </motion.div>
             ) : null}
           </AnimatePresence>
@@ -119,7 +132,7 @@ export const Header = () => {
           {isTop && !sm ? (
             <motion.div
               key="linkItem"
-              variants={linkVariants}
+              variants={containerLinkVariants}
               initial="hidden"
               animate="show"
               exit="hidden"
@@ -128,13 +141,18 @@ export const Header = () => {
                 type: 'tween',
               }}
             >
-              <div>
+              <motion.div variants={linkVariants}>
                 <Link href="/works" className={classes.linkItem}>
                   All works
                 </Link>
+              </motion.div>
+              <motion.div variants={linkVariants}>
                 <div className={classes.linkItem}>About me</div>
+              </motion.div>
+
+              <motion.div variants={linkVariants}>
                 <div className={classes.linkItem}>Contact</div>
-              </div>
+              </motion.div>
             </motion.div>
           ) : (
             <motion.div

@@ -13,7 +13,7 @@ const style = css`
   .icon {
     display: inline;
     transform: translate(0, 3px);
-    margin: 0 3px;
+    margin: 0 4px;
   }
 `;
 export type ExternalLinkProps = { children: ReactNode; href: string };

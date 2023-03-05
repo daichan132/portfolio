@@ -7,7 +7,7 @@ import { useMediaQuery } from '@mantine/hooks';
 const useStyles = createStyles((theme) => ({
   contentBox: {
     position: 'relative',
-    height: '300px',
+    height: '350px',
     [theme.fn.smallerThan('sm')]: {
       height: '200px',
     },
@@ -42,10 +42,12 @@ const useStyles = createStyles((theme) => ({
 export const IntroduceItem = ({
   text,
   subText,
+  Icon,
   reverse = false,
 }: {
   text: string;
   subText: string;
+  Icon: React.FC<React.SVGProps<SVGElement>>;
   reverse?: boolean;
 }) => {
   const theme = useMantineTheme();
@@ -68,8 +70,10 @@ export const IntroduceItem = ({
           <div className={classes.box} />
         </ParallaxPc>
 
-        <ParallaxPc offset={-30}>
-          <Center className={classes.content}>aa</Center>
+        <ParallaxPc offset={-20}>
+          <Center className={classes.content}>
+            <Icon style={{ height: '70%', transform: 'translate(0px, -10%)' }} />
+          </Center>
         </ParallaxPc>
       </div>
       <div
@@ -82,7 +86,7 @@ export const IntroduceItem = ({
             : undefined
         }
       >
-        <ParallaxPc offset={50}>
+        <ParallaxPc offset={30}>
           <div className={classes.mainText}>{text}</div>
           <div className={classes.subText}>{subText}</div>
         </ParallaxPc>

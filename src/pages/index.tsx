@@ -1,21 +1,21 @@
-import { ExternalLink } from '@/components/elements/ExternalLink';
+import { ExternalLink } from '@/components/elements';
 import { IntroduceItem } from '@/components/pages/main/IntroduceItem';
-import { Container, createStyles, Stack, useMantineTheme } from '@mantine/core';
+import { css } from '@emotion/react';
+import { Center, Container, createStyles, Stack, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import Head from 'next/head';
 import Image from 'next/image';
+import CoffeeIcon from 'public/coffee.svg';
+import DeskTopIcon from 'public/desktop.svg';
 
 const useStyles = createStyles((theme) => ({
   mainImage: {
-    position: 'relative',
-    width: '100%',
     maxWidth: '71.25rem',
-    margin: '0 auto',
+    width: '100%',
     objectFit: 'contain',
-    aspectRatio: '16 / 9',
-    marginTop: '1rem',
     [theme.fn.smallerThan('sm')]: {
-      marginTop: '0em',
+      objectFit: 'cover',
+      minHeight: '50vh',
     },
   },
 }));
@@ -34,9 +34,17 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        <div className={classes.mainImage}>
-          <Image className="image" src="/wall.jpg" alt="wall image" fill />
-        </div>
+        <Center>
+          <Image
+            className={classes.mainImage}
+            src="/wall.jpg"
+            alt="wall image"
+            fill
+            css={css`
+              position: relative !important;
+            `}
+          />
+        </Center>
 
         <Container size="lg" px="xs">
           <div>
@@ -53,11 +61,13 @@ const Home = () => {
             <IntroduceItem
               text="私はdaichan132です。大学院でアルゴリズムの研究をしています。"
               subText="Hello, my name is daichan132. I am a graduate student studying algorithms."
+              Icon={CoffeeIcon}
             />
             <IntroduceItem
               text="人を笑顔にするようなプロダクトを作ることが大好きです！私が作ってきた作品を見てくれると嬉しいです！"
               subText="I love creating products that make people smile! I hope you enjoy seeing my works!"
               reverse={!sm}
+              Icon={DeskTopIcon}
             />
           </Stack>
         </Container>

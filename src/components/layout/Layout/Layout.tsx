@@ -1,4 +1,6 @@
-import { SmoothScroll } from '@/components/elements/SmoothScroll';
+import { SmoothScroll } from '@/components/elements';
+import { NihonkaiColor } from '@/utils/Colors';
+import { hexToRGBA } from '@/utils/hexToRgbA';
 import { createStyles, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -9,22 +11,24 @@ const useStyles = createStyles((theme) => ({
   main: {
     minHeight: '100vh',
     paddingBottom: `5rem`,
-    paddingTop: '10rem',
+    paddingTop: '11em',
     [theme.fn.smallerThan('sm')]: {
-      paddingTop: '3.2em',
+      paddingTop: '3em',
     },
   },
   graphPaperPattern: {
-    backgroundImage:
-      'linear-gradient(0deg, transparent 31px, #cccccc 32px), linear-gradient(90deg,  transparent 31px, #cccccc 32px)',
+    backgroundImage: `linear-gradient(0deg, transparent 31px, ${hexToRGBA(
+      NihonkaiColor,
+      0.25
+    )} 32px), linear-gradient(90deg,  transparent 31px, ${hexToRGBA(NihonkaiColor, 0.25)} 32px)`,
     backgroundSize: '32px 32px',
   },
 }));
 
 const variants = {
-  hidden: { opacity: 0 },
-  enter: { opacity: 1 },
-  exit: { opacity: 0 },
+  hidden: { opacity: 0, y: 20 },
+  enter: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: 20 },
 };
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
