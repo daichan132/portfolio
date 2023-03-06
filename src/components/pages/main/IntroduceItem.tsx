@@ -1,5 +1,5 @@
 import { ParallaxPc } from '@/components/elements';
-import { TwilightGrayColor } from '@/utils/Colors';
+import { SweetSepiaColor } from '@/utils/Colors';
 import { css } from '@emotion/react';
 import { Center, createStyles, SimpleGrid, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
@@ -13,7 +13,7 @@ const useStyles = createStyles((theme) => ({
     },
   },
   box: {
-    backgroundColor: TwilightGrayColor,
+    backgroundColor: SweetSepiaColor,
   },
   content: {},
 
@@ -86,7 +86,7 @@ export const IntroduceItem = ({
             : undefined
         }
       >
-        <ParallaxPc offset={30}>
+        <ParallaxPc offset={50}>
           <div className={classes.mainText}>{text}</div>
           <div className={classes.subText}>{subText}</div>
         </ParallaxPc>

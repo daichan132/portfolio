@@ -16,5 +16,5 @@ export const Clock = () => {
     };
   }, []);
 
-  return <span suppressHydrationWarning>Tokyo {date.toLocaleString()}</span>;
+  return <span suppressHydrationWarning>Japan {date.toLocaleString()}</span>;
 };

@@ -14,6 +14,7 @@ const style = css`
     display: inline;
     transform: translate(0, 3px);
     margin: 0 4px;
+    stroke-width: 1px;
   }
 `;
 export type ExternalLinkProps = { children: ReactNode; href: string };

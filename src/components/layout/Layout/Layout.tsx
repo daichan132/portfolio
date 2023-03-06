@@ -1,27 +1,27 @@
 import { SmoothScroll } from '@/components/elements';
-import { NihonkaiColor } from '@/utils/Colors';
+import { SweetSepiaColor } from '@/utils/Colors';
 import { hexToRGBA } from '@/utils/hexToRgbA';
 import { createStyles, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useRouter } from 'next/router';
+import { Footer } from '../Footer';
 import { Header } from '../Header';
 
 const useStyles = createStyles((theme) => ({
   main: {
-    minHeight: '100vh',
-    paddingBottom: `5rem`,
+    paddingBottom: `0rem`,
     paddingTop: '11em',
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh',
     [theme.fn.smallerThan('sm')]: {
       paddingTop: '3em',
     },
   },
-  graphPaperPattern: {
-    backgroundImage: `linear-gradient(0deg, transparent 31px, ${hexToRGBA(
-      NihonkaiColor,
-      0.25
-    )} 32px), linear-gradient(90deg,  transparent 31px, ${hexToRGBA(NihonkaiColor, 0.25)} 32px)`,
-    backgroundSize: '32px 32px',
+  bg: {
+    minHeight: '100vh',
+    backgroundColor: `${hexToRGBA(SweetSepiaColor, 0.15)}`,
   },
 }));
 
@@ -39,7 +39,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
   const path = router.pathname;
   return (
-    <>
+    <div className={classes.bg}>
       <Header />
 
       <AnimatePresence mode="wait" initial={false}>
@@ -52,13 +52,15 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
             duration: 0.5,
           }}
           key={path}
-          className={classes.graphPaperPattern}
         >
           <SmoothScroll enabled={!sm}>
-            <div className={classes.main}>{children}</div>
+            <div className={classes.main}>
+              {children}
+              <Footer />
+            </div>
           </SmoothScroll>
         </motion.main>
       </AnimatePresence>
-    </>
+    </div>
   );
 };

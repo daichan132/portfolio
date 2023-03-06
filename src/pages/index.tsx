@@ -13,6 +13,7 @@ const useStyles = createStyles((theme) => ({
     maxWidth: '71.25rem',
     width: '100%',
     objectFit: 'contain',
+    filter: 'sepia(50%)',
     [theme.fn.smallerThan('sm')]: {
       objectFit: 'cover',
       minHeight: '50vh',
@@ -37,8 +38,8 @@ const Home = () => {
         <Center>
           <Image
             className={classes.mainImage}
-            src="/wall.jpg"
-            alt="wall image"
+            src="/kyoto.jpg"
+            alt="kyoto image"
             fill
             css={css`
               position: relative !important;
@@ -49,8 +50,8 @@ const Home = () => {
         <Container size="lg" px="xs">
           <div>
             Photo by{' '}
-            <ExternalLink href="https://unsplash.com/it/@mailchimp?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
-              Mailchimp
+            <ExternalLink href="https://unsplash.com/@suyash_agrawal?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+              Suyash Agrawal
             </ExternalLink>{' '}
             for{' '}
             <ExternalLink href="https://unsplash.com/ja/%E5%86%99%E7%9C%9F/VLpRa5tFdNY?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">

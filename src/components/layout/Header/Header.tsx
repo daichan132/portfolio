@@ -29,7 +29,6 @@ const useStyles = createStyles((theme) => ({
     justifyContent: 'space-between',
   },
   linkItem: {
-    fontWeight: 'bold',
     display: 'block',
     overflow: 'hidden',
     color: 'black',
@@ -38,7 +37,7 @@ const useStyles = createStyles((theme) => ({
   },
   logo: {
     color: 'black',
-    fontSize: '2rem',
+    fontSize: '2.5rem',
     transition: 'all 0.2s ease-in-out',
     fontWeight: 'bold',
     lineHeight: '1',
