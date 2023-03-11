@@ -1,7 +1,7 @@
 import { ParallaxPc } from '@/components/elements';
 import { SweetSepiaColor } from '@/utils/Colors';
 import { css } from '@emotion/react';
-import { Center, createStyles, SimpleGrid, useMantineTheme } from '@mantine/core';
+import { Center, createStyles, rem, SimpleGrid, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 
 const useStyles = createStyles((theme) => ({
@@ -9,10 +9,11 @@ const useStyles = createStyles((theme) => ({
     position: 'relative',
     height: '350px',
     [theme.fn.smallerThan('sm')]: {
-      height: '200px',
+      height: '300px',
     },
   },
   box: {
+    borderRadius: '20px',
     backgroundColor: SweetSepiaColor,
   },
   content: {},
@@ -23,9 +24,9 @@ const useStyles = createStyles((theme) => ({
     justifyContent: 'center',
   },
   mainText: {
-    fontSize: 'x-large',
+    fontSize: rem(24),
     [theme.fn.smallerThan('sm')]: {
-      fontSize: 'large',
+      fontSize: rem(20),
     },
   },
   subText: {
@@ -66,13 +67,13 @@ export const IntroduceItem = ({
           }
         `}
       >
-        <ParallaxPc offset={10}>
+        <ParallaxPc offset={0}>
           <div className={classes.box} />
         </ParallaxPc>
 
-        <ParallaxPc offset={-20}>
+        <ParallaxPc offset={-30}>
           <Center className={classes.content}>
-            <Icon style={{ height: '70%', transform: 'translate(0px, -10%)' }} />
+            <Icon style={{ height: sm ? '50%' : '70%', transform: 'translate(0px, -15%)' }} />
           </Center>
         </ParallaxPc>
       </div>
@@ -86,7 +87,7 @@ export const IntroduceItem = ({
             : undefined
         }
       >
-        <ParallaxPc offset={50}>
+        <ParallaxPc offset={30}>
           <div className={classes.mainText}>{text}</div>
           <div className={classes.subText}>{subText}</div>
         </ParallaxPc>

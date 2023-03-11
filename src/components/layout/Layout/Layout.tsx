@@ -1,17 +1,18 @@
-import { SmoothScroll } from '@/components/elements';
+import { SmoothScroll, CustomCursor } from '@/components/elements';
 import { SweetSepiaColor } from '@/utils/Colors';
 import { hexToRGBA } from '@/utils/hexToRgbA';
 import { createStyles, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import { Footer } from '../Footer';
 import { Header } from '../Header';
 
 const useStyles = createStyles((theme) => ({
   main: {
     paddingBottom: `0rem`,
-    paddingTop: '11em',
+    paddingTop: '12em',
     display: 'flex',
     flexDirection: 'column',
     minHeight: '100vh',
@@ -38,8 +39,27 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
 
   const router = useRouter();
   const path = router.pathname;
-  return (
+
+  const [isLoaging, setIsLoaging] = useState<boolean>(true);
+
+  useEffect(() => {
+    if (sessionStorage.getItem('access')) {
+      setIsLoaging(false);
+    } else {
+      setIsLoaging(true);
+      setTimeout(() => {
+        sessionStorage.setItem('access', 'firstaccess');
+        setIsLoaging(false);
+      }, 3300);
+    }
+  }, []);
+
+  return isLoaging ? (
+    <div>aa</div>
+  ) : (
     <div className={classes.bg}>
+      <CustomCursor />
+
       <Header />
 
       <AnimatePresence mode="wait" initial={false}>

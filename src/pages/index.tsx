@@ -1,23 +1,32 @@
-import { ExternalLink } from '@/components/elements';
 import { IntroduceItem } from '@/components/pages/main/IntroduceItem';
-import { css } from '@emotion/react';
-import { Center, Container, createStyles, Stack, useMantineTheme } from '@mantine/core';
+import { Container, createStyles, Stack, useMantineTheme, rem, Button } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import Head from 'next/head';
-import Image from 'next/image';
 import CoffeeIcon from 'public/coffee.svg';
 import DeskTopIcon from 'public/desktop.svg';
+import Image from 'next/image';
 
 const useStyles = createStyles((theme) => ({
-  mainImage: {
-    maxWidth: '71.25rem',
+  container: {
+    position: 'relative',
+    height: rem(700),
     width: '100%',
-    objectFit: 'contain',
-    filter: 'sepia(50%)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingBottom: `calc(${theme.spacing.xl} * 6)`,
+    clipPath: 'inset(0)',
     [theme.fn.smallerThan('sm')]: {
-      objectFit: 'cover',
-      minHeight: '50vh',
+      height: rem(500),
+      paddingBottom: `calc(${theme.spacing.xl} * 3)`,
     },
+  },
+  mainTextContainer: {
+    width: '100%',
+  },
+  bgImage: {
+    objectFit: 'cover',
+    zIndex: -1,
   },
 }));
 
@@ -35,30 +44,17 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        <Center>
-          <Image
-            className={classes.mainImage}
-            src="/kyoto.jpg"
-            alt="kyoto image"
-            fill
-            css={css`
-              position: relative !important;
-            `}
-          />
-        </Center>
+        <div className={classes.container}>
+          <Container size="lg" className={classes.mainTextContainer}>
+            <Button variant="filled" size="xl" color="#fff">
+              Settings
+            </Button>
+          </Container>
+          <Image fill src="/calgary.jpg" alt="calgary" className={classes.bgImage} />
+        </div>
 
         <Container size="lg" px="xs">
-          <div>
-            Photo by{' '}
-            <ExternalLink href="https://unsplash.com/@suyash_agrawal?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
-              Suyash Agrawal
-            </ExternalLink>{' '}
-            for{' '}
-            <ExternalLink href="https://unsplash.com/ja/%E5%86%99%E7%9C%9F/VLpRa5tFdNY?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
-              Unsplash
-            </ExternalLink>
-          </div>
-          <Stack py={sm ? '3rem' : '8rem'} spacing={sm ? '2rem' : '5rem'}>
+          <Stack py={sm ? '3rem' : '10rem'} spacing={sm ? '2rem' : '7rem'}>
             <IntroduceItem
               text="私はdaichan132です。大学院でアルゴリズムの研究をしています。"
               subText="Hello, my name is daichan132. I am a graduate student studying algorithms."

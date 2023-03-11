@@ -1,11 +1,21 @@
-import { LogoText, Clock, ExternalLink } from '@/components/elements';
+import { LogoText, Clock, ExternalLinkCursor } from '@/components/elements';
+import { cursorAtom } from '@/stores/cursorAtom';
 import { scrollTop } from '@/utils/scrollTop';
 import { Container, createStyles, Flex, Space, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useAtom } from 'jotai';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+// eslint-disable-next-line camelcase
+import { Train_One } from '@next/font/google';
 import { HambergerMenu } from './HambergerMenu';
+
+const font = Train_One({
+  weight: ['400'],
+  style: ['normal'],
+  subsets: ['latin'],
+});
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -34,8 +44,28 @@ const useStyles = createStyles((theme) => ({
     color: 'black',
     textDecoration: 'none',
     fontSize: '1.1rem',
+    position: 'relative',
+    paddingBottom: '2px',
+    '&::after': {
+      content: "''",
+      background: '#000000',
+      width: '100%',
+      height: '2px',
+      position: 'absolute',
+      left: '0',
+      bottom: '0',
+      margin: 'auto',
+      transition: 'transform .3s',
+      transformOrigin: 'right top',
+      transform: 'scale(0, 1)',
+    },
+    '&:hover::after': {
+      transformOrigin: 'left top',
+      transform: 'scale(1, 1)',
+    },
   },
   logo: {
+    fontFamily: font.style.fontFamily,
     color: 'black',
     fontSize: '2.5rem',
     transition: 'all 0.2s ease-in-out',
@@ -91,11 +121,22 @@ export const Header = () => {
 
   const { classes } = useStyles();
 
+  const [, setCursorData] = useAtom(cursorAtom);
+
   return (
     <header className={classes.header}>
       <Container size="lg" className={classes.container}>
         <div>
-          <Link href="/" className={classes.logo}>
+          <Link
+            href="/"
+            className={classes.logo}
+            onMouseEnter={() => {
+              setCursorData({ cursorVariant: 'hover' });
+            }}
+            onMouseLeave={() => {
+              setCursorData({ cursorVariant: 'default' });
+            }}
+          >
             <LogoText text="DAICHAN 132" initialism={!isTop} id="header" enabled={!sm} />
           </Link>
           <AnimatePresence initial={false} mode="wait">
@@ -119,7 +160,9 @@ export const Header = () => {
                   <Flex>
                     Links:
                     <Space w="md" />
-                    <ExternalLink href="https://github.com/daichan132">github</ExternalLink>
+                    <ExternalLinkCursor href="https://github.com/daichan132">
+                      github
+                    </ExternalLinkCursor>
                   </Flex>
                 </motion.div>
               </motion.div>
@@ -141,16 +184,45 @@ export const Header = () => {
               }}
             >
               <motion.div variants={linkVariants}>
-                <Link href="/works" className={classes.linkItem}>
+                <Link
+                  href="/works"
+                  className={classes.linkItem}
+                  onMouseEnter={() => {
+                    setCursorData({ cursorVariant: 'hover' });
+                  }}
+                  onMouseLeave={() => {
+                    setCursorData({ cursorVariant: 'default' });
+                  }}
+                >
                   All works
                 </Link>
               </motion.div>
               <motion.div variants={linkVariants}>
-                <div className={classes.linkItem}>About me</div>
+                <div
+                  className={classes.linkItem}
+                  onMouseEnter={() => {
+                    setCursorData({ cursorVariant: 'hover' });
+                  }}
+                  onMouseLeave={() => {
+                    setCursorData({ cursorVariant: 'default' });
+                  }}
+                >
+                  About me
+                </div>
               </motion.div>
 
               <motion.div variants={linkVariants}>
-                <div className={classes.linkItem}>Contact</div>
+                <div
+                  className={classes.linkItem}
+                  onMouseEnter={() => {
+                    setCursorData({ cursorVariant: 'hover' });
+                  }}
+                  onMouseLeave={() => {
+                    setCursorData({ cursorVariant: 'default' });
+                  }}
+                >
+                  Contact
+                </div>
               </motion.div>
             </motion.div>
           ) : (

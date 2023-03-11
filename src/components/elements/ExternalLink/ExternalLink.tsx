@@ -1,4 +1,6 @@
+import { cursorAtom } from '@/stores/cursorAtom';
 import { css } from '@emotion/react';
+import { useAtom } from 'jotai';
 import { ReactNode, type FC } from 'react';
 import { VscLinkExternal } from 'react-icons/vsc';
 
@@ -25,5 +27,21 @@ export const ExternalLink: FC<ExternalLinkProps> = ({ children, href }) => {
       <p>{children}</p>
       <VscLinkExternal size="1rem" color="black" className="icon" />
     </a>
+  );
+};
+
+export const ExternalLinkCursor: FC<ExternalLinkProps> = ({ children, href }) => {
+  const [, setCursorData] = useAtom(cursorAtom);
+  return (
+    <div
+      onMouseEnter={() => {
+        setCursorData({ cursorVariant: 'hover' });
+      }}
+      onMouseLeave={() => {
+        setCursorData({ cursorVariant: 'default' });
+      }}
+    >
+      <ExternalLink href={href}>{children}</ExternalLink>
+    </div>
   );
 };
