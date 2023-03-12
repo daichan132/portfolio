@@ -50,7 +50,6 @@ export const HambergerMenu = ({ size }: { size: number }) => {
           opened={opened}
           title={opened ? 'Close navigation' : 'Open navigation'}
           size={size}
-          style={{ cursor: 'none' }}
         />
       </Center>
       {/* FullscreenMenu */}

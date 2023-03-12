@@ -58,7 +58,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
     <div>aa</div>
   ) : (
     <div className={classes.bg}>
-      <CustomCursor />
+      {!sm && <CustomCursor />}
 
       <Header />
 

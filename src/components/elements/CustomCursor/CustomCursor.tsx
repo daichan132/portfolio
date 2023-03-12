@@ -18,6 +18,7 @@ const bigStyle = css`
   border-radius: 100%;
   filter: invert(100%);
   mix-blend-mode: exclusion;
+  pointer-events: none;
 `;
 
 const bigVariants = (x: number, y: number) => ({
@@ -44,6 +45,7 @@ const smallStyle = css`
   border-radius: 100%;
   filter: invert(100%);
   mix-blend-mode: exclusion;
+  pointer-events: none;
 `;
 
 const smallVariants = () => ({
