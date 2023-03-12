@@ -1,13 +1,4 @@
-import {
-  TextInput,
-  Textarea,
-  SimpleGrid,
-  Group,
-  Button,
-  Container,
-  useMantineTheme,
-} from '@mantine/core';
-import { useMediaQuery } from '@mantine/hooks';
+import { TextInput, Textarea, SimpleGrid, Group, Button, Container } from '@mantine/core';
 import { useForm } from '@mantine/form';
 
 const Home = () => {
@@ -24,11 +15,9 @@ const Home = () => {
       subject: (value) => value.trim().length === 0,
     },
   });
-  const theme = useMantineTheme();
-  const sm = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
 
   return (
-    <Container size="lg" px="xs" pb={sm ? '3rem' : '10rem'}>
+    <Container size="lg" px="xs">
       <form>
         <SimpleGrid cols={2} mt="xl" breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
           <TextInput

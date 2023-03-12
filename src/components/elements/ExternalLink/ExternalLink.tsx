@@ -4,10 +4,10 @@ import { useAtom } from 'jotai';
 import { ReactNode, type FC } from 'react';
 import { VscLinkExternal } from 'react-icons/vsc';
 
-const style = css`
-  color: black;
+const style = (color: string) => css`
+  color: ${color};
   text-decoration: none;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid ${color};
   padding-bottom: 1px;
   p {
     display: inline;
@@ -19,18 +19,18 @@ const style = css`
     stroke-width: 1px;
   }
 `;
-export type ExternalLinkProps = { children: ReactNode; href: string };
+export type ExternalLinkProps = { children: ReactNode; href: string; color?: string };
 
-export const ExternalLink: FC<ExternalLinkProps> = ({ children, href }) => {
+export const ExternalLink: FC<ExternalLinkProps> = ({ children, href, color = 'black' }) => {
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer" css={style}>
+    <a href={href} target="_blank" rel="noopener noreferrer" css={style(color)}>
       <p>{children}</p>
-      <VscLinkExternal size="1rem" color="black" className="icon" />
+      <VscLinkExternal size="1rem" color={color} className="icon" />
     </a>
   );
 };
 
-export const ExternalLinkCursor: FC<ExternalLinkProps> = ({ children, href }) => {
+export const ExternalLinkCursor: FC<ExternalLinkProps> = ({ children, href, color = 'black' }) => {
   const [, setCursorData] = useAtom(cursorAtom);
   return (
     <div
@@ -41,7 +41,9 @@ export const ExternalLinkCursor: FC<ExternalLinkProps> = ({ children, href }) =>
         setCursorData({ cursorVariant: 'default' });
       }}
     >
-      <ExternalLink href={href}>{children}</ExternalLink>
+      <ExternalLink href={href} color={color}>
+        {children}
+      </ExternalLink>
     </div>
   );
 };

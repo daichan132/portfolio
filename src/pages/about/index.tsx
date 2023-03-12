@@ -1,29 +1,15 @@
 import { IntroduceItem } from '@/components/pages/about/IntroduceItem';
-import { Container, createStyles, Stack, Title, useMantineTheme } from '@mantine/core';
+import { Container, Stack, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import CoffeeIcon from 'public/coffee.svg';
 import DeskTopIcon from 'public/desktop.svg';
 
-const useStyles = createStyles(() => ({
-  container: {
-    position: 'relative',
-    width: '100%',
-  },
-
-  bgImage: {
-    objectFit: 'cover',
-    zIndex: -1,
-    filter: 'brightness(60%)',
-  },
-}));
-
 const Home = () => {
-  const { classes } = useStyles();
   const theme = useMantineTheme();
   const sm = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
   return (
-    <Container size="lg" px="xs" pb={sm ? '3rem' : '10rem'}>
-      <Stack pt={sm ? '1rem' : '3rem'} pb={sm ? '1rem' : '5rem'} spacing={sm ? '2rem' : '7rem'}>
+    <Container size="lg" px="xs">
+      <Stack pt={sm ? '0rem' : '3rem'} pb={sm ? '1rem' : '5rem'} spacing={sm ? '2rem' : '7rem'}>
         <IntroduceItem
           text="私はdaichan132です。大学院でアルゴリズムの研究をしています。"
           subText="Hello, my name is daichan132. I am a graduate student studying algorithms."

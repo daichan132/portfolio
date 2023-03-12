@@ -1,4 +1,4 @@
-import { ShipBlueColor } from '@/utils/Colors';
+import { CharcoalColor, ConcreteGrayColor } from '@/utils/Colors';
 import { hexToRGBA } from '@/utils/hexToRgbA';
 import { css } from '@emotion/react';
 import { useMouse } from '@mantine/hooks';
@@ -14,7 +14,7 @@ const bigStyle = css`
   display: flex;
   height: ${cursorSize}px;
   width: ${cursorSize}px;
-  background-color: ${hexToRGBA(ShipBlueColor, 0.2)};
+  background-color: ${hexToRGBA(ConcreteGrayColor, 0.2)};
   border-radius: 100%;
   filter: invert(100%);
   mix-blend-mode: exclusion;
@@ -41,7 +41,7 @@ const smallStyle = css`
   display: flex;
   height: 10px;
   width: 10px;
-  background-color: ${ShipBlueColor};
+  background-color: ${CharcoalColor};
   border-radius: 100%;
   filter: invert(100%);
   mix-blend-mode: exclusion;

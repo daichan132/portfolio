@@ -1,5 +1,5 @@
 import { SmoothScroll, CustomCursor } from '@/components/elements';
-import { SweetSepiaColor } from '@/utils/Colors';
+import { CharcoalColor } from '@/utils/Colors';
 import { hexToRGBA } from '@/utils/hexToRgbA';
 import { createStyles, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
@@ -11,18 +11,19 @@ import { Header } from '../Header';
 
 const useStyles = createStyles((theme) => ({
   main: {
-    paddingBottom: `0rem`,
+    paddingBottom: `5rem`,
     paddingTop: '12em',
     display: 'flex',
     flexDirection: 'column',
     minHeight: '100vh',
     [theme.fn.smallerThan('sm')]: {
-      paddingTop: '3em',
+      paddingTop: '4em',
+      paddingBottom: `3rem`,
     },
   },
   bg: {
     minHeight: '100vh',
-    backgroundColor: `${hexToRGBA(SweetSepiaColor, 0.15)}`,
+    backgroundColor: `${hexToRGBA(CharcoalColor, 0.15)}`,
   },
 }));
 
@@ -74,10 +75,8 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
           key={path}
         >
           <SmoothScroll enabled={!sm}>
-            <div className={classes.main}>
-              {children}
-              <Footer />
-            </div>
+            <div className={classes.main}>{children}</div>
+            <Footer />
           </SmoothScroll>
         </motion.main>
       </AnimatePresence>

@@ -1,5 +1,5 @@
 import { ParallaxPc } from '@/components/elements';
-import { SweetSepiaColor } from '@/utils/Colors';
+import { CharcoalColor } from '@/utils/Colors';
 import { css } from '@emotion/react';
 import { Center, createStyles, Grid, rem, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
@@ -7,17 +7,16 @@ import { useMediaQuery } from '@mantine/hooks';
 const useStyles = createStyles((theme) => ({
   contentBox: {
     position: 'relative',
-    height: rem(400),
+    height: rem(350),
     [theme.fn.smallerThan('md')]: {
-      height: rem(350),
+      height: rem(300),
     },
     [theme.fn.smallerThan('sm')]: {
-      height: rem(300),
+      height: rem(200),
     },
   },
   box: {
-    borderRadius: 10,
-    backgroundColor: SweetSepiaColor,
+    backgroundColor: CharcoalColor,
   },
   content: {},
 
@@ -28,10 +27,10 @@ const useStyles = createStyles((theme) => ({
     height: '100%',
   },
   mainText: {
-    fontSize: rem(24),
+    fontSize: rem(26),
     letterSpacing: '0.1rem',
     [theme.fn.smallerThan('md')]: {
-      fontSize: rem(22),
+      fontSize: rem(24),
     },
     [theme.fn.smallerThan('sm')]: {
       fontSize: rem(20),
@@ -83,20 +82,20 @@ export const IntroduceItem = ({
             }
           `}
         >
-          <ParallaxPc offset={25}>
+          <ParallaxPc offset={40}>
             <div className={classes.box} />
           </ParallaxPc>
 
           <ParallaxPc offset={0}>
             <Center className={classes.content}>
-              <Icon style={{ height: sm ? '50%' : '60%', transform: 'translate(0px, -15%)' }} />
+              <Icon style={{ height: sm ? '80%' : '60%', transform: 'translate(0px, -15%)' }} />
             </Center>
           </ParallaxPc>
         </div>
       </Grid.Col>
       <Grid.Col span={12} sm="auto" order={reverse ? 1 : 2}>
         <div className={classes.textBox}>
-          <ParallaxPc offset={50}>
+          <ParallaxPc offset={80}>
             <div className={classes.mainText}>{text}</div>
             <div className={classes.subText}>{subText}</div>
           </ParallaxPc>

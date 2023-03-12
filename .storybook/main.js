@@ -39,4 +39,5 @@ module.exports = {
     fileLoaderRule.exclude = /\.svg$/;
     return config;
   },
+  staticDirs: ['../public'],
 };
