@@ -45,12 +45,11 @@ export const Parallax = ({ children, offset = 0, enabled = true }: ParallaxProps
   }, [ref]);
 
   if (prefersReducedMotion || !enabled) {
-    // eslint-disable-next-line react/jsx-no-useless-fragment
-    return <>{children}</>;
+    return <div className="Parallax">{children}</div>;
   }
 
   return (
-    <motion.div ref={ref} style={{ y }}>
+    <motion.div ref={ref} style={{ y }} className="Parallax">
       {children}
     </motion.div>
   );

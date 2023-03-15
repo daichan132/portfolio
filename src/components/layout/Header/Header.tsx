@@ -1,7 +1,7 @@
 import { LogoText, Clock, ExternalLinkCursor } from '@/components/elements';
 import { cursorAtom } from '@/stores/cursorAtom';
 import { scrollTop } from '@/utils/scrollTop';
-import { Container, createStyles, Flex, Space, useMantineTheme } from '@mantine/core';
+import { Container, createStyles, Flex, rem, Space, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useAtom } from 'jotai';
@@ -36,7 +36,7 @@ const useStyles = createStyles((theme) => ({
     overflow: 'hidden',
     color: 'black',
     textDecoration: 'none',
-    fontSize: '1.1rem',
+    fontSize: rem(18),
     position: 'relative',
     paddingBottom: '2px',
     '&::after': {
@@ -59,13 +59,16 @@ const useStyles = createStyles((theme) => ({
   },
   logo: {
     color: 'black',
-    fontSize: '2.5rem',
+    fontSize: rem(40),
     transition: 'all 0.2s ease-in-out',
     fontWeight: 'bold',
     lineHeight: '1',
     [theme.fn.smallerThan('sm')]: {
       fontSize: '1.7rem',
     },
+  },
+  text: {
+    fontSize: rem(18),
   },
 }));
 
@@ -143,6 +146,7 @@ export const Header = () => {
                   duration: 0.3,
                   type: 'tween',
                 }}
+                className={classes.text}
               >
                 <Space h="xs" />
                 <motion.div variants={linkVariants}>

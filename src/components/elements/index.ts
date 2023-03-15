@@ -4,4 +4,3 @@ export * from './SmoothScroll';
 export * from './Clock';
 export * from './ExternalLink';
 export * from './CustomCursor';
-export * from './Work';

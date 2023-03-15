@@ -1,4 +1,4 @@
-import { CharcoalColor, ConcreteGrayColor } from '@/utils/Colors';
+import { NeptuneColor, SteamBlackColor } from '@/utils/Colors';
 import { hexToRGBA } from '@/utils/hexToRgbA';
 import { css } from '@emotion/react';
 import { useMouse } from '@mantine/hooks';
@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { useAtom } from 'jotai';
 import { cursorAtom } from '@/stores/cursorAtom';
 
-const cursorSize = 60;
+const cursorSize = 80;
 
 const bigStyle = css`
   position: fixed;
@@ -14,7 +14,7 @@ const bigStyle = css`
   display: flex;
   height: ${cursorSize}px;
   width: ${cursorSize}px;
-  background-color: ${hexToRGBA(ConcreteGrayColor, 0.2)};
+  background-color: ${hexToRGBA(NeptuneColor, 0.8)};
   border-radius: 100%;
   filter: invert(100%);
   mix-blend-mode: exclusion;
@@ -35,13 +35,14 @@ const bigVariants = (x: number, y: number) => ({
   },
 });
 
+const smCursorSize = 10;
 const smallStyle = css`
   position: fixed;
   z-index: 100;
   display: flex;
-  height: 10px;
-  width: 10px;
-  background-color: ${CharcoalColor};
+  height: ${smCursorSize}px;
+  width: ${smCursorSize}px;
+  background-color: ${SteamBlackColor};
   border-radius: 100%;
   filter: invert(100%);
   mix-blend-mode: exclusion;
@@ -80,7 +81,7 @@ export const CustomCursor = () => {
         variants={smallVariants()}
         animate={cursorVariant}
         css={smallStyle}
-        style={{ x: x - 5, y: y - 5 }}
+        style={{ x: x - smCursorSize / 2, y: y - smCursorSize / 2 }}
         transition={{
           type: 'spring',
           damping: 20,

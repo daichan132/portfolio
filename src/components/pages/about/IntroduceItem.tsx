@@ -1,24 +1,30 @@
 import { ParallaxPc } from '@/components/elements';
-import { CharcoalColor } from '@/utils/Colors';
+import { YellowColor } from '@/utils/Colors';
 import { css } from '@emotion/react';
-import { Center, createStyles, Grid, rem, useMantineTheme } from '@mantine/core';
-import { useMediaQuery } from '@mantine/hooks';
+import { Center, createStyles, Grid, rem } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
   contentBox: {
     position: 'relative',
-    height: rem(350),
+    height: rem(400),
     [theme.fn.smallerThan('md')]: {
-      height: rem(300),
+      height: rem(400),
     },
     [theme.fn.smallerThan('sm')]: {
-      height: rem(200),
+      height: rem(300),
     },
   },
   box: {
-    backgroundColor: CharcoalColor,
+    backgroundColor: '#fafafa',
+    border: `4px solid ${YellowColor}`,
+    borderRadius: 30,
+    height: '100%',
+    width: '100%',
   },
-  content: {},
+  content: {
+    width: '100%',
+    height: '100%',
+  },
 
   textBox: {
     display: 'flex',
@@ -28,28 +34,20 @@ const useStyles = createStyles((theme) => ({
   },
   mainText: {
     fontSize: rem(26),
-    letterSpacing: '0.1rem',
     [theme.fn.smallerThan('md')]: {
       fontSize: rem(24),
     },
     [theme.fn.smallerThan('sm')]: {
       fontSize: rem(20),
-      letterSpacing: '0',
     },
   },
   subText: {
     paddingTop: '2rem',
-    letterSpacing: '0.1rem',
-    fontSize: rem(20),
+    fontSize: rem(16),
     color: 'gray',
     whiteSpace: 'pre-line',
-    [theme.fn.smallerThan('md')]: {
-      letterSpacing: rem(0),
-      fontSize: rem(16),
-    },
     [theme.fn.smallerThan('sm')]: {
       paddingTop: '0rem',
-      letterSpacing: '0',
     },
   },
 }));
@@ -65,30 +63,28 @@ export const IntroduceItem = ({
   Icon: React.FC<React.SVGProps<SVGElement>>;
   reverse?: boolean;
 }) => {
-  const theme = useMantineTheme();
-  const sm = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
   const { classes } = useStyles();
 
   return (
-    <Grid gutter="xl">
+    <Grid gutter="xl" gutterMd={rem(60)}>
       <Grid.Col span={12} sm={6} order={reverse ? 2 : 1}>
         <div
           className={classes.contentBox}
           css={css`
-            * {
+            .Parallax {
               position: absolute;
               height: 100%;
               width: 100%;
             }
           `}
         >
-          <ParallaxPc offset={40}>
+          <ParallaxPc offset={30}>
             <div className={classes.box} />
           </ParallaxPc>
 
-          <ParallaxPc offset={0}>
+          <ParallaxPc offset={-10}>
             <Center className={classes.content}>
-              <Icon style={{ height: sm ? '80%' : '60%', transform: 'translate(0px, -15%)' }} />
+              <Icon style={{ height: '100%', transform: 'translate(0, 0)' }} />
             </Center>
           </ParallaxPc>
         </div>

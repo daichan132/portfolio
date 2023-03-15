@@ -1,6 +1,4 @@
 import { SmoothScroll, CustomCursor } from '@/components/elements';
-import { CharcoalColor } from '@/utils/Colors';
-import { hexToRGBA } from '@/utils/hexToRgbA';
 import { createStyles, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -11,11 +9,15 @@ import { Header } from '../Header';
 
 const useStyles = createStyles((theme) => ({
   main: {
-    paddingBottom: `5rem`,
-    paddingTop: '12em',
+    paddingTop: '10rem',
     display: 'flex',
     flexDirection: 'column',
     minHeight: '100vh',
+    backgroundImage:
+      'linear-gradient(0deg, transparent calc(100% - 1px), #f0f0f0 calc(100% - 1px)),\n                    linear-gradient(90deg, transparent calc(100% - 1px), #f0f0f0 calc(100% - 1px))',
+    backgroundSize: '30px 30px',
+    backgroundRepeat: 'repeat',
+    backgroundPosition: 'center center',
     [theme.fn.smallerThan('sm')]: {
       paddingTop: '4em',
       paddingBottom: `3rem`,
@@ -23,14 +25,13 @@ const useStyles = createStyles((theme) => ({
   },
   bg: {
     minHeight: '100vh',
-    backgroundColor: `${hexToRGBA(CharcoalColor, 0.15)}`,
   },
 }));
 
 const variants = {
   hidden: { opacity: 0, y: 20 },
   enter: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: 20 },
+  exit: { opacity: 0, y: -10 },
 };
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
@@ -58,7 +59,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
   return isLoaging ? (
     <div>aa</div>
   ) : (
-    <div className={classes.bg}>
+    <>
       {!sm && <CustomCursor />}
 
       <Header />
@@ -76,10 +77,10 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
         >
           <SmoothScroll enabled={!sm}>
             <div className={classes.main}>{children}</div>
-            <Footer />
+            {path !== '/' && <Footer />}
           </SmoothScroll>
         </motion.main>
       </AnimatePresence>
-    </div>
+    </>
   );
 };
