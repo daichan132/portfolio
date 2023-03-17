@@ -1,3 +1,4 @@
+import { css } from '@emotion/react';
 import {
   motion,
   useAnimationFrame,
@@ -8,11 +9,49 @@ import {
   useVelocity,
   wrap,
 } from 'framer-motion';
-import { useRef, type FC } from 'react';
+import { useLayoutEffect, useRef, useState, type FC } from 'react';
 
-export type MarqueeProps = { text: string; baseVelocity?: number };
+const style = (color: string) => css`
+  letter-spacing: -2px;
+  margin: 0;
+  white-space: nowrap;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  color: ${color};
+  .scroller {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 15px;
+    display: flex;
+    white-space: nowrap;
+    display: flex;
+    flex-wrap: nowrap;
+  }
 
-export const Marquee: FC<MarqueeProps> = ({ text, baseVelocity = 100 }) => {
+  span {
+    display: block;
+    margin-right: 10px;
+  }
+`;
+export type MarqueeProps = {
+  text: string;
+  baseVelocity?: number;
+  reverse?: number;
+  color?: string;
+};
+
+export const Marquee: FC<MarqueeProps> = ({
+  text,
+  baseVelocity = 30,
+  reverse = 1,
+  color = 'black',
+}) => {
   const baseX = useMotionValue(0);
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
@@ -24,21 +63,37 @@ export const Marquee: FC<MarqueeProps> = ({ text, baseVelocity = 100 }) => {
     clamp: false,
   });
 
-  /**
-   * This is a magic wrapping for the length of the text - you
-   * have to replace for wrapping that works for you or dynamically
-   * calculate
-   */
-  const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`);
+  const [repeatCount, setRepeatCount] = useState(1);
+  const [wrapperWidth, setWrapperWidth] = useState(1);
+  const textRef = useRef<HTMLSpanElement>(null);
+  useLayoutEffect(() => {
+    const updateRepeatCountAndWrapperWidth = () => {
+      if (textRef.current) {
+        const textWidth = textRef.current.offsetWidth;
+        const viewportWidth = window.innerWidth;
+        const newRepeatCount = Math.ceil(viewportWidth / textWidth) + 2;
+        setRepeatCount(newRepeatCount);
+        setWrapperWidth((textWidth * newRepeatCount * 100) / viewportWidth);
+      }
+    };
+
+    updateRepeatCountAndWrapperWidth();
+    window.addEventListener('resize', updateRepeatCountAndWrapperWidth);
+
+    return () => {
+      window.removeEventListener('resize', updateRepeatCountAndWrapperWidth);
+    };
+  }, [text]);
+
+  const x = useTransform(
+    baseX,
+    (v) => `${wrap(-10, -10 + 100 / repeatCount, (v / (wrapperWidth / 100)) * reverse)}%`
+  );
 
   const directionFactor = useRef<number>(1);
   useAnimationFrame((t, delta) => {
-    let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
+    let moveBy = directionFactor.current * baseVelocity * (delta / 10000);
 
-    /**
-     * This is what changes the direction of the scroll once we
-     * switch scrolling directions.
-     */
     if (velocityFactor.get() < 0) {
       directionFactor.current = -1;
     } else if (velocityFactor.get() > 0) {
@@ -49,21 +104,14 @@ export const Marquee: FC<MarqueeProps> = ({ text, baseVelocity = 100 }) => {
 
     baseX.set(baseX.get() + moveBy);
   });
-
-  /**
-   * The number of times to repeat the child text should be dynamically calculated
-   * based on the size of the text and viewport. Likewise, the x motion value is
-   * currently wrapped between -20 and -45% - this 25% is derived from the fact
-   * we have four children (100% / 4). This would also want deriving from the
-   * dynamically generated number of children.
-   */
   return (
-    <div className="parallax">
+    <div css={style(color)}>
       <motion.div className="scroller" style={{ x }}>
-        <span>{text} </span>
-        <span>{text} </span>
-        <span>{text} </span>
-        <span>{text} </span>
+        {Array.from({ length: repeatCount }, (_, i) => (
+          <span key={i} ref={i === 0 ? textRef : null}>
+            {text}{' '}
+          </span>
+        ))}
       </motion.div>
     </div>
   );

@@ -133,7 +133,7 @@ export const Work: FC<WorkProps> = ({
               {children}
               <Flex gap="xs" wrap="wrap">
                 {skills.map((skill: string) => (
-                  <Badge key={skill} color="dark" variant="outline">
+                  <Badge key={skill + src} color="dark" variant="outline">
                     {skill}
                   </Badge>
                 ))}

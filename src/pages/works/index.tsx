@@ -1,11 +1,11 @@
-import { ExternalLinkCursor } from '@/components/elements';
-import { Work } from '@/components/pages/works/Work';
+/* eslint-disable react/no-array-index-key */
+import { ExternalLinkCursor, Marquee } from '@/components/elements';
+import { Work, WorkProps } from '@/components/pages/works/Work';
 import { BlueColor, YellowColor } from '@/utils/Colors';
 import { css } from '@emotion/react';
 import { Container, List, Mark, rem, Stack, Text, Title, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { motion } from 'framer-motion';
-import { ReactNode } from 'react';
 
 const fontBold = css`
   font-weight: bold;
@@ -34,41 +34,44 @@ const itemVariants = {
 const Home = () => {
   const theme = useMantineTheme();
   const sm = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
-  const worksData: ReactNode[] = [
-    <Work
-      key="portfolio"
-      src="/portfolio.png"
-      color={YellowColor}
-      title="Portfolio"
-      skills={['Nextjs', 'Typescript', 'framer motion', 'Design']}
-    >
-      <Text>
-        こちらの作品は<Mark css={fontBold}>楽しく自分のことを紹介する</Mark>
-        ために作成したPortfolioです。Webデザインから実装までを自分で作成しました。
-      </Text>
-    </Work>,
-    <Work
-      key="vroom"
-      src="/vroom.png"
-      color={BlueColor}
-      title="VRooM"
-      skills={['Nextjs', 'Typescript', 'zustand', 'Threejs']}
-      link="https://jphacks-2022-4839e.web.app/"
-      githubLink="https://github.com/jphacks/A_2207"
-    >
-      <Text>
-        こちらの作品は
-        <Mark css={fontBold}>誰かと一緒に作業をしている感覚</Mark>
-        を体験しながら、作業を楽しく効率的に行うことを支援するWebアプリケーションです。
-        <ExternalLinkCursor href="https://jphacks.com/">JPJACKS</ExternalLinkCursor>
-        に参加した際に作成しました。
-      </Text>
-      <Title order={5}>受賞一覧</Title>
-      <List>
-        <List.Item>JPHACKS Innovator 認定</List.Item>
-        <List.Item>合同会社MIRAISE賞</List.Item>
-      </List>
-    </Work>,
+  const worksData: WorkProps[] = [
+    {
+      src: '/portfolio.png',
+      color: YellowColor,
+      title: 'Portfolio',
+      skills: ['Nextjs', 'Typescript', 'framer motion', 'Design'],
+      githubLink: 'https://github.com/daichan132/portfolio',
+      children: (
+        <Text>
+          こちらの作品は<Mark css={fontBold}>楽しく自分のことを紹介する</Mark>
+          ために作成したPortfolioです。Webデザインから実装までを自分で作成しました。
+        </Text>
+      ),
+    },
+    {
+      src: '/vroom.png',
+      color: BlueColor,
+      title: 'Vroom',
+      skills: ['Nextjs', 'Typescript', 'zustand', 'Threejs'],
+      link: 'https://jphacks-2022-4839e.web.app/',
+      githubLink: 'https://github.com/jphacks/A_2207',
+      children: (
+        <>
+          <Text>
+            こちらの作品は
+            <Mark css={fontBold}>誰かと一緒に作業をしている感覚</Mark>
+            を体験しながら、作業を楽しく効率的に行うことを支援するWebアプリケーションです。
+            <ExternalLinkCursor href="https://jphacks.com/">JPJACKS</ExternalLinkCursor>
+            に参加した際に作成しました。
+          </Text>
+          <Title order={5}>受賞一覧</Title>
+          <List>
+            <List.Item>JPHACKS Innovator 認定</List.Item>
+            <List.Item>合同会社MIRAISE賞</List.Item>
+          </List>
+        </>
+      ),
+    },
   ];
   return (
     <Container
@@ -80,11 +83,14 @@ const Home = () => {
     >
       <motion.div variants={containerVariants} initial="hidden" animate="show">
         <Stack spacing={rem(70)}>
-          {worksData.map((work, i) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <motion.div key={i} variants={itemVariants}>
-              {work}
-            </motion.div>
+          {worksData.map((props: WorkProps, i) => (
+            <>
+              <motion.div key={props.title} variants={itemVariants}>
+                <Work {...props} />
+              </motion.div>
+
+              <Marquee text={props.title} reverse={i % 2 ? 1 : -1} color={props.color} />
+            </>
           ))}
         </Stack>
       </motion.div>
