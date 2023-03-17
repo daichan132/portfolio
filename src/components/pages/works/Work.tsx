@@ -8,7 +8,7 @@ import { ParallaxPc } from '../../elements/Parallax';
 const useStyles = createStyles((theme, { color }: { color: string }) => ({
   container: {
     transition: 'all 0.5s ease-in-out',
-    padding: '0.5rem',
+    padding: '0.5rem 0',
     display: 'flex',
     alignItems: 'center',
   },
@@ -24,12 +24,14 @@ const useStyles = createStyles((theme, { color }: { color: string }) => ({
   },
   box: {
     backgroundColor: color,
+    borderRadius: 20,
     width: '100%',
     height: '100%',
   },
   content: {
     position: 'relative',
-    width: '90%',
+    borderRadius: 10,
+    width: '85%',
     height: '70%',
     overflow: 'hidden',
   },
@@ -53,14 +55,24 @@ export type WorkProps = {
   skills: string[];
   link?: string;
   githubLink?: string;
+  reverse?: boolean;
 };
 
-export const Work: FC<WorkProps> = ({ children, src, color, title, skills, link, githubLink }) => {
+export const Work: FC<WorkProps> = ({
+  children,
+  src,
+  color,
+  title,
+  skills,
+  link,
+  githubLink,
+  reverse = false,
+}) => {
   const { classes } = useStyles({ color });
   return (
     <div className={classes.container}>
       <Grid gutter="md" gutterMd={30} w="100%">
-        <Grid.Col span={12} sm={6}>
+        <Grid.Col span={12} sm={6} md={7} order={reverse ? 2 : 1}>
           <div
             className={classes.contentBox}
             css={css`
@@ -92,6 +104,7 @@ export const Work: FC<WorkProps> = ({ children, src, color, title, skills, link,
         <Grid.Col
           span={12}
           sm="auto"
+          order={reverse ? 1 : 2}
           css={css`
             .Parallax {
               height: 100%;
@@ -99,7 +112,7 @@ export const Work: FC<WorkProps> = ({ children, src, color, title, skills, link,
             }
           `}
         >
-          <ParallaxPc offset={50}>
+          <ParallaxPc offset={60}>
             <Stack justify="center" h="100%" p="sm">
               <Flex wrap="wrap" align="center" justify="space-between">
                 <div className={classes.title}>{title}</div>

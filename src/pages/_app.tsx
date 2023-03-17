@@ -6,9 +6,9 @@ import { MantineProvider } from '@mantine/core';
 import { Provider } from 'jotai';
 import Head from 'next/head';
 // eslint-disable-next-line camelcase
-import { Noto_Sans_JP } from 'next/font/google';
+import { M_PLUS_Rounded_1c } from 'next/font/google';
 
-const font = Noto_Sans_JP({
+const font = M_PLUS_Rounded_1c({
   weight: ['300', '400', '500', '700'],
   style: ['normal'],
   subsets: ['latin'],

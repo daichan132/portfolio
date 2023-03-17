@@ -1,9 +1,8 @@
 import { SmoothScroll, CustomCursor } from '@/components/elements';
-import { createStyles, useMantineTheme } from '@mantine/core';
+import { createStyles, rem, Space, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
 import { Footer } from '../Footer';
 import { Header } from '../Header';
 
@@ -42,45 +41,32 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
   const path = router.pathname;
 
-  const [isLoaging, setIsLoaging] = useState<boolean>(true);
-
-  useEffect(() => {
-    if (sessionStorage.getItem('access')) {
-      setIsLoaging(false);
-    } else {
-      setIsLoaging(true);
-      setTimeout(() => {
-        sessionStorage.setItem('access', 'firstaccess');
-        setIsLoaging(false);
-      }, 3300);
-    }
-  }, []);
-
-  return isLoaging ? (
-    <div>aa</div>
-  ) : (
+  return (
     <>
       {!sm && <CustomCursor />}
 
       <Header />
 
-      <AnimatePresence mode="wait" initial={false}>
-        <motion.main
-          variants={variants}
-          initial="hidden"
-          animate="enter"
-          exit="exit"
-          transition={{
-            duration: 0.5,
-          }}
-          key={path}
-        >
-          <SmoothScroll enabled={!sm}>
-            <div className={classes.main}>{children}</div>
-            {path !== '/' && <Footer />}
-          </SmoothScroll>
-        </motion.main>
-      </AnimatePresence>
+      <SmoothScroll enabled={!sm}>
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.main
+            variants={variants}
+            initial="hidden"
+            animate="enter"
+            exit="exit"
+            transition={{
+              duration: 0.4,
+            }}
+            key={path}
+          >
+            <div className={classes.main}>
+              {children}
+              <Space h={rem(60)} />
+              {path !== '/' && <Footer />}
+            </div>
+          </motion.main>
+        </AnimatePresence>
+      </SmoothScroll>
     </>
   );
 };

@@ -6,7 +6,9 @@ import { useMediaQuery } from '@mantine/hooks';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useAtom } from 'jotai';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { FullscreenMenu } from './FullScreenMenu';
 // eslint-disable-next-line camelcase
 import { HambergerMenu } from './HambergerMenu';
 
@@ -58,6 +60,7 @@ const useStyles = createStyles((theme) => ({
     },
   },
   logo: {
+    zIndex: 99,
     color: 'black',
     fontSize: rem(40),
     transition: 'all 0.2s ease-in-out',
@@ -99,10 +102,11 @@ export const Header = () => {
   const theme = useMantineTheme();
   const sm = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
 
+  const [opened, setOpened] = useState<boolean>(true);
   const [isTop, setIsTop] = useState<boolean>(true);
   const onScroll = (): void => {
     const position = scrollTop();
-    if (position >= 80) {
+    if (position >= 20) {
       setIsTop(false);
     } else {
       setIsTop(true);
@@ -114,26 +118,67 @@ export const Header = () => {
     return (): void => document.removeEventListener('scroll', onScroll);
   });
 
+  const router = useRouter();
+  useEffect(() => {
+    setOpened(false);
+  }, [router.pathname, setOpened, isTop]);
+
   const { classes } = useStyles();
 
   const [, setCursorData] = useAtom(cursorAtom);
 
   return (
-    <header className={classes.header}>
-      <Container size="lg" className={classes.container}>
-        <div>
-          <Link
-            href="/"
-            className={classes.logo}
-            onMouseEnter={() => {
-              setCursorData({ cursorVariant: 'hover' });
-            }}
-            onMouseLeave={() => {
-              setCursorData({ cursorVariant: 'default' });
-            }}
-          >
-            <LogoText text="DAICHAN 132" initialism={!isTop} id="header" enabled={!sm} />
-          </Link>
+    <>
+      {opened && <FullscreenMenu />}
+      <header className={classes.header}>
+        <Container size="lg" className={classes.container}>
+          <div>
+            {!opened && (
+              <Link
+                href="/"
+                className={classes.logo}
+                onMouseEnter={() => {
+                  setCursorData({ cursorVariant: 'hover' });
+                }}
+                onMouseLeave={() => {
+                  setCursorData({ cursorVariant: 'default' });
+                }}
+              >
+                <LogoText text="DAICHAN 132" initialism={!isTop} id="header" enabled={!sm} />
+              </Link>
+            )}
+            <AnimatePresence initial={false} mode="wait">
+              {isTop && !sm ? (
+                <motion.div
+                  key="linkItem"
+                  variants={containerLinkVariants}
+                  initial="hidden"
+                  animate="show"
+                  exit="hidden"
+                  transition={{
+                    duration: 0.3,
+                    type: 'tween',
+                  }}
+                  className={classes.text}
+                >
+                  <Space h="xs" />
+                  <motion.div variants={linkVariants}>
+                    <Clock />
+                  </motion.div>
+                  <motion.div variants={linkVariants}>
+                    <Flex>
+                      Links:
+                      <Space w="md" />
+                      <ExternalLinkCursor href="https://github.com/daichan132">
+                        github
+                      </ExternalLinkCursor>
+                    </Flex>
+                  </motion.div>
+                </motion.div>
+              ) : null}
+            </AnimatePresence>
+          </div>
+
           <AnimatePresence initial={false} mode="wait">
             {isTop && !sm ? (
               <motion.div
@@ -146,99 +191,68 @@ export const Header = () => {
                   duration: 0.3,
                   type: 'tween',
                 }}
-                className={classes.text}
               >
-                <Space h="xs" />
                 <motion.div variants={linkVariants}>
-                  <Clock />
+                  <Link
+                    href="/"
+                    className={classes.linkItem}
+                    onMouseEnter={() => {
+                      setCursorData({ cursorVariant: 'hover' });
+                    }}
+                    onMouseLeave={() => {
+                      setCursorData({ cursorVariant: 'default' });
+                    }}
+                  >
+                    Home
+                  </Link>
                 </motion.div>
                 <motion.div variants={linkVariants}>
-                  <Flex>
-                    Links:
-                    <Space w="md" />
-                    <ExternalLinkCursor href="https://github.com/daichan132">
-                      github
-                    </ExternalLinkCursor>
-                  </Flex>
+                  <Link
+                    href="/about"
+                    className={classes.linkItem}
+                    onMouseEnter={() => {
+                      setCursorData({ cursorVariant: 'hover' });
+                    }}
+                    onMouseLeave={() => {
+                      setCursorData({ cursorVariant: 'default' });
+                    }}
+                  >
+                    About me
+                  </Link>
+                </motion.div>
+                <motion.div variants={linkVariants}>
+                  <Link
+                    href="/works"
+                    className={classes.linkItem}
+                    onMouseEnter={() => {
+                      setCursorData({ cursorVariant: 'hover' });
+                    }}
+                    onMouseLeave={() => {
+                      setCursorData({ cursorVariant: 'default' });
+                    }}
+                  >
+                    All works
+                  </Link>
                 </motion.div>
               </motion.div>
-            ) : null}
+            ) : (
+              <motion.div
+                key="hamberger"
+                variants={hambergerVariants}
+                initial="hidden"
+                animate="show"
+                exit="hidden"
+                transition={{
+                  duration: 0.3,
+                  type: 'tween',
+                }}
+              >
+                <HambergerMenu opened={opened} setOpened={setOpened} />
+              </motion.div>
+            )}
           </AnimatePresence>
-        </div>
-
-        <AnimatePresence initial={false} mode="wait">
-          {isTop && !sm ? (
-            <motion.div
-              key="linkItem"
-              variants={containerLinkVariants}
-              initial="hidden"
-              animate="show"
-              exit="hidden"
-              transition={{
-                duration: 0.3,
-                type: 'tween',
-              }}
-            >
-              <motion.div variants={linkVariants}>
-                <Link
-                  href="/about"
-                  className={classes.linkItem}
-                  onMouseEnter={() => {
-                    setCursorData({ cursorVariant: 'hover' });
-                  }}
-                  onMouseLeave={() => {
-                    setCursorData({ cursorVariant: 'default' });
-                  }}
-                >
-                  About me
-                </Link>
-              </motion.div>
-              <motion.div variants={linkVariants}>
-                <Link
-                  href="/works"
-                  className={classes.linkItem}
-                  onMouseEnter={() => {
-                    setCursorData({ cursorVariant: 'hover' });
-                  }}
-                  onMouseLeave={() => {
-                    setCursorData({ cursorVariant: 'default' });
-                  }}
-                >
-                  All works
-                </Link>
-              </motion.div>
-              <motion.div variants={linkVariants}>
-                <Link
-                  href="/contact"
-                  className={classes.linkItem}
-                  onMouseEnter={() => {
-                    setCursorData({ cursorVariant: 'hover' });
-                  }}
-                  onMouseLeave={() => {
-                    setCursorData({ cursorVariant: 'default' });
-                  }}
-                >
-                  Contact
-                </Link>
-              </motion.div>
-            </motion.div>
-          ) : (
-            <motion.div
-              key="hamberger"
-              variants={hambergerVariants}
-              initial="hidden"
-              animate="show"
-              exit="hidden"
-              transition={{
-                duration: 0.3,
-                type: 'tween',
-              }}
-            >
-              <HambergerMenu size={sm ? 25 : 30} />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </Container>
-    </header>
+        </Container>
+      </header>
+    </>
   );
 };

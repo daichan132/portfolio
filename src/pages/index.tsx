@@ -1,14 +1,13 @@
 import { Container, createStyles, rem } from '@mantine/core';
-import Image from 'next/image';
 
 const useStyles = createStyles((theme) => ({
   container: {
     position: 'relative',
-    height: '70vh',
+    height: '100%',
     width: '100%',
     marginTop: '2rem',
     [theme.fn.smallerThan('sm')]: {
-      height: '70vh',
+      height: '100%',
     },
   },
   image: {
@@ -21,7 +20,7 @@ const Home = () => {
 
   return (
     <Container size="lg" px={rem(30)} className={classes.container}>
-      <Image fill src="/japan.jpg" alt="japan" className={classes.image} />
+      in preparation
     </Container>
   );
 };

@@ -58,6 +58,18 @@ export const Footer: FC = () => {
         {!sm ? '© 2023 daichan132' : null}
         <div className={classes.linkItemContainer}>
           <Link
+            href="/"
+            className={classes.linkItem}
+            onMouseEnter={() => {
+              setCursorData({ cursorVariant: 'hover' });
+            }}
+            onMouseLeave={() => {
+              setCursorData({ cursorVariant: 'default' });
+            }}
+          >
+            Home
+          </Link>
+          <Link
             href="/about"
             className={classes.linkItem}
             onMouseEnter={() => {
@@ -80,18 +92,6 @@ export const Footer: FC = () => {
             }}
           >
             All works
-          </Link>
-          <Link
-            href="/contact"
-            className={classes.linkItem}
-            onMouseEnter={() => {
-              setCursorData({ cursorVariant: 'hover' });
-            }}
-            onMouseLeave={() => {
-              setCursorData({ cursorVariant: 'default' });
-            }}
-          >
-            Contact
           </Link>
         </div>
       </Container>

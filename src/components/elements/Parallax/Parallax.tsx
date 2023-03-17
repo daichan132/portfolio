@@ -1,10 +1,8 @@
 import { ReactNode, useRef, useState } from 'react';
 import { motion, useTransform, useScroll, useSpring, useReducedMotion } from 'framer-motion';
-import { useIsomorphicEffect, useMediaQuery } from '@mantine/hooks';
-import { useMantineTheme } from '@mantine/core';
-import { css } from '@emotion/react';
+import { useIsomorphicEffect } from '@mantine/hooks';
 
-type ParallaxProps = {
+export type ParallaxProps = {
   children: ReactNode;
   offset?: number;
   enabled?: boolean;
@@ -52,27 +50,5 @@ export const Parallax = ({ children, offset = 0, enabled = true }: ParallaxProps
     <motion.div ref={ref} style={{ y }} className="Parallax">
       {children}
     </motion.div>
-  );
-};
-
-type ParallaxPcProps = {
-  children: ReactNode;
-  offset?: number;
-};
-
-export const ParallaxPc = ({ children, offset = 0 }: ParallaxPcProps): JSX.Element => {
-  const theme = useMantineTheme();
-  const sm = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
-  return (
-    <Parallax
-      offset={offset}
-      enabled={!sm}
-      css={css`
-        position: relative;
-        transform: ${sm ? `translate(0px, ${offset}px)` : null};
-      `}
-    >
-      {children}
-    </Parallax>
   );
 };

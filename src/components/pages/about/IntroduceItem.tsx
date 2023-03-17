@@ -6,9 +6,9 @@ import { Center, createStyles, Grid, rem } from '@mantine/core';
 const useStyles = createStyles((theme) => ({
   contentBox: {
     position: 'relative',
-    height: rem(400),
+    height: rem(350),
     [theme.fn.smallerThan('md')]: {
-      height: rem(400),
+      height: rem(380),
     },
     [theme.fn.smallerThan('sm')]: {
       height: rem(300),
@@ -33,9 +33,9 @@ const useStyles = createStyles((theme) => ({
     height: '100%',
   },
   mainText: {
-    fontSize: rem(26),
+    fontSize: rem(24),
     [theme.fn.smallerThan('md')]: {
-      fontSize: rem(24),
+      fontSize: rem(22),
     },
     [theme.fn.smallerThan('sm')]: {
       fontSize: rem(20),

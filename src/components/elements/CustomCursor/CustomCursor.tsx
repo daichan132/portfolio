@@ -1,4 +1,4 @@
-import { NeptuneColor, SteamBlackColor } from '@/utils/Colors';
+import { NeptuneColor } from '@/utils/Colors';
 import { hexToRGBA } from '@/utils/hexToRgbA';
 import { css } from '@emotion/react';
 import { useMouse } from '@mantine/hooks';
@@ -42,7 +42,7 @@ const smallStyle = css`
   display: flex;
   height: ${smCursorSize}px;
   width: ${smCursorSize}px;
-  background-color: ${SteamBlackColor};
+  background-color: black;
   border-radius: 100%;
   filter: invert(100%);
   mix-blend-mode: exclusion;
@@ -56,7 +56,6 @@ const smallVariants = () => ({
   hover: {
     opacity: 1,
     scale: 7,
-    backgroundColor: 'black',
   },
 });
 

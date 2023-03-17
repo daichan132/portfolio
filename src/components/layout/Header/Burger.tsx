@@ -1,9 +1,8 @@
-import { cursorAtom } from '@/stores/cursorAtom';
-import { css } from '@emotion/react';
-import { Center } from '@mantine/core';
-import { motion, useAnimation } from 'framer-motion';
-import { useAtom } from 'jotai';
 import { Dispatch, SetStateAction } from 'react';
+import { motion, useAnimation } from 'framer-motion';
+import { css } from '@emotion/react';
+import { useAtom } from 'jotai';
+import { cursorAtom } from '@/stores/cursorAtom';
 
 const path01Variants = {
   open: { d: 'M3.06061 2.99999L21.0606 21' },
@@ -16,11 +15,10 @@ const path02Variants = {
   closed: { d: 'M0 14.5L15 14.5' },
 };
 const style = css`
-  background-color: transparent;
-  border: none;
+  zoom: 150%;
 `;
 
-export const HambergerMenu = ({
+export const Burger = ({
   opened,
   setOpened,
 }: {
@@ -45,33 +43,30 @@ export const HambergerMenu = ({
   const [, setCursorData] = useAtom(cursorAtom);
 
   return (
-    <Center>
-      <div
-        onClick={onClick}
-        css={style}
-        aria-hidden="true"
-        onMouseEnter={() => {
-          setCursorData({ cursorVariant: 'hover' });
-        }}
-        onMouseLeave={() => {
-          setCursorData({ cursorVariant: 'default' });
-        }}
-      >
-        <svg width="30" height="30" viewBox="0 0 24 24">
-          <motion.path
-            {...path01Variants.closed}
-            animate={path01Controls}
-            transition={{ duration: 0.2 }}
-            stroke="black"
-          />
-          <motion.path
-            {...path02Variants.closed}
-            animate={path02Controls}
-            transition={{ duration: 0.2 }}
-            stroke="black"
-          />
-        </svg>
-      </div>
-    </Center>
+    <div
+      onClick={onClick}
+      aria-hidden="true"
+      onMouseEnter={() => {
+        setCursorData({ cursorVariant: 'hover' });
+      }}
+      onMouseLeave={() => {
+        setCursorData({ cursorVariant: 'default' });
+      }}
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" css={style}>
+        <motion.path
+          {...path01Variants.closed}
+          animate={path01Controls}
+          transition={{ duration: 0.2 }}
+          stroke="black"
+        />
+        <motion.path
+          {...path02Variants.closed}
+          animate={path02Controls}
+          transition={{ duration: 0.2 }}
+          stroke="black"
+        />
+      </svg>
+    </div>
   );
 };
