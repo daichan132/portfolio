@@ -107,7 +107,7 @@ export const Header = () => {
   const [isTop, setIsTop] = useState<boolean>(true);
   const onScroll = (): void => {
     const position = scrollTop();
-    if (position >= 20) {
+    if (position >= 50) {
       setIsTop(false);
     } else {
       setIsTop(true);
