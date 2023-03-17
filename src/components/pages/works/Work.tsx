@@ -113,7 +113,7 @@ export const Work: FC<WorkProps> = ({
           `}
         >
           <ParallaxPc offset={60}>
-            <Stack justify="center" h="100%" p="sm">
+            <Stack justify="center" h="100%" p="sm" className="globalFont">
               <Flex wrap="wrap" align="center" justify="space-between">
                 <div className={classes.title}>{title}</div>
                 <Flex gap="sm">

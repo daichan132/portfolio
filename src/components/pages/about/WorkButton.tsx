@@ -1,5 +1,4 @@
 import { cursorAtom } from '@/stores/cursorAtom';
-import { YellowColor } from '@/utils/Colors';
 import { css } from '@emotion/react';
 import { useAtom } from 'jotai';
 import Link from 'next/link';
@@ -7,12 +6,9 @@ import React from 'react';
 
 const buttonStyle = css`
   display: inline-block;
-  border: 1px solid;
   position: relative;
-  background: #fff;
   font-weight: bold;
   color: black;
-  border: 3px solid ${YellowColor};
   padding: 1rem 5rem 1rem 2rem;
   text-decoration: none;
   border-radius: 20px;
