@@ -6,14 +6,13 @@ import { MantineProvider } from '@mantine/core';
 import { Provider } from 'jotai';
 import Head from 'next/head';
 // eslint-disable-next-line camelcase
-import { M_PLUS_Rounded_1c } from 'next/font/google';
+import { Sawarabi_Mincho } from 'next/font/google';
 
-const font = M_PLUS_Rounded_1c({
-  weight: ['300', '400', '500', '700'],
+const font = Sawarabi_Mincho({
+  weight: ['400'],
   style: ['normal'],
   subsets: ['latin'],
 });
-
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
@@ -38,6 +37,9 @@ const App = ({ Component, pageProps }: AppProps) => {
                 fontFamily: `${font.style.fontFamily}`,
                 lineHeight: 1.5,
                 letterSpacing: '0.05rem',
+              },
+              '.globalFont': {
+                '*': { fontFamily: `${font.style.fontFamily}` },
               },
             }),
           }}

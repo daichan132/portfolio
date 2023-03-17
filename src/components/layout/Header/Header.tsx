@@ -39,6 +39,7 @@ const useStyles = createStyles((theme) => ({
     color: 'black',
     textDecoration: 'none',
     fontSize: rem(18),
+    fontWeight: 'bold',
     position: 'relative',
     paddingBottom: '2px',
     '&::after': {
