@@ -6,10 +6,10 @@ import { MantineProvider } from '@mantine/core';
 import { Provider } from 'jotai';
 import Head from 'next/head';
 // eslint-disable-next-line camelcase
-import { Sawarabi_Mincho } from 'next/font/google';
+import { Zen_Kaku_Gothic_Antique } from 'next/font/google';
 
-const font = Sawarabi_Mincho({
-  weight: ['400'],
+const font = Zen_Kaku_Gothic_Antique({
+  weight: ['400', '500', '700'],
   style: ['normal'],
   subsets: ['latin'],
 });

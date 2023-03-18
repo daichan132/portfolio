@@ -11,7 +11,6 @@ const buttonStyle = css`
   color: black;
   padding: 1rem 5rem 1rem 2rem;
   text-decoration: none;
-  border-radius: 20px;
   &:before,
   &:after {
     content: '';

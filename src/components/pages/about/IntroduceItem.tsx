@@ -17,7 +17,6 @@ const useStyles = createStyles((theme) => ({
   box: {
     backgroundColor: '#fafafa',
     border: `4px solid ${YellowColor}`,
-    borderRadius: 30,
     height: '100%',
     width: '100%',
   },

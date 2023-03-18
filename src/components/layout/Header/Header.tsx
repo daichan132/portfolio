@@ -9,7 +9,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { FullscreenMenu } from './FullScreenMenu';
-// eslint-disable-next-line camelcase
 import { HambergerMenu } from './HambergerMenu';
 
 const useStyles = createStyles((theme) => ({
@@ -39,9 +38,9 @@ const useStyles = createStyles((theme) => ({
     color: 'black',
     textDecoration: 'none',
     fontSize: rem(18),
-    fontWeight: 'bold',
     position: 'relative',
     paddingBottom: '2px',
+    fontWeight: 500,
     '&::after': {
       content: "''",
       background: '#000000',
@@ -63,7 +62,7 @@ const useStyles = createStyles((theme) => ({
   logo: {
     zIndex: 99,
     color: 'black',
-    fontSize: rem(40),
+    fontSize: rem(32),
     transition: 'all 0.2s ease-in-out',
     fontWeight: 'bold',
     lineHeight: '1',
@@ -73,6 +72,7 @@ const useStyles = createStyles((theme) => ({
   },
   text: {
     fontSize: rem(18),
+    fontWeight: 500,
   },
 }));
 
@@ -119,14 +119,15 @@ export const Header = () => {
     return (): void => document.removeEventListener('scroll', onScroll);
   });
 
+  const [, setCursorData] = useAtom(cursorAtom);
   const router = useRouter();
+
   useEffect(() => {
     setOpened(false);
-  }, [router.pathname, setOpened, isTop]);
+    setCursorData({ cursorVariant: 'default' });
+  }, [router.pathname, setOpened, isTop, setCursorData]);
 
   const { classes } = useStyles();
-
-  const [, setCursorData] = useAtom(cursorAtom);
 
   return (
     <>

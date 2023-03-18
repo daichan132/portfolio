@@ -24,13 +24,11 @@ const useStyles = createStyles((theme, { color }: { color: string }) => ({
   },
   box: {
     backgroundColor: color,
-    borderRadius: 20,
     width: '100%',
     height: '100%',
   },
   content: {
     position: 'relative',
-    borderRadius: 10,
     width: '85%',
     height: '70%',
     overflow: 'hidden',
@@ -38,12 +36,11 @@ const useStyles = createStyles((theme, { color }: { color: string }) => ({
   image: {
     objectFit: 'cover',
     transition: 'all 0.5s ease-in-out',
-    filter: 'saturate(130%)',
     '&:hover': { transform: 'scale(1.05)' },
   },
   title: {
+    fontSize: rem(32),
     fontWeight: 'bold',
-    fontSize: rem(40),
   },
 }));
 
@@ -87,11 +84,12 @@ export const Work: FC<WorkProps> = ({
               <div className={classes.box} />
             </ParallaxPc>
 
-            <ParallaxPc offset={-10}>
+            <ParallaxPc offset={0}>
               <Center
                 css={css`
                   height: 100%;
                   width: 100%;
+                  transform: translate(0, -2%);
                 `}
               >
                 <div className={classes.content}>
@@ -113,7 +111,7 @@ export const Work: FC<WorkProps> = ({
           `}
         >
           <ParallaxPc offset={60}>
-            <Stack justify="center" h="100%" p="sm" className="globalFont">
+            <Stack justify="center" h="100%" p="sm">
               <Flex wrap="wrap" align="center" justify="space-between">
                 <div className={classes.title}>{title}</div>
                 <Flex gap="sm">
@@ -130,8 +128,8 @@ export const Work: FC<WorkProps> = ({
                 </Flex>
               </Flex>
 
-              {children}
-              <Flex gap="xs" wrap="wrap">
+              <div className="globalFont">{children}</div>
+              <Flex gap="xs" wrap="wrap" className="globalFont">
                 {skills.map((skill: string) => (
                   <Badge key={skill + src} color="dark" variant="outline">
                     {skill}

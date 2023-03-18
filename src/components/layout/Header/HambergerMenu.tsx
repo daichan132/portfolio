@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import { Center } from '@mantine/core';
 import { motion, useAnimation } from 'framer-motion';
 import { useAtom } from 'jotai';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useEffect } from 'react';
 
 const path01Variants = {
   open: { d: 'M3.06061 2.99999L21.0606 21' },
@@ -32,16 +32,21 @@ export const HambergerMenu = ({
 
   const onClick = async () => {
     setOpened(!opened);
-    if (!opened) {
-      await path02Controls.start(path02Variants.moving);
-      path01Controls.start(path01Variants.open);
-      path02Controls.start(path02Variants.open);
-    } else {
-      path01Controls.start(path01Variants.closed);
-      await path02Controls.start(path02Variants.moving);
-      path02Controls.start(path02Variants.closed);
-    }
   };
+  useEffect(() => {
+    const func = async () => {
+      if (opened) {
+        await path02Controls.start(path02Variants.moving);
+        path01Controls.start(path01Variants.open);
+        path02Controls.start(path02Variants.open);
+      } else {
+        path01Controls.start(path01Variants.closed);
+        await path02Controls.start(path02Variants.moving);
+        path02Controls.start(path02Variants.closed);
+      }
+    };
+    func();
+  }, [opened, path01Controls, path02Controls]);
   const [, setCursorData] = useAtom(cursorAtom);
 
   return (
@@ -57,18 +62,20 @@ export const HambergerMenu = ({
           setCursorData({ cursorVariant: 'default' });
         }}
       >
-        <svg width="30" height="30" viewBox="0 0 24 24">
+        <svg width="32" height="32" viewBox="0 0 24 24">
           <motion.path
             {...path01Variants.closed}
             animate={path01Controls}
             transition={{ duration: 0.2 }}
             stroke="black"
+            strokeWidth={2}
           />
           <motion.path
             {...path02Variants.closed}
             animate={path02Controls}
             transition={{ duration: 0.2 }}
             stroke="black"
+            strokeWidth={2}
           />
         </svg>
       </div>

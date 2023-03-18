@@ -5,6 +5,8 @@ import { useMouse } from '@mantine/hooks';
 import { motion } from 'framer-motion';
 import { useAtom } from 'jotai';
 import { cursorAtom } from '@/stores/cursorAtom';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 const cursorSize = 80;
 
@@ -62,7 +64,11 @@ const smallVariants = () => ({
 export const CustomCursor = () => {
   const { x, y } = useMouse();
 
-  const [{ cursorVariant }] = useAtom(cursorAtom);
+  const [{ cursorVariant }, setCursorData] = useAtom(cursorAtom);
+  const router = useRouter();
+  useEffect(() => {
+    setCursorData({ cursorVariant: 'default' });
+  }, [router.pathname, setCursorData]);
 
   return (
     <>

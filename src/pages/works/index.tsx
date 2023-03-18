@@ -6,6 +6,7 @@ import { css } from '@emotion/react';
 import { Container, List, Mark, rem, Stack, Text, Title, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { motion } from 'framer-motion';
+import { Fragment } from 'react';
 
 const fontBold = css`
   font-weight: bold;
@@ -51,7 +52,7 @@ const Home = () => {
     {
       src: '/vroom.png',
       color: BlueColor,
-      title: 'Vroom',
+      title: 'VRooM',
       skills: ['Nextjs', 'Typescript', 'zustand', 'Threejs'],
       link: 'https://jphacks-2022-4839e.web.app/',
       githubLink: 'https://github.com/jphacks/A_2207',
@@ -64,7 +65,9 @@ const Home = () => {
             <ExternalLinkCursor href="https://jphacks.com/">JPJACKS</ExternalLinkCursor>
             に参加した際に作成しました。
           </Text>
-          <Title order={5}>受賞一覧</Title>
+          <Title order={5} py={5}>
+            受賞一覧
+          </Title>
           <List>
             <List.Item>JPHACKS Innovator 認定</List.Item>
             <List.Item>合同会社MIRAISE賞</List.Item>
@@ -82,15 +85,14 @@ const Home = () => {
       py={sm ? '0rem' : '3rem'}
     >
       <motion.div variants={containerVariants} initial="hidden" animate="show">
-        <Stack spacing={rem(70)}>
-          {worksData.map((props: WorkProps, i) => (
-            <>
-              <motion.div key={props.title} variants={itemVariants}>
+        <Stack spacing={rem(100)}>
+          {worksData.map((props: WorkProps) => (
+            <Fragment key={props.title}>
+              <motion.div variants={itemVariants}>
                 <Work {...props} />
               </motion.div>
-
-              <Marquee text={props.title} reverse={i % 2 ? 1 : -1} color={props.color} />
-            </>
+              {!sm ? <Marquee text={props.title} color={props.color} /> : null}{' '}
+            </Fragment>
           ))}
         </Stack>
       </motion.div>

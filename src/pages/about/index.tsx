@@ -5,13 +5,22 @@ import TeenagerIcon from 'public/36-Teenager.svg';
 import TeamworkIcon from 'public/58-Teamwork.svg';
 import AdventurerIcon from 'public/39-Adventurer.svg';
 import { WorkButton } from '@/components/pages/about/WorkButton';
+import { Marquee } from '@/components/elements';
+import { YellowColor } from '@/utils/Colors';
+import { css } from '@emotion/react';
 
 // https://designs.ai/graphicmaker/illustrations/Duotone_Cartoon_Set
 const Home = () => {
   const theme = useMantineTheme();
   const sm = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
   return (
-    <Container size="lg" px="xs">
+    <Container
+      size="lg"
+      px="xs"
+      css={css`
+        width: 100%;
+      `}
+    >
       <Stack py={sm ? '0rem' : '3rem'} spacing={sm ? '2rem' : '3rem'}>
         <IntroduceItem
           text="私の名前はdaichan132です。プログラミングが大好きな大学院生です。"
@@ -32,6 +41,7 @@ const Home = () => {
         <Center pt={rem(20)}>
           <WorkButton />
         </Center>
+        <Marquee text="profile" color={YellowColor} />
       </Stack>
     </Container>
   );

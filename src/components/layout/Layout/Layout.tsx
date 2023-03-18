@@ -12,6 +12,8 @@ const useStyles = createStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     minHeight: '100vh',
+    width: '100vw',
+    overflow: 'hidden',
     backgroundImage:
       'linear-gradient(0deg, transparent calc(100% - 1px), #f0f0f0 calc(100% - 1px)),\n                    linear-gradient(90deg, transparent calc(100% - 1px), #f0f0f0 calc(100% - 1px))',
     backgroundSize: '30px 30px',

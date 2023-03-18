@@ -10,9 +10,6 @@ const useStyles = createStyles((theme) => ({
       height: '100%',
     },
   },
-  image: {
-    objectFit: 'cover',
-  },
 }));
 
 const Home = () => {
