@@ -30,7 +30,7 @@ export const HambergerMenu = ({
   const path01Controls = useAnimation();
   const path02Controls = useAnimation();
 
-  const onClick = async () => {
+  const onClick = () => {
     setOpened(!opened);
   };
   useEffect(() => {

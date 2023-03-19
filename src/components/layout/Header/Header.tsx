@@ -124,8 +124,7 @@ export const Header = () => {
 
   useEffect(() => {
     setOpened(false);
-    setCursorData({ cursorVariant: 'default' });
-  }, [router.pathname, setOpened, isTop, setCursorData]);
+  }, [router.pathname, setOpened, isTop]);
 
   const { classes } = useStyles();
 

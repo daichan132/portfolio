@@ -1,5 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import { ExternalLinkCursor, Marquee } from '@/components/elements';
+import { ExternalLinkCursor } from '@/components/elements';
 import { Work, WorkProps } from '@/components/pages/works/Work';
 import { BlueColor, YellowColor } from '@/utils/Colors';
 import { css } from '@emotion/react';
@@ -85,13 +85,12 @@ const Home = () => {
       py={sm ? '0rem' : '3rem'}
     >
       <motion.div variants={containerVariants} initial="hidden" animate="show">
-        <Stack spacing={rem(100)}>
+        <Stack spacing={rem(64)}>
           {worksData.map((props: WorkProps) => (
             <Fragment key={props.title}>
               <motion.div variants={itemVariants}>
                 <Work {...props} />
               </motion.div>
-              {!sm ? <Marquee text={props.title} color={props.color} /> : null}{' '}
             </Fragment>
           ))}
         </Stack>

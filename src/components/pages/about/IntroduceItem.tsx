@@ -77,20 +77,20 @@ export const IntroduceItem = ({
             }
           `}
         >
-          <ParallaxPc offset={30}>
+          <ParallaxPc offset={20}>
             <div className={classes.box} />
           </ParallaxPc>
 
           <ParallaxPc offset={-10}>
             <Center className={classes.content}>
-              <Icon style={{ height: '100%', transform: 'translate(0, 0)' }} />
+              <Icon style={{ height: '100%', transform: 'translate(0, -10px)' }} />
             </Center>
           </ParallaxPc>
         </div>
       </Grid.Col>
       <Grid.Col span={12} sm="auto" order={reverse ? 1 : 2}>
         <div className={classes.textBox}>
-          <ParallaxPc offset={80}>
+          <ParallaxPc offset={50}>
             <div className={classes.mainText}>{text}</div>
             <div className={classes.subText}>{subText}</div>
           </ParallaxPc>

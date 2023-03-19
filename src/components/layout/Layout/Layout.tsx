@@ -1,4 +1,4 @@
-import { SmoothScroll, CustomCursor } from '@/components/elements';
+import { CustomCursor } from '@/components/elements';
 import { createStyles, rem, Space, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -49,26 +49,24 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
 
       <Header />
 
-      <SmoothScroll enabled={!sm}>
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.main
-            variants={variants}
-            initial="hidden"
-            animate="enter"
-            exit="exit"
-            transition={{
-              duration: 0.4,
-            }}
-            key={path}
-          >
-            <div className={classes.main}>
-              {children}
-              <Space h={rem(60)} />
-              {path !== '/' && <Footer />}
-            </div>
-          </motion.main>
-        </AnimatePresence>
-      </SmoothScroll>
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.main
+          variants={variants}
+          initial="hidden"
+          animate="enter"
+          exit="exit"
+          transition={{
+            duration: 0.4,
+          }}
+          key={path}
+        >
+          <div className={classes.main}>
+            {children}
+            <Space h={rem(60)} />
+            {path !== '/' && <Footer />}
+          </div>
+        </motion.main>
+      </AnimatePresence>
     </>
   );
 };

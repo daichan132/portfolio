@@ -1,5 +1,5 @@
 import { IntroduceItem } from '@/components/pages/about/IntroduceItem';
-import { Center, Container, rem, Stack, useMantineTheme } from '@mantine/core';
+import { Center, Container, rem, Space, Stack, Timeline, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import TeenagerIcon from 'public/36-Teenager.svg';
 import TeamworkIcon from 'public/58-Teamwork.svg';
@@ -13,6 +13,7 @@ import { css } from '@emotion/react';
 const Home = () => {
   const theme = useMantineTheme();
   const sm = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
+
   return (
     <Container
       size="lg"
@@ -41,8 +42,19 @@ const Home = () => {
         <Center pt={rem(20)}>
           <WorkButton />
         </Center>
-        <Marquee text="profile" color={YellowColor} />
+        {!sm ? (
+          <>
+            <Space h="sm" />
+            <Marquee text="profile" color={YellowColor} />
+            <Space h="sm" />
+          </>
+        ) : null}
       </Stack>
+      <Timeline active={1} bulletSize={24} lineWidth={2}>
+        <Timeline.Item title="Code review">12 minutes ago</Timeline.Item>
+        <Timeline.Item title="Code review">12 minutes ago</Timeline.Item>
+        <Timeline.Item title="Code review">12 minutes ago</Timeline.Item>
+      </Timeline>
     </Container>
   );
 };

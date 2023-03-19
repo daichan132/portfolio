@@ -41,6 +41,18 @@ const useStyles = createStyles((theme, { color }: { color: string }) => ({
   title: {
     fontSize: rem(32),
     fontWeight: 'bold',
+    position: 'relative',
+    display: 'inline-block',
+    padding: '0 1.5em 0 0',
+    '&::after': {
+      position: 'absolute',
+      content: "''",
+      top: 'calc(50% - 1px)',
+      width: '1.2em',
+      height: '2px',
+      backgroundColor: color,
+      right: 0,
+    },
   },
 }));
 
@@ -84,7 +96,7 @@ export const Work: FC<WorkProps> = ({
               <div className={classes.box} />
             </ParallaxPc>
 
-            <ParallaxPc offset={0}>
+            <ParallaxPc offset={-10}>
               <Center
                 css={css`
                   height: 100%;
@@ -110,7 +122,7 @@ export const Work: FC<WorkProps> = ({
             }
           `}
         >
-          <ParallaxPc offset={60}>
+          <ParallaxPc offset={50}>
             <Stack justify="center" h="100%" p="sm">
               <Flex wrap="wrap" align="center" justify="space-between">
                 <div className={classes.title}>{title}</div>

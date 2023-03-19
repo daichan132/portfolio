@@ -22,8 +22,6 @@ const style = (color: string) => css`
   transform: translateX(-50%);
   color: ${color};
   .scroller {
-    font-weight: bold;
-    font-size: 16px;
     display: flex;
     white-space: nowrap;
     display: flex;
