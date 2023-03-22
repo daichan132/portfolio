@@ -23,7 +23,7 @@ export const Parallax = ({ children, offset = 0, enabled = true }: ParallaxProps
 
   const yRange = useTransform(scrollY, [initial, final], [offset, -offset]);
   // apply a spring to ease the result
-  const y = useSpring(yRange, { stiffness: 400, damping: 90 });
+  const y = useSpring(yRange, { stiffness: 600, damping: 90 });
 
   useIsomorphicEffect(() => {
     const element = ref?.current;

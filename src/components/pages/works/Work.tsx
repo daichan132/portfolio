@@ -8,7 +8,6 @@ import { ParallaxPc } from '../../elements/Parallax';
 const useStyles = createStyles((theme, { color }: { color: string }) => ({
   container: {
     transition: 'all 0.5s ease-in-out',
-    padding: '0.5rem 0',
     display: 'flex',
     alignItems: 'center',
   },
@@ -27,10 +26,16 @@ const useStyles = createStyles((theme, { color }: { color: string }) => ({
     width: '100%',
     height: '100%',
   },
+  shadowBox: {
+    backgroundColor: '#33333322',
+    width: '100%',
+    height: '100%',
+    transform: 'translate(10px,20px)',
+  },
   content: {
     position: 'relative',
-    width: '85%',
-    height: '70%',
+    width: '90%',
+    height: '75%',
     overflow: 'hidden',
   },
   image: {
@@ -43,16 +48,6 @@ const useStyles = createStyles((theme, { color }: { color: string }) => ({
     fontWeight: 'bold',
     position: 'relative',
     display: 'inline-block',
-    padding: '0 1.5em 0 0',
-    '&::after': {
-      position: 'absolute',
-      content: "''",
-      top: 'calc(50% - 1px)',
-      width: '1.2em',
-      height: '2px',
-      backgroundColor: color,
-      right: 0,
-    },
   },
 }));
 
@@ -92,16 +87,17 @@ export const Work: FC<WorkProps> = ({
               }
             `}
           >
-            <ParallaxPc offset={30}>
+            <ParallaxPc offset={20}>
+              <div className={classes.shadowBox} />
+            </ParallaxPc>
+            <ParallaxPc offset={40}>
               <div className={classes.box} />
             </ParallaxPc>
-
-            <ParallaxPc offset={-10}>
+            <ParallaxPc offset={50}>
               <Center
                 css={css`
                   height: 100%;
                   width: 100%;
-                  transform: translate(0, -2%);
                 `}
               >
                 <div className={classes.content}>
@@ -122,7 +118,7 @@ export const Work: FC<WorkProps> = ({
             }
           `}
         >
-          <ParallaxPc offset={50}>
+          <ParallaxPc offset={0}>
             <Stack justify="center" h="100%" p="sm">
               <Flex wrap="wrap" align="center" justify="space-between">
                 <div className={classes.title}>{title}</div>

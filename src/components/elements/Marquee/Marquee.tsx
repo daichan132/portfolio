@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import { rem } from '@mantine/core';
 import {
   motion,
   useAnimationFrame,
@@ -21,6 +22,8 @@ const style = (color: string) => css`
   left: 50%;
   transform: translateX(-50%);
   color: ${color};
+  font-weight: bold;
+  font-size: ${rem(20)};
   .scroller {
     display: flex;
     white-space: nowrap;

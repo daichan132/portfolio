@@ -80,12 +80,13 @@ const Home = () => {
     <Container
       size="lg"
       css={css`
-        width: 100%;
+        overflow: hidden;
       `}
-      py={sm ? '0rem' : '3rem'}
+      pt={sm ? '0rem' : '4rem'}
+      pb={sm ? '0rem' : '7rem'}
     >
       <motion.div variants={containerVariants} initial="hidden" animate="show">
-        <Stack spacing={rem(64)}>
+        <Stack spacing={sm ? rem(50) : rem(132)}>
           {worksData.map((props: WorkProps) => (
             <Fragment key={props.title}>
               <motion.div variants={itemVariants}>

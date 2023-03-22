@@ -1,7 +1,9 @@
 import { CustomCursor } from '@/components/elements';
+import { cursorAtom } from '@/stores/cursorAtom';
 import { createStyles, rem, Space, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useAtom } from 'jotai';
 import { useRouter } from 'next/router';
 import { Footer } from '../Footer';
 import { Header } from '../Header';
@@ -12,7 +14,6 @@ const useStyles = createStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     minHeight: '100vh',
-    width: '100vw',
     overflow: 'hidden',
     backgroundImage:
       'linear-gradient(0deg, transparent calc(100% - 1px), #f0f0f0 calc(100% - 1px)),\n                    linear-gradient(90deg, transparent calc(100% - 1px), #f0f0f0 calc(100% - 1px))',
@@ -42,6 +43,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
 
   const router = useRouter();
   const path = router.pathname;
+  const [, setCursorData] = useAtom(cursorAtom);
 
   return (
     <>
@@ -59,6 +61,9 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
             duration: 0.4,
           }}
           key={path}
+          onMouseEnter={() => {
+            setCursorData({ cursorVariant: 'default' });
+          }}
         >
           <div className={classes.main}>
             {children}

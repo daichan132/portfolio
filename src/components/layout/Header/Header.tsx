@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react';
 import { FullscreenMenu } from './FullScreenMenu';
 import { HambergerMenu } from './HambergerMenu';
 
-const useStyles = createStyles((theme) => ({
+const useStyles = createStyles((theme, { initialism }: { initialism: boolean }) => ({
   header: {
     position: 'fixed',
     top: 0,
@@ -37,10 +37,10 @@ const useStyles = createStyles((theme) => ({
     overflow: 'hidden',
     color: 'black',
     textDecoration: 'none',
-    fontSize: rem(18),
+    fontSize: rem(20),
+    fontWeight: 'bold',
     position: 'relative',
     paddingBottom: '2px',
-    fontWeight: 500,
     '&::after': {
       content: "''",
       background: '#000000',
@@ -62,7 +62,7 @@ const useStyles = createStyles((theme) => ({
   logo: {
     zIndex: 99,
     color: 'black',
-    fontSize: rem(32),
+    fontSize: initialism ? rem(36) : rem(48),
     transition: 'all 0.2s ease-in-out',
     fontWeight: 'bold',
     lineHeight: '1',
@@ -79,23 +79,36 @@ const useStyles = createStyles((theme) => ({
 const containerLinkVariants = {
   hidden: {
     transition: {
-      staggerChildren: 0.05,
+      staggerChildren: 0.1,
     },
   },
   show: {
     transition: {
-      staggerChildren: 0.05,
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const containerSubVariants = {
+  hidden: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+  show: {
+    transition: {
+      staggerChildren: 0.15,
     },
   },
 };
 
 const linkVariants = {
-  hidden: { opacity: 0, y: -20 },
+  hidden: { opacity: 0, y: 0 },
   show: { opacity: 1, y: 0 },
 };
 
 const hambergerVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 0 },
   show: { opacity: 1, y: 0 },
 };
 
@@ -126,7 +139,7 @@ export const Header = () => {
     setOpened(false);
   }, [router.pathname, setOpened, isTop]);
 
-  const { classes } = useStyles();
+  const { classes } = useStyles({ initialism: !isTop });
 
   return (
     <>
@@ -152,17 +165,15 @@ export const Header = () => {
               {isTop && !sm ? (
                 <motion.div
                   key="linkItem"
-                  variants={containerLinkVariants}
+                  variants={containerSubVariants}
                   initial="hidden"
                   animate="show"
                   exit="hidden"
                   transition={{
                     duration: 0.3,
-                    type: 'tween',
                   }}
                   className={classes.text}
                 >
-                  <Space h="xs" />
                   <motion.div variants={linkVariants}>
                     <Clock />
                   </motion.div>
@@ -190,7 +201,6 @@ export const Header = () => {
                 exit="hidden"
                 transition={{
                   duration: 0.3,
-                  type: 'tween',
                 }}
               >
                 <motion.div variants={linkVariants}>
@@ -245,7 +255,6 @@ export const Header = () => {
                 exit="hidden"
                 transition={{
                   duration: 0.3,
-                  type: 'tween',
                 }}
               >
                 <HambergerMenu opened={opened} setOpened={setOpened} />

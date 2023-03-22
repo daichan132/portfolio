@@ -20,6 +20,12 @@ const useStyles = createStyles((theme) => ({
     height: '100%',
     width: '100%',
   },
+  shadowBox: {
+    backgroundColor: '#33333322',
+    width: '100%',
+    height: '100%',
+    transform: 'translate(10px, 30px)',
+  },
   content: {
     width: '100%',
     height: '100%',
@@ -78,19 +84,22 @@ export const IntroduceItem = ({
           `}
         >
           <ParallaxPc offset={20}>
+            <div className={classes.shadowBox} />
+          </ParallaxPc>
+          <ParallaxPc offset={40}>
             <div className={classes.box} />
           </ParallaxPc>
 
-          <ParallaxPc offset={-10}>
+          <ParallaxPc offset={50}>
             <Center className={classes.content}>
-              <Icon style={{ height: '100%', transform: 'translate(0, -10px)' }} />
+              <Icon style={{ height: '100%', transform: 'translate(0, 5px)' }} />
             </Center>
           </ParallaxPc>
         </div>
       </Grid.Col>
       <Grid.Col span={12} sm="auto" order={reverse ? 1 : 2}>
         <div className={classes.textBox}>
-          <ParallaxPc offset={50}>
+          <ParallaxPc offset={0}>
             <div className={classes.mainText}>{text}</div>
             <div className={classes.subText}>{subText}</div>
           </ParallaxPc>

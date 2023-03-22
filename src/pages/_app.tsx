@@ -6,9 +6,9 @@ import { MantineProvider } from '@mantine/core';
 import { Provider } from 'jotai';
 import Head from 'next/head';
 // eslint-disable-next-line camelcase
-import { Zen_Kaku_Gothic_Antique } from 'next/font/google';
+import { Zen_Kaku_Gothic_New } from 'next/font/google';
 
-const font = Zen_Kaku_Gothic_Antique({
+const font = Zen_Kaku_Gothic_New({
   weight: ['400', '500', '700'],
   style: ['normal'],
   subsets: ['latin'],
@@ -32,6 +32,7 @@ const App = ({ Component, pageProps }: AppProps) => {
                 boxSizing: 'border-box',
               },
 
+              html: { scrollBehavior: 'smooth' },
               body: {
                 ...theme.fn.fontStyles(),
                 fontFamily: `${font.style.fontFamily}`,

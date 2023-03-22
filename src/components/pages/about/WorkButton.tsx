@@ -1,68 +1,101 @@
 import { cursorAtom } from '@/stores/cursorAtom';
 import { css } from '@emotion/react';
+import { Center } from '@mantine/core';
 import { useAtom } from 'jotai';
 import Link from 'next/link';
-import React from 'react';
+import Image from 'next/image';
+import { ParallaxPc } from '@/components/elements';
 
-const buttonStyle = css`
-  display: inline-block;
+const style = css`
   position: relative;
-  font-weight: bold;
-  color: black;
-  padding: 1rem 5rem 1rem 2rem;
-  text-decoration: none;
-  border: 2px solid;
-  &:before,
-  &:after {
-    content: '';
-    position: absolute;
-    display: block;
-    transition: all 0.3s;
-    right: 1.5rem;
-    top: 50%;
-  }
-  &:before {
-    width: 2rem;
-    height: 2px;
-    background: black;
-    transform: translateY(-50%);
-  }
-  &:after {
-    opacity: 0;
-    width: 0;
-    height: 0;
-    border-top: solid 2px black;
-    border-right: solid 2px black;
-    transform: translateY(-50%) rotate(45deg);
-  }
+  height: 300px;
+  width: 100%;
+  overflow: hidden;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 
-  &:hover {
+  .center {
+    height: 100%;
+    width: 100%;
+  }
+  .btn {
+    display: inline-block;
+    position: relative;
+    font-weight: bold;
+    color: black;
+    padding: 1rem 5rem 1rem 2rem;
+    text-decoration: none;
+    border: 2px solid;
+    z-index: 1;
+    background-color: white;
+    border-radius: 10px;
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      display: block;
+      transition: all 0.3s;
+      right: 1.5rem;
+      top: 50%;
+    }
     &:before {
-      width: 1.5rem;
+      width: 2rem;
+      height: 2px;
+      background: black;
+      transform: translateY(-50%);
     }
     &:after {
-      opacity: 1;
-      width: 8px;
-      height: 8px;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      border-top: solid 2px black;
+      border-right: solid 2px black;
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    &:hover {
+      &:before {
+        width: 1.5rem;
+      }
+      &:after {
+        opacity: 1;
+        width: 8px;
+        height: 8px;
+      }
+    }
+  }
+  .Parallax {
+    position: absolute;
+    height: 600px;
+    width: 100%;
+    top: -60%;
+    .image {
+      object-fit: cover;
     }
   }
 `;
 export const WorkButton = () => {
   const [, setCursorData] = useAtom(cursorAtom);
-
   return (
-    <Link
-      href="/works"
-      className="btn"
-      onMouseEnter={() => {
-        setCursorData({ cursorVariant: 'hover' });
-      }}
-      onMouseLeave={() => {
-        setCursorData({ cursorVariant: 'default' });
-      }}
-      css={buttonStyle}
-    >
-      作品を見に行く
-    </Link>
+    <div css={style}>
+      <Center className="center">
+        <Link
+          href="/works"
+          className="btn"
+          onMouseEnter={() => {
+            setCursorData({ cursorVariant: 'hover' });
+          }}
+          onMouseLeave={() => {
+            setCursorData({ cursorVariant: 'default' });
+          }}
+        >
+          作品を見に行く
+        </Link>
+      </Center>
+      <ParallaxPc offset={50}>
+        <Image src="/work.png" alt="work image" fill className="image" />
+      </ParallaxPc>
+    </div>
   );
 };

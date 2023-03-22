@@ -1,12 +1,10 @@
 import { IntroduceItem } from '@/components/pages/about/IntroduceItem';
-import { Center, Container, rem, Space, Stack, Timeline, useMantineTheme } from '@mantine/core';
+import { Center, Container, rem, Stack, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import TeenagerIcon from 'public/36-Teenager.svg';
 import TeamworkIcon from 'public/58-Teamwork.svg';
 import AdventurerIcon from 'public/39-Adventurer.svg';
 import { WorkButton } from '@/components/pages/about/WorkButton';
-import { Marquee } from '@/components/elements';
-import { YellowColor } from '@/utils/Colors';
 import { css } from '@emotion/react';
 
 // https://designs.ai/graphicmaker/illustrations/Duotone_Cartoon_Set
@@ -39,22 +37,10 @@ const Home = () => {
           subText="Thanks for taking the time to look this far. I hope you'll take a look at some of the pieces I've been working on too!"
           Icon={AdventurerIcon}
         />
-        <Center pt={rem(20)}>
+        <Center pt={sm ? rem(60) : rem(120)} pb={sm ? rem(20) : rem(40)}>
           <WorkButton />
         </Center>
-        {!sm ? (
-          <>
-            <Space h="sm" />
-            <Marquee text="profile" color={YellowColor} />
-            <Space h="sm" />
-          </>
-        ) : null}
       </Stack>
-      <Timeline active={1} bulletSize={24} lineWidth={2}>
-        <Timeline.Item title="Code review">12 minutes ago</Timeline.Item>
-        <Timeline.Item title="Code review">12 minutes ago</Timeline.Item>
-        <Timeline.Item title="Code review">12 minutes ago</Timeline.Item>
-      </Timeline>
     </Container>
   );
 };

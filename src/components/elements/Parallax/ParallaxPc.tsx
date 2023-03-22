@@ -16,7 +16,6 @@ export const ParallaxPc = ({ children, offset = 0 }: ParallaxPcProps): JSX.Eleme
       offset={offset}
       enabled={!sm}
       css={css`
-        position: relative;
         transform: ${sm ? `translate(0px, ${offset}px)` : null};
       `}
     >
