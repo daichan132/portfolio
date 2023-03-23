@@ -14,12 +14,6 @@ const useStyles = createStyles((theme) => ({
       height: rem(300),
     },
   },
-  box: {
-    backgroundColor: '#fafafa',
-    border: `4px solid ${YellowColor}`,
-    height: '100%',
-    width: '100%',
-  },
   shadowBox: {
     backgroundColor: '#33333322',
     width: '100%',
@@ -61,7 +55,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const style = css`
+const style = (color: string) => css`
   .box-001 {
     position: relative;
     margin: 0 auto;
@@ -72,32 +66,37 @@ const style = css`
     width: 100%;
     height: 100%;
     background-color: white;
-  }
-
-  .box-001 svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 25px;
-    background-color: #e6edf3;
+    border: 2px solid ${color};
+    svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 25px;
+      background-color: #dde4eb;
+    }
+    .window-bar {
+      border-bottom: 2px solid ${color};
+    }
   }
 `;
 export const IntroduceItem = ({
   text,
   subText,
   Icon,
+  color = YellowColor,
   reverse = false,
 }: {
   text: string;
   subText: string;
   Icon: React.FC<React.SVGProps<SVGElement>>;
+  color?: string;
   reverse?: boolean;
 }) => {
   const { classes } = useStyles();
 
   return (
-    <Grid gutter="xl" gutterMd={rem(60)} css={style}>
+    <Grid gutter="xl" gutterMd={rem(60)} css={style(color)}>
       <Grid.Col span={12} sm={6} order={reverse ? 2 : 1}>
         <div
           className={classes.contentBox}
@@ -136,7 +135,7 @@ export const IntroduceItem = ({
       </Grid.Col>
       <Grid.Col span={12} sm="auto" order={reverse ? 1 : 2}>
         <div className={classes.textBox}>
-          <ParallaxPc offset={0}>
+          <ParallaxPc offset={80}>
             <div className={classes.mainText}>{text}</div>
             <div className={classes.subText}>{subText}</div>
           </ParallaxPc>

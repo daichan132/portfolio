@@ -1,4 +1,3 @@
-import { NeptuneColor } from '@/utils/Colors';
 import { hexToRGBA } from '@/utils/hexToRgbA';
 import { css } from '@emotion/react';
 import { useMouse } from '@mantine/hooks';
@@ -16,7 +15,7 @@ const bigStyle = css`
   display: flex;
   height: ${cursorSize}px;
   width: ${cursorSize}px;
-  background-color: ${hexToRGBA(NeptuneColor, 0.8)};
+  background-color: ${hexToRGBA('#00000', 0.2)};
   border-radius: 100%;
   filter: invert(100%);
   mix-blend-mode: exclusion;

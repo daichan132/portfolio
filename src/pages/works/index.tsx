@@ -8,10 +8,6 @@ import { useMediaQuery } from '@mantine/hooks';
 import { motion } from 'framer-motion';
 import { Fragment } from 'react';
 
-const fontBold = css`
-  font-weight: bold;
-`;
-
 const containerVariants = {
   hidden: { opacity: 0 },
   show: {
@@ -44,7 +40,7 @@ const Home = () => {
       githubLink: 'https://github.com/daichan132/portfolio',
       children: (
         <Text>
-          こちらの作品は<Mark css={fontBold}>楽しく自分のことを紹介する</Mark>
+          こちらの作品は<Mark>楽しく自分のことを紹介する</Mark>
           ために作成したPortfolioです。Webデザインから実装までを自分で作成しました。
         </Text>
       ),
@@ -60,7 +56,7 @@ const Home = () => {
         <>
           <Text>
             こちらの作品は
-            <Mark css={fontBold}>誰かと一緒に作業をしている感覚</Mark>
+            <Mark>誰かと一緒に作業をしている感覚</Mark>
             を体験しながら、作業を楽しく効率的に行うことを支援するWebアプリケーションです。
             <ExternalLinkCursor href="https://jphacks.com/">JPJACKS</ExternalLinkCursor>
             に参加した際に作成しました。
