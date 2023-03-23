@@ -17,7 +17,7 @@ const Home = () => {
 
   return (
     <Container
-      size="lg"
+      size="xl"
       px="xs"
       pt={sm ? rem(52) : rem(240)}
       pb={sm ? rem(52) : rem(100)}

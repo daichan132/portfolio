@@ -32,6 +32,9 @@ const useStyles = createStyles((theme, { color }: { color: string }) => ({
     width: '100%',
     height: '100%',
     transform: 'translate(10px,20px)',
+    [theme.fn.smallerThan('sm')]: {
+      display: 'none',
+    },
   },
   content: {
     position: 'relative',

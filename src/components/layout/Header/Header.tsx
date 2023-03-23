@@ -144,7 +144,7 @@ export const Header = () => {
     <>
       {opened && <FullscreenMenu />}
       <header className={classes.header}>
-        <Container size="lg" className={classes.container}>
+        <Container size="xl" className={classes.container}>
           <div>
             {!opened && (
               <Link

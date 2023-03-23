@@ -74,7 +74,7 @@ const Home = () => {
   ];
   return (
     <Container
-      size="lg"
+      size="xl"
       css={css`
         overflow: hidden;
       `}
