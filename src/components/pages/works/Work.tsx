@@ -23,9 +23,9 @@ const useStyles = createStyles((theme, { color }: { color: string }) => ({
   },
   contentBox: {
     position: 'relative',
-    height: rem(400),
+    height: rem(350),
     [theme.fn.smallerThan('md')]: {
-      height: rem(400),
+      height: rem(350),
     },
     [theme.fn.smallerThan('sm')]: {
       height: rem(300),
@@ -92,7 +92,7 @@ export const Work: FC<WorkProps> = ({
   return (
     <div className={classes.container}>
       <Grid gutter="md" gutterMd={sm ? 30 : 50} w="100%">
-        <Grid.Col span={12} sm={6} md={7} order={reverse ? 2 : 1}>
+        <Grid.Col span={12} sm={6} order={reverse ? 2 : 1}>
           <div
             className={classes.contentBox}
             css={css`

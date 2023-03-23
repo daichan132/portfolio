@@ -11,7 +11,7 @@ const useStyles = createStyles((theme) => ({
     boxSizing: 'border-box',
     marginTop: 'auto',
     backdropFilter: 'blur(3px)',
-    borderTop: '1px solid',
+    borderTop: '2px solid',
     [theme.fn.smallerThan('sm')]: {
       padding: '1em 0em',
     },

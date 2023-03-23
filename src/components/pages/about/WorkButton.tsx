@@ -16,7 +16,7 @@ const style = css`
     color: black;
     padding: 1rem 5rem 1rem 2rem;
     text-decoration: none;
-    border: 1px solid;
+    border: 2px solid;
     z-index: 1;
     background-color: white;
     border-radius: 5px;
@@ -31,7 +31,7 @@ const style = css`
     }
     &:before {
       width: 2rem;
-      height: 1px;
+      height: 2px;
       background: black;
       transform: translateY(-50%);
     }
@@ -39,8 +39,8 @@ const style = css`
       opacity: 0;
       width: 0;
       height: 0;
-      border-top: solid 1px black;
-      border-right: solid 1px black;
+      border-top: solid 2px black;
+      border-right: solid 2px black;
       transform: translateY(-50%) rotate(45deg);
     }
 

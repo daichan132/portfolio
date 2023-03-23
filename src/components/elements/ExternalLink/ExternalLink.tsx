@@ -5,7 +5,7 @@ import { VscLinkExternal } from 'react-icons/vsc';
 const style = (color: string) => css`
   color: ${color};
   text-decoration: none;
-  border-bottom: 1px solid ${color};
+  border-bottom: 2px solid ${color};
   padding-bottom: 1px;
   p {
     display: inline;

@@ -1,5 +1,5 @@
 import { ParallaxPc } from '@/components/elements';
-import { BlueColor, RedColor, YellowColor } from '@/utils/Colors';
+import { YellowColor } from '@/utils/Colors';
 import { css } from '@emotion/react';
 import { Center, createStyles, Grid, rem } from '@mantine/core';
 
@@ -59,25 +59,13 @@ const style = (color: string) => css`
   .box-001 {
     position: relative;
     margin: 0 auto;
-    padding: calc(1em + 25px) 1.5em 1em;
     border: 2px solid #e6edf3;
     border-radius: 5px;
     overflow: auto;
     width: 100%;
     height: 100%;
     background-color: white;
-    border: 2px solid ${color};
-    svg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 25px;
-      background-color: #dde4eb;
-    }
-    .window-bar {
-      border-bottom: 2px solid ${color};
-    }
+    border: 4px solid ${color};
   }
 `;
 export const IntroduceItem = ({
@@ -112,18 +100,7 @@ export const IntroduceItem = ({
             <div className={classes.shadowBox} />
           </ParallaxPc>
           <ParallaxPc offset={40}>
-            <div className="box-001">
-              <svg
-                className="window-bar"
-                xmlns="http://www.w3.org/2000/svg"
-                role="img"
-                aria-label="ウインドウのボタン"
-              >
-                <circle cx="25" cy="12" r="5.5" fill={RedColor} />
-                <circle cx="45" cy="12" r="5.5" fill={YellowColor} />
-                <circle cx="65" cy="12" r="5.5" fill={BlueColor} />
-              </svg>
-            </div>
+            <div className="box-001" />
           </ParallaxPc>
 
           <ParallaxPc offset={60}>
