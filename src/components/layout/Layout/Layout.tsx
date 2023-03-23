@@ -23,9 +23,9 @@ const useStyles = createStyles(() => ({
 }));
 
 const variants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 0 },
   enter: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -10 },
+  exit: { opacity: 0, y: 0 },
 };
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {

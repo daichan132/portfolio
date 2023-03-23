@@ -17,12 +17,13 @@ const style = (color: string) => css`
   white-space: nowrap;
   display: flex;
   flex-wrap: nowrap;
-  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
   position: relative;
   left: 50%;
   transform: translateX(-50%);
   color: ${color};
-  font-size: ${rem(10)};
+  font-size: ${rem(14)};
   font-weight: bold;
   .scroller {
     display: flex;
@@ -33,7 +34,7 @@ const style = (color: string) => css`
 
   span {
     display: block;
-    margin-right: 1em;
+    margin-right: 0.2rem;
   }
 `;
 export type MarqueeProps = {
@@ -45,7 +46,7 @@ export type MarqueeProps = {
 
 export const Marquee: FC<MarqueeProps> = ({
   text,
-  baseVelocity = 15,
+  baseVelocity = 50,
   reverse = 1,
   color = '#333333',
 }) => {

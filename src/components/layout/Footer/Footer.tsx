@@ -1,3 +1,4 @@
+import { Marquee } from '@/components/elements';
 import { cursorAtom } from '@/stores/cursorAtom';
 import { Container, createStyles, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
@@ -11,7 +12,6 @@ const useStyles = createStyles((theme) => ({
     boxSizing: 'border-box',
     marginTop: 'auto',
     backdropFilter: 'blur(3px)',
-    borderTop: '2px solid',
     [theme.fn.smallerThan('sm')]: {
       padding: '1em 0em',
     },
@@ -55,6 +55,7 @@ export const Footer: FC = () => {
   const [, setCursorData] = useAtom(cursorAtom);
   return (
     <footer className={classes.footer}>
+      <Marquee text="FOOTER" />
       <Container size="lg" className={classes.container}>
         {!sm ? '© 2023 daichan132' : null}
         <div className={classes.linkItemContainer}>

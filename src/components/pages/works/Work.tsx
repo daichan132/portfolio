@@ -36,6 +36,7 @@ const useStyles = createStyles((theme, { color }: { color: string }) => ({
     width: '100%',
     height: '100%',
     position: 'relative',
+    borderRadius: 5,
   },
   shadowBox: {
     backgroundColor: '#33333322',
@@ -45,12 +46,14 @@ const useStyles = createStyles((theme, { color }: { color: string }) => ({
     [theme.fn.smallerThan('sm')]: {
       display: 'none',
     },
+    borderRadius: 5,
   },
   content: {
     position: 'relative',
     width: '90%',
     height: '75%',
     overflow: 'hidden',
+    borderRadius: 5,
   },
   image: {
     objectFit: 'cover',

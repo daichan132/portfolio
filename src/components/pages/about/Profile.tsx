@@ -1,6 +1,6 @@
-import { BlueColor, YellowColor } from '@/utils/Colors';
+import { BlueColor } from '@/utils/Colors';
 import { css } from '@emotion/react';
-import { rem } from '@mantine/core';
+import { rem, SimpleGrid } from '@mantine/core';
 
 const style = () => css`
   .timeline-001__section {
@@ -17,7 +17,7 @@ const style = () => css`
       transform: translateX(-50%);
       width: 4px;
       height: 100%;
-      background-color: ${YellowColor};
+      background-color: ${BlueColor};
     }
     &::after {
       top: 0;
@@ -43,27 +43,34 @@ const style = () => css`
 
   .timeline-001__title {
     color: #333333;
-    font-size: ${rem(24)};
+    font-size: ${rem(20)};
     font-weight: 600;
     margin: 0 auto 0.5rem;
   }
 `;
 export const Profile = () => {
   return (
-    <div css={style}>
-      <div className="timeline-001">
-        <section className="timeline-001__section">
-          <div className="timeline-001__label">2023-presense</div>
-          <p className="timeline-001__title">東北大学 大学院 システム情報科学研究科</p>
-          <div className="timeline-001__content">
-            <p>グラフ問題に対するアルゴリズムの研究をしています。</p>
-          </div>
-        </section>
-        <section className="timeline-001__section">
-          <div className="timeline-001__label">2019-2023</div>
-          <p className="timeline-001__title">東北大学 工学部 電気情報物理工学科</p>
-        </section>
+    <SimpleGrid
+      breakpoints={[
+        { minWidth: 'sm', cols: 1 },
+        { minWidth: 'md', cols: 2 },
+      ]}
+    >
+      <div css={style}>
+        <div className="timeline-001">
+          <section className="timeline-001__section">
+            <div className="timeline-001__label">2023-presense</div>
+            <p className="timeline-001__title">東北大学 大学院 システム情報科学研究科</p>
+            <div className="timeline-001__content">
+              <p>グラフ問題に対するアルゴリズムの研究をしています。</p>
+            </div>
+          </section>
+          <section className="timeline-001__section">
+            <div className="timeline-001__label">2019-2023</div>
+            <p className="timeline-001__title">東北大学 工学部 電気情報物理工学科</p>
+          </section>
+        </div>
       </div>
-    </div>
+    </SimpleGrid>
   );
 };

@@ -2,7 +2,6 @@
 import { ExternalLinkCursor } from '@/components/elements';
 import { Work, WorkProps } from '@/components/pages/works/Work';
 import { BlueColor, YellowColor } from '@/utils/Colors';
-import { css } from '@emotion/react';
 import { Container, List, Mark, rem, Stack, Text, Title, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { motion } from 'framer-motion';
@@ -73,14 +72,7 @@ const Home = () => {
     },
   ];
   return (
-    <Container
-      size="xl"
-      css={css`
-        overflow: hidden;
-      `}
-      pt={sm ? rem(52) : rem(240)}
-      pb={sm ? rem(52) : rem(100)}
-    >
+    <Container size="xl" pt={sm ? rem(52) : rem(220)} pb={sm ? rem(52) : rem(100)}>
       <motion.div variants={containerVariants} initial="hidden" animate="show">
         <Stack spacing={sm ? rem(50) : rem(80)}>
           {worksData.map((props: WorkProps) => (
