@@ -15,7 +15,7 @@ const useStyles = createStyles(() => ({
   linkItem: {
     display: 'block',
     overflow: 'hidden',
-    color: 'black',
+    color: '#333333',
     textDecoration: 'none',
     fontSize: rem(28),
     position: 'relative',

@@ -68,14 +68,14 @@ export const HambergerMenu = ({
             animate={path01Controls}
             transition={{ duration: 0.2 }}
             stroke="black"
-            strokeWidth={2}
+            strokeWidth={1}
           />
           <motion.path
             {...path02Variants.closed}
             animate={path02Controls}
             transition={{ duration: 0.2 }}
             stroke="black"
-            strokeWidth={2}
+            strokeWidth={1}
           />
         </svg>
       </div>

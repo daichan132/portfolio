@@ -19,7 +19,7 @@ const style = (color: string) => css`
 `;
 export type ExternalLinkProps = { children: ReactNode; href: string; color?: string };
 
-export const ExternalLink: FC<ExternalLinkProps> = ({ children, href, color = 'black' }) => {
+export const ExternalLink: FC<ExternalLinkProps> = ({ children, href, color = '#333333' }) => {
   return (
     <a href={href} target="_blank" rel="noopener noreferrer" css={style(color)}>
       <p>{children}</p>

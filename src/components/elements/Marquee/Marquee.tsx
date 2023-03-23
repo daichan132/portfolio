@@ -22,8 +22,8 @@ const style = (color: string) => css`
   left: 50%;
   transform: translateX(-50%);
   color: ${color};
+  font-size: ${rem(10)};
   font-weight: bold;
-  font-size: ${rem(20)};
   .scroller {
     display: flex;
     white-space: nowrap;
@@ -33,7 +33,7 @@ const style = (color: string) => css`
 
   span {
     display: block;
-    margin-right: 10px;
+    margin-right: 1em;
   }
 `;
 export type MarqueeProps = {
@@ -45,9 +45,9 @@ export type MarqueeProps = {
 
 export const Marquee: FC<MarqueeProps> = ({
   text,
-  baseVelocity = 20,
+  baseVelocity = 15,
   reverse = 1,
-  color = 'black',
+  color = '#333333',
 }) => {
   const baseX = useMotionValue(0);
   const { scrollY } = useScroll();
@@ -107,7 +107,7 @@ export const Marquee: FC<MarqueeProps> = ({
       <motion.div className="scroller" style={{ x }}>
         {Array.from({ length: repeatCount }, (_, i) => (
           <span key={i.toString() + text} ref={i === 0 ? textRef : null}>
-            {text}{' '}
+            {text}
           </span>
         ))}
       </motion.div>

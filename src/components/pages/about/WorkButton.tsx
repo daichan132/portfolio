@@ -3,18 +3,9 @@ import { css } from '@emotion/react';
 import { Center } from '@mantine/core';
 import { useAtom } from 'jotai';
 import Link from 'next/link';
-import Image from 'next/image';
-import { ParallaxPc } from '@/components/elements';
 
 const style = css`
   position: relative;
-  height: 300px;
-  width: 100%;
-  overflow: hidden;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-
   .center {
     height: 100%;
     width: 100%;
@@ -26,10 +17,10 @@ const style = css`
     color: black;
     padding: 1rem 5rem 1rem 2rem;
     text-decoration: none;
-    border: 2px solid;
+    border: 1px solid;
     z-index: 1;
     background-color: white;
-    border-radius: 10px;
+    border-radius: 5px;
     &:before,
     &:after {
       content: '';
@@ -65,15 +56,6 @@ const style = css`
       }
     }
   }
-  .Parallax {
-    position: absolute;
-    height: 600px;
-    width: 100%;
-    top: -60%;
-    .image {
-      object-fit: cover;
-    }
-  }
 `;
 export const WorkButton = () => {
   const [, setCursorData] = useAtom(cursorAtom);
@@ -93,9 +75,6 @@ export const WorkButton = () => {
           作品を見に行く
         </Link>
       </Center>
-      <ParallaxPc offset={50}>
-        <Image src="/work.png" alt="work image" fill className="image" />
-      </ParallaxPc>
     </div>
   );
 };

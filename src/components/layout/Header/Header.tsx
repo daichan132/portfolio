@@ -15,30 +15,30 @@ const useStyles = createStyles((theme, { initialism }: { initialism: boolean }) 
   header: {
     position: 'fixed',
     top: 0,
-    filter: 'invert(100%)',
-    mixBlendMode: 'exclusion',
-    color: 'black',
+    color: '#333333',
     zIndex: 100,
     width: '100%',
     boxSizing: 'border-box',
-    marginTop: '2em',
-    padding: '0 2em',
+    padding: '0 2em 3em 0',
+    transition: 'all 0.5s ease',
     [theme.fn.smallerThan('sm')]: {
-      marginTop: '0.5em',
       padding: '0 0em',
     },
   },
   container: {
     display: 'flex',
     justifyContent: 'space-between',
+    marginTop: '2em',
+    [theme.fn.smallerThan('sm')]: {
+      marginTop: '0.5em',
+    },
   },
   linkItem: {
     display: 'block',
     overflow: 'hidden',
-    color: 'black',
+    color: '#333333',
     textDecoration: 'none',
     fontSize: rem(20),
-    fontWeight: 'bold',
     position: 'relative',
     paddingBottom: '2px',
     '&::after': {
@@ -61,10 +61,9 @@ const useStyles = createStyles((theme, { initialism }: { initialism: boolean }) 
   },
   logo: {
     zIndex: 99,
-    color: 'black',
-    fontSize: initialism ? rem(36) : rem(48),
-    transition: 'all 0.2s ease-in-out',
-    fontWeight: 'bold',
+    color: '#333333',
+    fontSize: initialism ? rem(32) : rem(60),
+    transition: 'all 0.3s ease-in-out',
     lineHeight: '1',
     [theme.fn.smallerThan('sm')]: {
       fontSize: '1.7rem',

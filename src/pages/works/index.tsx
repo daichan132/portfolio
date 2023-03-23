@@ -82,11 +82,11 @@ const Home = () => {
       css={css`
         overflow: hidden;
       `}
-      pt={sm ? '0rem' : '4rem'}
-      pb={sm ? '0rem' : '7rem'}
+      pt={sm ? rem(52) : rem(240)}
+      pb={sm ? rem(52) : rem(100)}
     >
       <motion.div variants={containerVariants} initial="hidden" animate="show">
-        <Stack spacing={sm ? rem(50) : rem(132)}>
+        <Stack spacing={sm ? rem(50) : rem(80)}>
           {worksData.map((props: WorkProps) => (
             <Fragment key={props.title}>
               <motion.div variants={itemVariants}>

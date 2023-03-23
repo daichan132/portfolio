@@ -9,14 +9,15 @@ const useStyles = createStyles((theme) => ({
   footer: {
     width: '100%',
     boxSizing: 'border-box',
-    padding: '2em 2em',
-    borderTop: '1px solid',
     marginTop: 'auto',
+    backdropFilter: 'blur(3px)',
+    borderTop: '1px solid',
     [theme.fn.smallerThan('sm')]: {
       padding: '1em 0em',
     },
   },
   container: {
+    padding: '2em 2em',
     display: 'flex',
     justifyContent: 'space-between',
   },
@@ -24,7 +25,7 @@ const useStyles = createStyles((theme) => ({
   linkItem: {
     display: 'block',
     overflow: 'hidden',
-    color: 'black',
+    color: '#333333',
     textDecoration: 'none',
     position: 'relative',
     paddingBottom: '2px',

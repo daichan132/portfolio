@@ -36,6 +36,7 @@ const App = ({ Component, pageProps }: AppProps) => {
               body: {
                 ...theme.fn.fontStyles(),
                 fontFamily: `${font.style.fontFamily}`,
+                color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : '#333333',
                 lineHeight: 1.5,
                 letterSpacing: '0.05rem',
               },

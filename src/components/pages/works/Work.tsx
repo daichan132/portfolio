@@ -25,6 +25,7 @@ const useStyles = createStyles((theme, { color }: { color: string }) => ({
     backgroundColor: color,
     width: '100%',
     height: '100%',
+    position: 'relative',
   },
   shadowBox: {
     backgroundColor: '#33333322',
@@ -44,8 +45,7 @@ const useStyles = createStyles((theme, { color }: { color: string }) => ({
     '&:hover': { transform: 'scale(1.05)' },
   },
   title: {
-    fontSize: rem(32),
-    fontWeight: 'bold',
+    fontSize: rem(36),
     position: 'relative',
     display: 'inline-block',
   },

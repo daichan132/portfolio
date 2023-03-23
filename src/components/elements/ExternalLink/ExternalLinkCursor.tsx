@@ -3,7 +3,11 @@ import { useAtom } from 'jotai';
 import { type FC } from 'react';
 import { ExternalLink, ExternalLinkProps } from './ExternalLink';
 
-export const ExternalLinkCursor: FC<ExternalLinkProps> = ({ children, href, color = 'black' }) => {
+export const ExternalLinkCursor: FC<ExternalLinkProps> = ({
+  children,
+  href,
+  color = '#333333',
+}) => {
   const [, setCursorData] = useAtom(cursorAtom);
   return (
     <div

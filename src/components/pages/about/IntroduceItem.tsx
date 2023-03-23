@@ -1,14 +1,14 @@
 import { ParallaxPc } from '@/components/elements';
-import { YellowColor } from '@/utils/Colors';
+import { BlueColor, RedColor, YellowColor } from '@/utils/Colors';
 import { css } from '@emotion/react';
 import { Center, createStyles, Grid, rem } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
   contentBox: {
     position: 'relative',
-    height: rem(350),
+    height: rem(400),
     [theme.fn.smallerThan('md')]: {
-      height: rem(380),
+      height: rem(370),
     },
     [theme.fn.smallerThan('sm')]: {
       height: rem(300),
@@ -25,6 +25,10 @@ const useStyles = createStyles((theme) => ({
     width: '100%',
     height: '100%',
     transform: 'translate(10px, 30px)',
+    borderRadius: '5px',
+    [theme.fn.smallerThan('sm')]: {
+      display: 'none',
+    },
   },
   content: {
     width: '100%',
@@ -38,9 +42,9 @@ const useStyles = createStyles((theme) => ({
     height: '100%',
   },
   mainText: {
-    fontSize: rem(24),
+    fontSize: rem(26),
     [theme.fn.smallerThan('md')]: {
-      fontSize: rem(22),
+      fontSize: rem(24),
     },
     [theme.fn.smallerThan('sm')]: {
       fontSize: rem(20),
@@ -57,6 +61,28 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
+const style = css`
+  .box-001 {
+    position: relative;
+    margin: 0 auto;
+    padding: calc(1em + 25px) 1.5em 1em;
+    border: 2px solid #e6edf3;
+    border-radius: 5px;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+  }
+
+  .box-001 svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 25px;
+    background-color: #e6edf3;
+  }
+`;
 export const IntroduceItem = ({
   text,
   subText,
@@ -71,7 +97,7 @@ export const IntroduceItem = ({
   const { classes } = useStyles();
 
   return (
-    <Grid gutter="xl" gutterMd={rem(60)}>
+    <Grid gutter="xl" gutterMd={rem(60)} css={style}>
       <Grid.Col span={12} sm={6} order={reverse ? 2 : 1}>
         <div
           className={classes.contentBox}
@@ -87,12 +113,23 @@ export const IntroduceItem = ({
             <div className={classes.shadowBox} />
           </ParallaxPc>
           <ParallaxPc offset={40}>
-            <div className={classes.box} />
+            <div className="box-001">
+              <svg
+                className="window-bar"
+                xmlns="http://www.w3.org/2000/svg"
+                role="img"
+                aria-label="ウインドウのボタン"
+              >
+                <circle cx="25" cy="12" r="5.5" fill={RedColor} />
+                <circle cx="45" cy="12" r="5.5" fill={YellowColor} />
+                <circle cx="65" cy="12" r="5.5" fill={BlueColor} />
+              </svg>
+            </div>
           </ParallaxPc>
 
-          <ParallaxPc offset={50}>
+          <ParallaxPc offset={60}>
             <Center className={classes.content}>
-              <Icon style={{ height: '100%', transform: 'translate(0, 5px)' }} />
+              <Icon style={{ height: '80%', transform: 'translate(0, 5px)' }} />
             </Center>
           </ParallaxPc>
         </div>

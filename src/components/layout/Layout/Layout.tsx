@@ -1,6 +1,6 @@
-import { CustomCursor } from '@/components/elements';
+import { CustomCursor, SmoothScroll } from '@/components/elements';
 import { cursorAtom } from '@/stores/cursorAtom';
-import { createStyles, rem, Space, useMantineTheme } from '@mantine/core';
+import { createStyles, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useAtom } from 'jotai';
@@ -8,9 +8,8 @@ import { useRouter } from 'next/router';
 import { Footer } from '../Footer';
 import { Header } from '../Header';
 
-const useStyles = createStyles((theme) => ({
+const useStyles = createStyles(() => ({
   main: {
-    paddingTop: '10rem',
     display: 'flex',
     flexDirection: 'column',
     minHeight: '100vh',
@@ -20,13 +19,6 @@ const useStyles = createStyles((theme) => ({
     backgroundSize: '30px 30px',
     backgroundRepeat: 'repeat',
     backgroundPosition: 'center center',
-    [theme.fn.smallerThan('sm')]: {
-      paddingTop: '4em',
-      paddingBottom: `3rem`,
-    },
-  },
-  bg: {
-    minHeight: '100vh',
   },
 }));
 
@@ -51,27 +43,28 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
 
       <Header />
 
-      <AnimatePresence mode="wait" initial={false}>
-        <motion.main
-          variants={variants}
-          initial="hidden"
-          animate="enter"
-          exit="exit"
-          transition={{
-            duration: 0.4,
-          }}
-          key={path}
-          onMouseEnter={() => {
-            setCursorData({ cursorVariant: 'default' });
-          }}
-        >
-          <div className={classes.main}>
-            {children}
-            <Space h={rem(60)} />
-            {path !== '/' && <Footer />}
-          </div>
-        </motion.main>
-      </AnimatePresence>
+      <SmoothScroll>
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.main
+            variants={variants}
+            initial="hidden"
+            animate="enter"
+            exit="exit"
+            transition={{
+              duration: 0.4,
+            }}
+            key={path}
+            onMouseEnter={() => {
+              setCursorData({ cursorVariant: 'default' });
+            }}
+          >
+            <div className={classes.main}>
+              {children}
+              {path !== '/' && <Footer />}
+            </div>
+          </motion.main>
+        </AnimatePresence>
+      </SmoothScroll>
     </>
   );
 };

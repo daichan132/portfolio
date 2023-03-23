@@ -1,4 +1,5 @@
-import { Container, createStyles, rem } from '@mantine/core';
+import { Container, createStyles, rem, useMantineTheme } from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
 
 const useStyles = createStyles((theme) => ({
   container: {
@@ -14,9 +15,10 @@ const useStyles = createStyles((theme) => ({
 
 const Home = () => {
   const { classes } = useStyles();
-
+  const theme = useMantineTheme();
+  const sm = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
   return (
-    <Container size="lg" px={rem(30)} className={classes.container}>
+    <Container size="lg" className={classes.container} pt={sm ? rem(52) : rem(240)}>
       in preparation
     </Container>
   );

@@ -12,7 +12,7 @@ const cursorSize = 80;
 
 const bigStyle = css`
   position: fixed;
-  z-index: 100;
+  z-index: 1000;
   display: flex;
   height: ${cursorSize}px;
   width: ${cursorSize}px;
@@ -40,7 +40,7 @@ const bigVariants = (x: number, y: number) => ({
 const smCursorSize = 10;
 const smallStyle = css`
   position: fixed;
-  z-index: 100;
+  z-index: 1000;
   display: flex;
   height: ${smCursorSize}px;
   width: ${smCursorSize}px;
