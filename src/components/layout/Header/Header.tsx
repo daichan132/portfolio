@@ -35,6 +35,7 @@ const useStyles = createStyles((theme, { initialism }: { initialism: boolean }) 
   },
   linkItem: {
     display: 'block',
+    fontWeight: 'bold',
     overflow: 'hidden',
     color: '#333333',
     textDecoration: 'none',
@@ -62,6 +63,7 @@ const useStyles = createStyles((theme, { initialism }: { initialism: boolean }) 
   logo: {
     zIndex: 99,
     color: '#333333',
+    fontWeight: 'bold',
     fontSize: initialism ? rem(32) : rem(60),
     transition: 'all 0.3s ease-in-out',
     lineHeight: '1',

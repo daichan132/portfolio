@@ -6,3 +6,4 @@ export * from './ExternalLink';
 export * from './CustomCursor';
 export * from './Loading';
 export * from './Marquee';
+export * from './ColorThemeToggleButton';
