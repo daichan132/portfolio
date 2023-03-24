@@ -36,15 +36,6 @@ export const LogoText: FC<LogoTextProps> = ({
     };
   }, [initialism]);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLayoutIdActive(false);
-    }, 1000);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
-
   return (
     <div css={style()}>
       <AnimatePresence initial={false}>

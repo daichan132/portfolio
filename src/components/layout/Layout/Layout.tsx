@@ -15,8 +15,8 @@ const useStyles = createStyles(() => ({
     minHeight: '100vh',
     overflow: 'hidden',
     backgroundImage:
-      'linear-gradient(0deg, transparent calc(100% - 1px), #f0f0f0 calc(100% - 1px)), linear-gradient(90deg, transparent calc(100% - 1px), #f0f0f0 calc(100% - 1px))',
-    backgroundSize: '30px 30px',
+      'linear-gradient(to right,#ffffff,#ffffff 10%,#f0f0f0 11%,#f0f0f0 12%,transparent 13%,transparent 87%,#f0f0f0 88%,#f0f0f0 89%,#ffffff 90%,#ffffff),   linear-gradient(to bottom,transparent,transparent 97%,#f0f0f0 98%,#f0f0f0)',
+    backgroundSize: '40px 40px',
     backgroundRepeat: 'repeat',
     backgroundPosition: 'left top',
   },
