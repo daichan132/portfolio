@@ -51,7 +51,7 @@ const useStyles = createStyles((theme, { initialism }: { initialism: boolean }) 
       left: '0',
       bottom: '0',
       margin: 'auto',
-      transition: 'transform .3s',
+      transition: 'transform .5s',
       transformOrigin: 'right top',
       transform: 'scale(0, 1)',
     },
@@ -64,7 +64,7 @@ const useStyles = createStyles((theme, { initialism }: { initialism: boolean }) 
     zIndex: 99,
     color: '#333333',
     fontWeight: 'bold',
-    fontSize: initialism ? rem(32) : rem(68),
+    fontSize: initialism ? rem(32) : rem(52),
     transition: 'all 0.3s ease-in-out',
     lineHeight: '1',
     [theme.fn.smallerThan('sm')]: {
@@ -171,7 +171,7 @@ export const Header = () => {
                   animate="show"
                   exit="hidden"
                   transition={{
-                    duration: 0.3,
+                    duration: 0.5,
                   }}
                   className={classes.text}
                 >

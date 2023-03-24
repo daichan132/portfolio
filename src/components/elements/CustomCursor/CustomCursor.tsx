@@ -1,4 +1,3 @@
-import { hexToRGBA } from '@/utils/hexToRgbA';
 import { css } from '@emotion/react';
 import { useMouse } from '@mantine/hooks';
 import { motion } from 'framer-motion';
@@ -7,36 +6,7 @@ import { cursorAtom } from '@/stores/cursorAtom';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
-const cursorSize = 80;
-
-const bigStyle = css`
-  position: fixed;
-  z-index: 1000;
-  display: flex;
-  height: ${cursorSize}px;
-  width: ${cursorSize}px;
-  background-color: ${hexToRGBA('#00000', 0.2)};
-  border-radius: 100%;
-  filter: invert(100%);
-  mix-blend-mode: exclusion;
-  pointer-events: none;
-`;
-
-const bigVariants = (x: number, y: number) => ({
-  default: {
-    opacity: 1,
-    x: x - cursorSize / 2,
-    y: y - cursorSize / 2,
-  },
-  hover: {
-    opacity: 0,
-    scale: 0.01,
-    x: x - cursorSize / 2,
-    y: y - cursorSize / 2,
-  },
-});
-
-const smCursorSize = 10;
+const smCursorSize = 14;
 const smallStyle = css`
   position: fixed;
   z-index: 1000;
@@ -50,13 +20,17 @@ const smallStyle = css`
   pointer-events: none;
 `;
 
-const smallVariants = () => ({
+const smallVariants = (x: number, y: number) => ({
   default: {
     opacity: 1,
+    x: x - smCursorSize / 2,
+    y: y - smCursorSize / 2,
   },
   hover: {
     opacity: 1,
-    scale: 7,
+    scale: 5,
+    x: x - smCursorSize / 2,
+    y: y - smCursorSize / 2,
   },
 });
 
@@ -70,28 +44,15 @@ export const CustomCursor = () => {
   }, [router.pathname, setCursorData]);
 
   return (
-    <>
-      <motion.div
-        variants={bigVariants(x, y)}
-        css={bigStyle}
-        animate={cursorVariant}
-        transition={{
-          type: 'spring',
-          damping: 20,
-          stiffness: 150,
-        }}
-      />
-      <motion.div
-        variants={smallVariants()}
-        animate={cursorVariant}
-        css={smallStyle}
-        style={{ x: x - smCursorSize / 2, y: y - smCursorSize / 2 }}
-        transition={{
-          type: 'spring',
-          damping: 20,
-          stiffness: 150,
-        }}
-      />
-    </>
+    <motion.div
+      variants={smallVariants(x, y)}
+      animate={cursorVariant}
+      css={smallStyle}
+      transition={{
+        type: 'spring',
+        damping: 20,
+        stiffness: 150,
+      }}
+    />
   );
 };

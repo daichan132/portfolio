@@ -52,7 +52,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
               animate="enter"
               exit="exit"
               transition={{
-                duration: 0.4,
+                duration: 0.5,
               }}
               key={path}
               onMouseEnter={() => {

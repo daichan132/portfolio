@@ -39,7 +39,7 @@ const useStyles = createStyles((theme, { color }: { color: string }) => ({
     borderRadius: 5,
   },
   shadowBox: {
-    backgroundColor: '#33333322',
+    backgroundImage: 'url(/shadowPattern.svg)',
     width: '100%',
     height: '100%',
     transform: 'translate(10px,20px)',
