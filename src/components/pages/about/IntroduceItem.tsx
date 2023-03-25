@@ -7,9 +7,9 @@ const useStyles = createStyles((theme) => ({
   container: {},
   contentBox: {
     position: 'relative',
-    height: rem(380),
+    height: rem(350),
     [theme.fn.smallerThan('md')]: {
-      height: rem(350),
+      height: rem(330),
     },
     [theme.fn.smallerThan('sm')]: {
       height: rem(300),

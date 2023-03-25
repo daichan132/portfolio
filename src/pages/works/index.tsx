@@ -60,7 +60,7 @@ const Home = () => {
             <ExternalLinkCursor href="https://jphacks.com/">JPJACKS</ExternalLinkCursor>
             に参加した際に作成しました。
           </Text>
-          <Title order={5} py={8}>
+          <Title order={5} pt={rem(16)}>
             受賞一覧
           </Title>
           <List>

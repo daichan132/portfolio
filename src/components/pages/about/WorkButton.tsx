@@ -13,9 +13,8 @@ const style = css`
     text-decoration: none;
     border: 2px solid;
     z-index: 1;
-    background-color: white;
     border-radius: 5px;
-    font-weight: bold;
+    font-weight: 600;
     &:before,
     &:after {
       content: '';
