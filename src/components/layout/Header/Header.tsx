@@ -143,6 +143,18 @@ export const Header = () => {
 
   const { classes } = useStyles({ initialism: !isTop });
 
+  const [isActive, setActive] = useState(false);
+
+  useEffect(() => {
+    setActive(false);
+    const timer = setTimeout(() => {
+      setActive(true);
+    }, 1000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
   return (
     <header className={classes.header}>
       <Container size="xl" className={classes.container}>
@@ -278,7 +290,7 @@ export const Header = () => {
               pointerEvents: 'none',
             })}
           >
-            <AnimatePresence>{opened && <Panels />}</AnimatePresence>
+            <AnimatePresence>{opened && isActive && <Panels />}</AnimatePresence>
           </Box>
         </div>
       </Container>
