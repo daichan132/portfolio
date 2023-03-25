@@ -1,5 +1,5 @@
 import { cursorAtom } from '@/stores/cursorAtom';
-import { Container, Portal, Box, rem, createStyles } from '@mantine/core';
+import { Container, Box, rem, createStyles } from '@mantine/core';
 import { motion } from 'framer-motion';
 import { useAtom } from 'jotai';
 import Link from 'next/link';
@@ -64,80 +64,78 @@ export const FullscreenMenu = () => {
 
   const [, setCursorData] = useAtom(cursorAtom);
   return (
-    <Portal>
-      <Box
-        component={motion.div}
-        initial={{ opacity: 0.5, x: 0 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ ease: 'easeInOut' }}
-        sx={() => ({
-          top: 0,
-          bottom: 0,
-          right: 0,
-          left: 0,
-          zIndex: 99,
-          position: 'fixed',
-          backgroundColor: 'white',
-          padding: '0px 20px',
-        })}
-      >
-        <Container py={70}>
-          <motion.div
-            key="linkItem"
-            variants={containerLinkVariants}
-            initial="hidden"
-            animate="show"
-            exit="hidden"
-            transition={{
-              duration: 0.5,
-            }}
-            className={classes.container}
-          >
-            <motion.div variants={linkVariants}>
-              <Link
-                href="/"
-                className={classes.linkItem}
-                onMouseEnter={() => {
-                  setCursorData({ cursorVariant: 'hover' });
-                }}
-                onMouseLeave={() => {
-                  setCursorData({ cursorVariant: 'default' });
-                }}
-              >
-                Home
-              </Link>
-            </motion.div>
-            <motion.div variants={linkVariants}>
-              <Link
-                href="/about"
-                className={classes.linkItem}
-                onMouseEnter={() => {
-                  setCursorData({ cursorVariant: 'hover' });
-                }}
-                onMouseLeave={() => {
-                  setCursorData({ cursorVariant: 'default' });
-                }}
-              >
-                About me
-              </Link>
-            </motion.div>
-            <motion.div variants={linkVariants}>
-              <Link
-                href="/works"
-                className={classes.linkItem}
-                onMouseEnter={() => {
-                  setCursorData({ cursorVariant: 'hover' });
-                }}
-                onMouseLeave={() => {
-                  setCursorData({ cursorVariant: 'default' });
-                }}
-              >
-                All works
-              </Link>
-            </motion.div>
+    <Box
+      component={motion.div}
+      initial={{ opacity: 0.5, x: 0 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ ease: 'easeInOut' }}
+      sx={() => ({
+        top: 0,
+        bottom: 0,
+        right: 0,
+        left: 0,
+        zIndex: 100,
+        position: 'fixed',
+        backgroundColor: 'white',
+        padding: '0px 20px',
+      })}
+    >
+      <Container py={70}>
+        <motion.div
+          key="linkItem"
+          variants={containerLinkVariants}
+          initial="hidden"
+          animate="show"
+          exit="hidden"
+          transition={{
+            duration: 0.5,
+          }}
+          className={classes.container}
+        >
+          <motion.div variants={linkVariants}>
+            <Link
+              href="/"
+              className={classes.linkItem}
+              onMouseEnter={() => {
+                setCursorData({ cursorVariant: 'hover' });
+              }}
+              onMouseLeave={() => {
+                setCursorData({ cursorVariant: 'default' });
+              }}
+            >
+              Home
+            </Link>
           </motion.div>
-        </Container>
-      </Box>
-    </Portal>
+          <motion.div variants={linkVariants}>
+            <Link
+              href="/about"
+              className={classes.linkItem}
+              onMouseEnter={() => {
+                setCursorData({ cursorVariant: 'hover' });
+              }}
+              onMouseLeave={() => {
+                setCursorData({ cursorVariant: 'default' });
+              }}
+            >
+              About me
+            </Link>
+          </motion.div>
+          <motion.div variants={linkVariants}>
+            <Link
+              href="/works"
+              className={classes.linkItem}
+              onMouseEnter={() => {
+                setCursorData({ cursorVariant: 'hover' });
+              }}
+              onMouseLeave={() => {
+                setCursorData({ cursorVariant: 'default' });
+              }}
+            >
+              All works
+            </Link>
+          </motion.div>
+        </motion.div>
+      </Container>
+    </Box>
   );
 };

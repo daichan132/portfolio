@@ -1,15 +1,10 @@
 import { cursorAtom } from '@/stores/cursorAtom';
 import { css } from '@emotion/react';
-import { Center } from '@mantine/core';
 import { useAtom } from 'jotai';
 import Link from 'next/link';
 
 const style = css`
   position: relative;
-  .center {
-    height: 100%;
-    width: 100%;
-  }
   .btn {
     display: inline-block;
     position: relative;
@@ -20,6 +15,7 @@ const style = css`
     z-index: 1;
     background-color: white;
     border-radius: 5px;
+    font-weight: bold;
     &:before,
     &:after {
       content: '';
@@ -60,20 +56,18 @@ export const WorkButton = () => {
   const [, setCursorData] = useAtom(cursorAtom);
   return (
     <div css={style}>
-      <Center className="center">
-        <Link
-          href="/works"
-          className="btn"
-          onMouseEnter={() => {
-            setCursorData({ cursorVariant: 'hover' });
-          }}
-          onMouseLeave={() => {
-            setCursorData({ cursorVariant: 'default' });
-          }}
-        >
-          作品を見に行く
-        </Link>
-      </Center>
+      <Link
+        href="/works"
+        className="btn"
+        onMouseEnter={() => {
+          setCursorData({ cursorVariant: 'hover' });
+        }}
+        onMouseLeave={() => {
+          setCursorData({ cursorVariant: 'default' });
+        }}
+      >
+        作品を見に行く
+      </Link>
     </div>
   );
 };

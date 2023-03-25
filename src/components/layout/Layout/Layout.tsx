@@ -43,7 +43,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
 
       <Header />
 
-      <SmoothScroll>
+      <SmoothScroll enabled={!sm}>
         <div className={classes.main}>
           <AnimatePresence mode="wait" initial={false}>
             <motion.main

@@ -60,7 +60,7 @@ const Home = () => {
             <ExternalLinkCursor href="https://jphacks.com/">JPJACKS</ExternalLinkCursor>
             に参加した際に作成しました。
           </Text>
-          <Title order={5} py={5}>
+          <Title order={5} py={8}>
             受賞一覧
           </Title>
           <List>
@@ -72,9 +72,9 @@ const Home = () => {
     },
   ];
   return (
-    <Container size="xl" pt={sm ? rem(52) : rem(260)} pb={sm ? rem(52) : rem(100)}>
+    <Container size="xl" pt={sm ? rem(80) : rem(260)} pb={sm ? rem(52) : rem(100)}>
       <motion.div variants={containerVariants} initial="hidden" animate="show">
-        <Stack spacing={sm ? rem(50) : rem(120)}>
+        <Stack spacing={sm ? rem(80) : rem(120)}>
           {worksData.map((props: WorkProps) => (
             <Fragment key={props.title}>
               <motion.div variants={itemVariants}>

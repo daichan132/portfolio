@@ -19,13 +19,13 @@ const Home = () => {
     <Container
       size="xl"
       px="xs"
-      pt={sm ? rem(52) : rem(250)}
-      pb={sm ? rem(52) : rem(100)}
+      pt={sm ? rem(80) : rem(250)}
+      pb={sm ? rem(80) : rem(100)}
       css={css`
         width: 100%;
       `}
     >
-      <Stack spacing={sm ? rem(30) : rem(100)}>
+      <Stack spacing={sm ? rem(80) : rem(100)}>
         <IntroduceItem
           text="私の名前はdaichan132です。プログラミングが大好きな大学院生です。"
           subText="My name is daichan132. I am a graduate student who loves programming."
@@ -52,7 +52,7 @@ const Home = () => {
           reverse={!sm}
           color={YellowColor}
         />
-        <Center pt={rem(60)}>
+        <Center pt={rem(30)}>
           <WorkButton />
         </Center>
       </Stack>

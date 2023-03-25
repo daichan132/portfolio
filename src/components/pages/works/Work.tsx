@@ -20,6 +20,7 @@ const useStyles = createStyles((theme, { color }: { color: string }) => ({
     transition: 'all 0.5s ease-in-out',
     display: 'flex',
     alignItems: 'center',
+    maxWidth: '1200px',
   },
   contentBox: {
     position: 'relative',
@@ -28,7 +29,7 @@ const useStyles = createStyles((theme, { color }: { color: string }) => ({
       height: rem(350),
     },
     [theme.fn.smallerThan('sm')]: {
-      height: rem(300),
+      height: rem(200),
     },
   },
   box: {
@@ -62,6 +63,9 @@ const useStyles = createStyles((theme, { color }: { color: string }) => ({
   },
   title: {
     fontSize: rem(36),
+    [theme.fn.smallerThan('sm')]: {
+      fontSize: rem(28),
+    },
     position: 'relative',
     display: 'inline-block',
     fontWeight: 'bold',
@@ -138,7 +142,7 @@ export const Work: FC<WorkProps> = ({
           `}
         >
           <ParallaxPc offset={0}>
-            <Stack justify="center" h="100%" p="sm">
+            <Stack justify="center" h="100%">
               <Flex wrap="wrap" align="center" justify="space-between">
                 <div className={classes.title}>{title}</div>
                 <Flex gap="sm">

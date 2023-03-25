@@ -53,7 +53,7 @@ export const Footer: FC = () => {
   const [, setCursorData] = useAtom(cursorAtom);
   return (
     <footer className={classes.footer}>
-      <Container size="lg" className={classes.container}>
+      <Container size="xl" className={classes.container}>
         {!sm ? '© 2023 daichan132' : null}
         <div className={classes.linkItemContainer}>
           <Link
