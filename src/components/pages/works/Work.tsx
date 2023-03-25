@@ -1,17 +1,7 @@
-import {
-  createStyles,
-  Grid,
-  rem,
-  Stack,
-  Badge,
-  Flex,
-  Center,
-  useMantineTheme,
-} from '@mantine/core';
+import { createStyles, Grid, rem, Stack, Badge, Flex, Center } from '@mantine/core';
 import { ReactNode, type FC } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
-import { useMediaQuery } from '@mantine/hooks';
 import { ExternalLinkCursor } from '../../elements/ExternalLink';
 import { ParallaxPc } from '../../elements/Parallax';
 
@@ -94,11 +84,9 @@ export const Work: FC<WorkProps> = ({
   reverse = false,
 }) => {
   const { classes } = useStyles({ color });
-  const theme = useMantineTheme();
-  const sm = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
   return (
     <div className={classes.container}>
-      <Grid gutter="md" gutterMd={sm ? 30 : 50} w="100%">
+      <Grid gutterSm={30} gutterMd={70} w="100%">
         <Grid.Col span={12} sm={6} order={reverse ? 2 : 1}>
           <div
             className={classes.contentBox}
