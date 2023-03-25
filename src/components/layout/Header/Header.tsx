@@ -2,7 +2,7 @@ import { LogoText, Clock, ExternalLinkCursor } from '@/components/elements';
 import { cursorAtom } from '@/stores/cursorAtom';
 import { scrollTop } from '@/utils/scrollTop';
 import { css } from '@emotion/react';
-import { Container, createStyles, Flex, rem, Space, useMantineTheme } from '@mantine/core';
+import { Container, createStyles, Flex, rem, Space, useMantineTheme, Box } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useAtom } from 'jotai';
@@ -11,6 +11,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { FullscreenMenu } from './FullScreenMenu';
 import { HambergerMenu } from './HambergerMenu';
+import { Panels } from './Panels';
 
 const useStyles = createStyles((theme, { initialism }: { initialism: boolean }) => ({
   header: {
@@ -265,7 +266,20 @@ export const Header = () => {
               )}
             </AnimatePresence>
           </div>
-          {opened && <FullscreenMenu />}
+          <FullscreenMenu open={opened} />
+          <Box
+            sx={() => ({
+              top: 0,
+              bottom: 0,
+              right: 0,
+              left: 0,
+              zIndex: 103,
+              position: 'fixed',
+              pointerEvents: 'none',
+            })}
+          >
+            <AnimatePresence>{opened && <Panels />}</AnimatePresence>
+          </Box>
         </div>
       </Container>
     </header>

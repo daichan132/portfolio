@@ -36,7 +36,6 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
   const path = router.pathname;
   const [, setCursorData] = useAtom(cursorAtom);
-
   return (
     <>
       {!sm && <CustomCursor />}
