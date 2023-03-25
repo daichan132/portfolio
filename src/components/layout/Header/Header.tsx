@@ -36,7 +36,6 @@ const useStyles = createStyles((theme, { initialism }: { initialism: boolean }) 
   },
   linkItem: {
     display: 'block',
-    fontWeight: 'bold',
     overflow: 'hidden',
     color: '#333333',
     textDecoration: 'none',
@@ -75,7 +74,6 @@ const useStyles = createStyles((theme, { initialism }: { initialism: boolean }) 
   },
   text: {
     fontSize: rem(18),
-    fontWeight: 'bold',
   },
 }));
 
