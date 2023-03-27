@@ -1,12 +1,17 @@
 import { css } from '@emotion/react';
 import { useViewportSize } from '@mantine/hooks';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 
 const transition = { duration: 0.8, ease: [0.6, -0.05, 0.01, 0.9] };
 
-export const Panels = () => {
-  const [panelComplete, setPanelComplete] = useState(false);
+export const Panels = ({
+  panelComplete,
+  setPanelComplete,
+}: {
+  panelComplete: boolean;
+  setPanelComplete: Dispatch<SetStateAction<boolean>>;
+}) => {
   const { height } = useViewportSize();
   return (
     <>
@@ -50,7 +55,7 @@ export const Panels = () => {
           background: ${panelComplete ? '#efefef' : '#efefef'};
         `}
         onAnimationComplete={() => {
-          setPanelComplete(!panelComplete);
+          setPanelComplete(false);
         }}
       />
     </>

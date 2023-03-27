@@ -155,6 +155,12 @@ export const Header = () => {
     };
   }, []);
 
+  const [panelComplete, setPanelComplete] = useState(false);
+  useEffect(() => {
+    setPanelComplete(!panelComplete);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [opened]);
+
   return (
     <header className={classes.header}>
       <Container size="xl" className={classes.container}>
@@ -287,10 +293,18 @@ export const Header = () => {
               left: 0,
               zIndex: 103,
               position: 'fixed',
-              pointerEvents: 'none',
+              pointerEvents: panelComplete ? 'all' : 'none',
             })}
           >
-            <AnimatePresence>{opened && isActive && <Panels />}</AnimatePresence>
+            <AnimatePresence
+              onExitComplete={() => {
+                setPanelComplete(false);
+              }}
+            >
+              {opened && isActive && (
+                <Panels panelComplete={panelComplete} setPanelComplete={setPanelComplete} />
+              )}
+            </AnimatePresence>
           </Box>
         </div>
       </Container>
