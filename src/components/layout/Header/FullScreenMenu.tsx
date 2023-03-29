@@ -1,4 +1,5 @@
 import { cursorAtom } from '@/stores/cursorAtom';
+import { panelDuration } from '@/utils/Const';
 import { css } from '@emotion/react';
 import { Container, Box, rem, createStyles } from '@mantine/core';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -22,7 +23,6 @@ const useStyles = createStyles(() => ({
     fontSize: rem(28),
     position: 'relative',
     paddingBottom: '2px',
-    fontWeight: 'bold',
     '&::after': {
       content: "''",
       background: '#000000',
@@ -76,11 +76,11 @@ export const FullscreenMenu = ({ open }: { open: boolean }) => {
             initial={{ visibility: 'hidden' }}
             exit={{
               visibility: 'hidden',
-              transition: { delay: 0.75 },
+              transition: { delay: panelDuration / 2 },
             }}
             animate={{
               visibility: 'visible',
-              transition: { delay: 0.75 },
+              transition: { delay: panelDuration / 2 },
             }}
             css={css`
               background-color: #ffffff;

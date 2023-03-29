@@ -19,7 +19,7 @@ const Home = () => {
     <Container
       size="xl"
       px="xs"
-      pt={sm ? rem(80) : rem(250)}
+      pt={sm ? rem(80) : rem(220)}
       pb={sm ? rem(80) : rem(100)}
       css={css`
         width: 100%;

@@ -1,5 +1,6 @@
 import { LogoText, Clock, ExternalLinkCursor } from '@/components/elements';
 import { cursorAtom } from '@/stores/cursorAtom';
+import { BlueColor, RedColor, YellowColor } from '@/utils/Colors';
 import { scrollTop } from '@/utils/scrollTop';
 import { css } from '@emotion/react';
 import { Container, createStyles, Flex, rem, Space, useMantineTheme, Box } from '@mantine/core';
@@ -37,7 +38,6 @@ const useStyles = createStyles((theme, { initialism }: { initialism: boolean }) 
   },
   linkItem: {
     display: 'block',
-    overflow: 'hidden',
     color: '#333333',
     textDecoration: 'none',
     fontSize: rem(20),
@@ -77,6 +77,22 @@ const useStyles = createStyles((theme, { initialism }: { initialism: boolean }) 
     fontSize: rem(18),
   },
 }));
+
+const linkBeforeStyle = (color: string, visible: boolean) => css`
+  &::before {
+    content: '';
+    transition: opacity 0.2s ease-in-out;
+
+    position: absolute;
+    opacity: ${visible ? 1 : 0};
+    left: -23px;
+    top: 12px;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background: ${color};
+  }
+`;
 
 const containerLinkVariants = {
   hidden: {
@@ -155,11 +171,7 @@ export const Header = () => {
     };
   }, []);
 
-  const [panelComplete, setPanelComplete] = useState(false);
-  useEffect(() => {
-    setPanelComplete(!panelComplete);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [opened]);
+  const [panelComplete, setPanelComplete] = useState(true);
 
   return (
     <header className={classes.header}>
@@ -235,6 +247,7 @@ export const Header = () => {
                       onMouseLeave={() => {
                         setCursorData({ cursorVariant: 'default' });
                       }}
+                      css={linkBeforeStyle(YellowColor, router.pathname === '/')}
                     >
                       Home
                     </Link>
@@ -249,6 +262,7 @@ export const Header = () => {
                       onMouseLeave={() => {
                         setCursorData({ cursorVariant: 'default' });
                       }}
+                      css={linkBeforeStyle(BlueColor, router.pathname === '/about')}
                     >
                       About me
                     </Link>
@@ -263,6 +277,7 @@ export const Header = () => {
                       onMouseLeave={() => {
                         setCursorData({ cursorVariant: 'default' });
                       }}
+                      css={linkBeforeStyle(RedColor, router.pathname === '/works')}
                     >
                       All works
                     </Link>
@@ -279,7 +294,11 @@ export const Header = () => {
                     duration: 0.3,
                   }}
                 >
-                  <HambergerMenu opened={opened} setOpened={setOpened} />
+                  <HambergerMenu
+                    opened={opened}
+                    setOpened={setOpened}
+                    setPanelComplete={setPanelComplete}
+                  />
                 </motion.div>
               )}
             </AnimatePresence>
@@ -293,17 +312,15 @@ export const Header = () => {
               left: 0,
               zIndex: 103,
               position: 'fixed',
-              pointerEvents: panelComplete ? 'all' : 'none',
+              pointerEvents: panelComplete ? 'none' : 'all',
             })}
           >
             <AnimatePresence
               onExitComplete={() => {
-                setPanelComplete(false);
+                setPanelComplete(true);
               }}
             >
-              {opened && isActive && (
-                <Panels panelComplete={panelComplete} setPanelComplete={setPanelComplete} />
-              )}
+              {opened && isActive && <Panels setPanelComplete={setPanelComplete} />}
             </AnimatePresence>
           </Box>
         </div>

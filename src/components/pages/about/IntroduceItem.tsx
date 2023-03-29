@@ -7,9 +7,9 @@ const useStyles = createStyles((theme) => ({
   container: {},
   contentBox: {
     position: 'relative',
-    height: rem(350),
+    height: rem(380),
     [theme.fn.smallerThan('md')]: {
-      height: rem(330),
+      height: rem(340),
     },
     [theme.fn.smallerThan('sm')]: {
       height: rem(300),
@@ -35,6 +35,7 @@ const useStyles = createStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'center',
     height: '100%',
+    maxWidth: 550,
   },
   mainText: {
     fontSize: rem(24),
@@ -87,37 +88,44 @@ export const IntroduceItem = ({
   return (
     <Grid gutter="xl" gutterMd={rem(60)} css={[style(color)]} className={classes.container}>
       <Grid.Col span={12} sm={6} order={reverse ? 2 : 1}>
-        <div
+        <Center
           className={classes.contentBox}
           css={css`
             .Parallax {
               position: absolute;
               height: 100%;
               width: 100%;
+              max-width: 550px;
             }
           `}
         >
-          <ParallaxPc offset={20}>
+          <ParallaxPc offset={30}>
             <div className={classes.shadowBox} />
           </ParallaxPc>
-          <ParallaxPc offset={40}>
+          <ParallaxPc offset={60}>
             <div className="box-001" />
           </ParallaxPc>
 
-          <ParallaxPc offset={60}>
+          <ParallaxPc offset={100}>
             <Center className={classes.content}>
               <Icon style={{ height: '80%', transform: 'translate(0, 5px)' }} />
             </Center>
           </ParallaxPc>
-        </div>
+        </Center>
       </Grid.Col>
       <Grid.Col span={12} sm="auto" order={reverse ? 1 : 2}>
-        <div className={classes.textBox}>
-          <ParallaxPc offset={80}>
-            <div className={classes.mainText}>{text}</div>
-            <div className={classes.subText}>{subText}</div>
-          </ParallaxPc>
-        </div>
+        <Center
+          css={css`
+            height: 100%;
+          `}
+        >
+          <div className={classes.textBox}>
+            <ParallaxPc offset={0}>
+              <div className={classes.mainText}>{text}</div>
+              <div className={classes.subText}>{subText}</div>
+            </ParallaxPc>
+          </div>
+        </Center>
       </Grid.Col>
     </Grid>
   );

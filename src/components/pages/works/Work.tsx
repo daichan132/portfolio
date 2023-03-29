@@ -98,13 +98,13 @@ export const Work: FC<WorkProps> = ({
               }
             `}
           >
-            <ParallaxPc offset={20}>
+            <ParallaxPc offset={30}>
               <div className={classes.shadowBox} />
             </ParallaxPc>
-            <ParallaxPc offset={40}>
+            <ParallaxPc offset={60}>
               <div className={classes.box} />
             </ParallaxPc>
-            <ParallaxPc offset={50}>
+            <ParallaxPc offset={80}>
               <Center
                 css={css`
                   height: 100%;

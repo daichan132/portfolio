@@ -14,7 +14,6 @@ const style = css`
     border: 1px solid;
     z-index: 1;
     border-radius: 5px;
-    font-weight: 600;
     &:before,
     &:after {
       content: '';

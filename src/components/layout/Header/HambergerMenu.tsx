@@ -23,15 +23,18 @@ const style = css`
 export const HambergerMenu = ({
   opened,
   setOpened,
+  setPanelComplete,
 }: {
   opened: boolean;
   setOpened: Dispatch<SetStateAction<boolean>>;
+  setPanelComplete: Dispatch<SetStateAction<boolean>>;
 }) => {
   const path01Controls = useAnimation();
   const path02Controls = useAnimation();
 
   const onClick = () => {
     setOpened(!opened);
+    setPanelComplete(false);
   };
   useEffect(() => {
     const func = async () => {
