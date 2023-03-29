@@ -67,7 +67,7 @@ const useStyles = createStyles((theme, { initialism }: { initialism: boolean }) 
     zIndex: 99,
     color: '#333333',
     fontWeight: 'bold',
-    fontSize: initialism ? rem(32) : rem(68),
+    fontSize: initialism ? rem(32) : rem(60),
     transition: 'all 0.4s ease-in-out',
     lineHeight: '1',
     [theme.fn.smallerThan('sm')]: {
