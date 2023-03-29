@@ -1,3 +1,4 @@
+import { css } from '@emotion/react';
 import { useEffect, useState } from 'react';
 
 export const Clock = () => {
@@ -16,5 +17,14 @@ export const Clock = () => {
     };
   }, []);
 
-  return <span suppressHydrationWarning>Japan {date.toLocaleString()}</span>;
+  return (
+    <span
+      suppressHydrationWarning
+      css={css`
+        font-variant-numeric: proportional-nums;
+      `}
+    >
+      Japan {date.toLocaleString()}
+    </span>
+  );
 };

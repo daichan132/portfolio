@@ -1,5 +1,4 @@
 import { css } from '@emotion/react';
-import { rem } from '@mantine/core';
 import {
   motion,
   useAnimationFrame,
@@ -23,8 +22,6 @@ const style = (color: string) => css`
   left: 50%;
   transform: translateX(-50%);
   color: ${color};
-  font-size: ${rem(14)};
-  font-weight: bold;
   .scroller {
     display: flex;
     white-space: nowrap;
@@ -46,7 +43,7 @@ export type MarqueeProps = {
 
 export const Marquee: FC<MarqueeProps> = ({
   text,
-  baseVelocity = 50,
+  baseVelocity = 30,
   reverse = 1,
   color = '#333333',
 }) => {

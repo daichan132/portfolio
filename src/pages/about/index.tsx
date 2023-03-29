@@ -9,6 +9,7 @@ import ProgrammerIcon from 'public/26-Programmer.svg';
 import { WorkButton } from '@/components/pages/about/WorkButton';
 import { css } from '@emotion/react';
 import { BlueColor, RedColor, YellowColor } from '@/utils/Colors';
+import { Marquee } from '@/components/elements';
 
 // https://designs.ai/graphicmaker/illustrations/Duotone_Cartoon_Set
 const Home = () => {
@@ -19,7 +20,7 @@ const Home = () => {
     <Container
       size="xl"
       px="xs"
-      pt={sm ? rem(80) : rem(220)}
+      pt={sm ? rem(80) : rem(280)}
       pb={sm ? rem(80) : rem(100)}
       css={css`
         width: 100%;
@@ -55,6 +56,13 @@ const Home = () => {
         <Center pt={rem(30)}>
           <WorkButton />
         </Center>
+        <div
+          css={css`
+            font-size: ${rem(20)};
+          `}
+        >
+          <Marquee text="PROFILE" />
+        </div>
       </Stack>
     </Container>
   );

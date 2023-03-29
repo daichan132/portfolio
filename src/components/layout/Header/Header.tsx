@@ -44,6 +44,7 @@ const useStyles = createStyles((theme, { initialism }: { initialism: boolean }) 
     position: 'relative',
     paddingBottom: '2px',
     background: 'transparent',
+    fontWeight: 500,
     '&::after': {
       content: "''",
       background: '#000000',
@@ -66,8 +67,8 @@ const useStyles = createStyles((theme, { initialism }: { initialism: boolean }) 
     zIndex: 99,
     color: '#333333',
     fontWeight: initialism ? 'normal' : 'bold',
-    fontSize: initialism ? rem(32) : rem(52),
-    transition: 'all 0.3s ease-in-out',
+    fontSize: initialism ? rem(32) : rem(68),
+    transition: 'all 0.5s ease-in-out',
     lineHeight: '1',
     [theme.fn.smallerThan('sm')]: {
       fontSize: '1.7rem',
@@ -189,6 +190,7 @@ export const Header = () => {
           >
             <LogoText text="DAICHAN 132" initialism={!isTop} id="header" enabled={!sm} />
           </Link>
+          <Space h="xs" />
           <AnimatePresence initial={false} mode="wait">
             {isTop && !sm ? (
               <motion.div
@@ -202,15 +204,46 @@ export const Header = () => {
                 }}
                 className={classes.text}
               >
-                <motion.div variants={linkVariants}>
-                  <Clock />
+                <motion.div
+                  variants={linkVariants}
+                  transition={{
+                    duration: 0.5,
+                  }}
+                >
+                  <Flex>
+                    <Clock />
+                    <Space w="md" />
+                    <a
+                      href="mailto:daichan133322@gmail.com"
+                      onMouseEnter={() => {
+                        setCursorData({ cursorVariant: 'hover' });
+                      }}
+                      onMouseLeave={() => {
+                        setCursorData({ cursorVariant: 'default' });
+                      }}
+                      css={css`
+                        color: black;
+                      `}
+                    >
+                      Contact
+                    </a>
+                  </Flex>
                 </motion.div>
-                <motion.div variants={linkVariants}>
+                <motion.div
+                  variants={linkVariants}
+                  transition={{
+                    duration: 0.5,
+                  }}
+                >
                   <Flex>
                     Links:
                     <Space w="md" />
                     <ExternalLinkCursor href="https://github.com/daichan132">
                       github
+                    </ExternalLinkCursor>
+                    <Space w="md" />
+                    <ExternalLinkCursor href="https://twitter.com/daichan133322">
+                      Twitter
                     </ExternalLinkCursor>
                   </Flex>
                 </motion.div>

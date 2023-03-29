@@ -8,7 +8,7 @@ const transition = { duration: 0.8, ease: [0.6, -0.05, 0.01, 0.9] };
 
 export const Panels = ({
   setPanelComplete,
-  num = 100,
+  num = 7,
 }: {
   setPanelComplete: Dispatch<SetStateAction<boolean>>;
   num?: number;
@@ -32,7 +32,7 @@ export const Panels = ({
             ...transition,
             duration: panelDuration,
             times: [0, 0.5, 1],
-            delay: i * 0.0005,
+            delay: i * 0.03,
           }}
           css={css`
             height: 100vh;

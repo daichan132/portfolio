@@ -1,1 +1,1 @@
-export const panelDuration = 1.2;
+export const panelDuration = 1.5;
