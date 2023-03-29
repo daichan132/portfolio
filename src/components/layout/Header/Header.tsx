@@ -66,9 +66,9 @@ const useStyles = createStyles((theme, { initialism }: { initialism: boolean }) 
   logo: {
     zIndex: 99,
     color: '#333333',
-    fontWeight: initialism ? 'normal' : 'bold',
+    fontWeight: 'bold',
     fontSize: initialism ? rem(32) : rem(68),
-    transition: 'all 0.5s ease-in-out',
+    transition: 'all 0.4s ease-in-out',
     lineHeight: '1',
     [theme.fn.smallerThan('sm')]: {
       fontSize: '1.7rem',
@@ -210,9 +210,8 @@ export const Header = () => {
                     duration: 0.5,
                   }}
                 >
-                  <Flex>
+                  <Flex w={300} justify="space-between">
                     <Clock />
-                    <Space w="md" />
                     <a
                       href="mailto:daichan133322@gmail.com"
                       onMouseEnter={() => {
