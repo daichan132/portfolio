@@ -6,7 +6,7 @@ import { cursorAtom } from '@/stores/cursorAtom';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
-const smCursorSize = 14;
+const smCursorSize = 15;
 const smallStyle = css`
   position: fixed;
   z-index: 1000;

@@ -51,6 +51,13 @@ const useStyles = createStyles((theme, { color }: { color: string }) => ({
     transition: 'all 0.5s ease-in-out',
     '&:hover': { transform: 'scale(1.05)' },
   },
+  textBox: {
+    backgroundImage:
+      'linear-gradient(to right,transparent,transparent 10%,#f0f0f0 11%,#f0f0f0 12%,transparent 13%,transparent 87%,#f0f0f0 88%,#f0f0f0 89%,transparent 90%,transparent),   linear-gradient(to bottom,transparent,transparent 97%,#f0f0f0 98%,#f0f0f0)',
+    backgroundSize: '40px 40px',
+    backgroundRepeat: 'repeat',
+    backgroundPosition: 'left top',
+  },
   title: {
     fontSize: rem(36),
     [theme.fn.smallerThan('sm')]: {
@@ -128,6 +135,7 @@ export const Work: FC<WorkProps> = ({
               width: 100%;
             }
           `}
+          className={classes.textBox}
         >
           <ParallaxPc offset={0}>
             <Stack justify="center" h="100%">

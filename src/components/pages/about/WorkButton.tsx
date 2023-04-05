@@ -11,7 +11,7 @@ const style = css`
     color: black;
     padding: 1rem 5rem 1rem 2rem;
     text-decoration: none;
-    border: 1px solid;
+    border: 3px solid;
     z-index: 1;
     border-radius: 5px;
     &:before,

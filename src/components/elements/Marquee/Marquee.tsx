@@ -11,7 +11,7 @@ import {
 } from 'framer-motion';
 import { useEffect, useRef, useState, type FC } from 'react';
 
-const style = (color: string) => css`
+const style = () => css`
   margin: 0;
   white-space: nowrap;
   display: flex;
@@ -21,7 +21,6 @@ const style = (color: string) => css`
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  color: ${color};
   .scroller {
     display: flex;
     white-space: nowrap;
@@ -38,15 +37,9 @@ export type MarqueeProps = {
   text: string;
   baseVelocity?: number;
   reverse?: number;
-  color?: string;
 };
 
-export const Marquee: FC<MarqueeProps> = ({
-  text,
-  baseVelocity = 30,
-  reverse = 1,
-  color = '#333333',
-}) => {
+export const Marquee: FC<MarqueeProps> = ({ text, baseVelocity = 30, reverse = 1 }) => {
   const baseX = useMotionValue(0);
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
@@ -66,7 +59,7 @@ export const Marquee: FC<MarqueeProps> = ({
       if (textRef.current) {
         const textWidth = textRef.current.offsetWidth;
         const viewportWidth = window.innerWidth;
-        const newRepeatCount = Math.ceil(viewportWidth / textWidth) + 2;
+        const newRepeatCount = Math.ceil(viewportWidth / textWidth) + 10;
         setRepeatCount(newRepeatCount);
         setWrapperWidth((textWidth * newRepeatCount * 100) / viewportWidth);
       }
@@ -101,7 +94,7 @@ export const Marquee: FC<MarqueeProps> = ({
   });
 
   return (
-    <div css={style(color)}>
+    <div css={style()}>
       <motion.div className="scroller" style={{ x }}>
         {Array.from({ length: repeatCount }, (_, i) => (
           <span key={i.toString() + text} ref={i === 0 ? textRef : null}>

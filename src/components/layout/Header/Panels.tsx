@@ -32,7 +32,6 @@ export const Panels = ({
             ...transition,
             duration: panelDuration,
             times: [0, 0.5, 1],
-            delay: i * 0.03,
           }}
           css={css`
             height: 100vh;

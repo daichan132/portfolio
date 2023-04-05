@@ -7,9 +7,9 @@ const useStyles = createStyles((theme) => ({
   container: {},
   contentBox: {
     position: 'relative',
-    height: rem(380),
+    height: rem(340),
     [theme.fn.smallerThan('md')]: {
-      height: rem(340),
+      height: rem(320),
     },
     [theme.fn.smallerThan('sm')]: {
       height: rem(300),
@@ -67,7 +67,7 @@ const style = (color: string) => css`
     width: 100%;
     height: 100%;
     background-color: white;
-    border: 4px solid ${color};
+    border: 20px solid ${color};
   }
 `;
 export const IntroduceItem = ({
@@ -117,7 +117,25 @@ export const IntroduceItem = ({
         <Center
           css={css`
             height: 100%;
+            background-image: linear-gradient(
+                to right,
+                transparent,
+                transparent 10%,
+                #f0f0f0 11%,
+                #f0f0f0 12%,
+                transparent 13%,
+                transparent 87%,
+                #f0f0f0 88%,
+                #f0f0f0 89%,
+                transparent 90%,
+                transparent
+              ),
+              linear-gradient(to bottom, transparent, transparent 97%, #f0f0f0 98%, #f0f0f0);
+            background-size: 40px 40px;
+            background-repeat: repeat;
+            background-position: left top;
           `}
+          px="md"
         >
           <div className={classes.textBox}>
             <ParallaxPc offset={0}>

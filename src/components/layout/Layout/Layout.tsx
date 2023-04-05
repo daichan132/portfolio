@@ -14,18 +14,19 @@ const useStyles = createStyles(() => ({
     flexDirection: 'column',
     minHeight: '100vh',
     overflow: 'hidden',
-    backgroundImage:
-      'linear-gradient(to right,#ffffff,#ffffff 10%,#f0f0f0 11%,#f0f0f0 12%,transparent 13%,transparent 87%,#f0f0f0 88%,#f0f0f0 89%,#ffffff 90%,#ffffff),   linear-gradient(to bottom,transparent,transparent 97%,#f0f0f0 98%,#f0f0f0)',
-    backgroundSize: '40px 40px',
-    backgroundRepeat: 'repeat',
-    backgroundPosition: 'left top',
+    backgroundColor: '#ffffff',
+    // backgroundImage:
+    //   'linear-gradient(to right,#ffffff,#ffffff 10%,#f0f0f0 11%,#f0f0f0 12%,transparent 13%,transparent 87%,#f0f0f0 88%,#f0f0f0 89%,#ffffff 90%,#ffffff),   linear-gradient(to bottom,transparent,transparent 97%,#f0f0f0 98%,#f0f0f0)',
+    // backgroundSize: '40px 40px',
+    // backgroundRepeat: 'repeat',
+    // backgroundPosition: 'left top',
   },
 }));
 
 const variants = {
-  hidden: { opacity: 0, y: 0 },
+  hidden: { opacity: 0, y: 20 },
   enter: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: 0 },
+  exit: { opacity: 0, y: -20 },
 };
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {

@@ -72,9 +72,9 @@ const Home = () => {
     },
   ];
   return (
-    <Container size="xl" pt={sm ? rem(80) : rem(280)} pb={sm ? rem(52) : rem(100)}>
+    <Container size="xl" pt={sm ? rem(80) : rem(240)} pb={sm ? rem(52) : rem(150)}>
       <motion.div variants={containerVariants} initial="hidden" animate="show">
-        <Stack spacing={sm ? rem(80) : rem(120)}>
+        <Stack spacing={sm ? rem(80) : rem(100)}>
           {worksData.map((props: WorkProps) => (
             <Fragment key={props.title}>
               <motion.div variants={itemVariants}>

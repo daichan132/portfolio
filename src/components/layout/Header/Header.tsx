@@ -44,7 +44,6 @@ const useStyles = createStyles((theme, { initialism }: { initialism: boolean }) 
     position: 'relative',
     paddingBottom: '2px',
     background: 'transparent',
-    fontWeight: 500,
     '&::after': {
       content: "''",
       background: '#000000',
@@ -82,16 +81,16 @@ const useStyles = createStyles((theme, { initialism }: { initialism: boolean }) 
 const linkBeforeStyle = (color: string, visible: boolean) => css`
   &::before {
     content: '';
-    transition: opacity 0.2s ease-in-out;
-
+    transition: opacity 0.7s ease-in-out;
     position: absolute;
     opacity: ${visible ? 1 : 0};
-    left: -23px;
-    top: 12px;
+    left: -30px;
+    top: 11px;
     width: 10px;
     height: 10px;
     border-radius: 100%;
     background: ${color};
+    filter: brightness(1.2);
   }
 `;
 
@@ -190,7 +189,6 @@ export const Header = () => {
           >
             <LogoText text="DAICHAN 132" initialism={!isTop} id="header" enabled={!sm} />
           </Link>
-          <Space h="xs" />
           <AnimatePresence initial={false} mode="wait">
             {isTop && !sm ? (
               <motion.div

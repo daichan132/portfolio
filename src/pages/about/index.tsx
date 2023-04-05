@@ -10,6 +10,7 @@ import { WorkButton } from '@/components/pages/about/WorkButton';
 import { css } from '@emotion/react';
 import { BlueColor, RedColor, YellowColor } from '@/utils/Colors';
 import { Marquee } from '@/components/elements';
+import { Timeline } from '@/components/pages/about/Timeline';
 
 // https://designs.ai/graphicmaker/illustrations/Duotone_Cartoon_Set
 const Home = () => {
@@ -20,13 +21,13 @@ const Home = () => {
     <Container
       size="xl"
       px="xs"
-      pt={sm ? rem(80) : rem(280)}
-      pb={sm ? rem(80) : rem(100)}
+      pt={sm ? rem(80) : rem(240)}
+      pb={sm ? rem(80) : rem(240)}
       css={css`
         width: 100%;
       `}
     >
-      <Stack spacing={sm ? rem(80) : rem(120)}>
+      <Stack spacing={sm ? rem(60) : rem(80)}>
         <IntroduceItem
           text="私の名前はdaichan132です。プログラミングが大好きな大学院生です。"
           subText="My name is daichan132. I am a graduate student who loves programming."
@@ -53,16 +54,19 @@ const Home = () => {
           reverse={!sm}
           color={YellowColor}
         />
-        <Center pt={rem(30)}>
+        <Center pt={rem(72)}>
           <WorkButton />
         </Center>
         <div
           css={css`
-            font-size: ${rem(20)};
+            font-size: ${rem(16)};
+            padding: ${rem(50)} 0;
+            font-weight: bold;
           `}
         >
           <Marquee text="PROFILE" />
         </div>
+        <Timeline />
       </Stack>
     </Container>
   );

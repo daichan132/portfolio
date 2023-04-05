@@ -63,6 +63,9 @@ export const FullscreenMenu = ({ open }: { open: boolean }) => {
     <AnimatePresence>
       {open && isActive && (
         <Box
+          onMouseEnter={() => {
+            setCursorData({ cursorVariant: 'default' });
+          }}
           sx={() => ({
             top: 0,
             bottom: 0,
@@ -84,23 +87,6 @@ export const FullscreenMenu = ({ open }: { open: boolean }) => {
             }}
             css={css`
               background-color: #ffffff;
-              background-image: linear-gradient(
-                  to right,
-                  #ffffff,
-                  #ffffff 10%,
-                  #f0f0f0 11%,
-                  #f0f0f0 12%,
-                  transparent 13%,
-                  transparent 87%,
-                  #f0f0f0 88%,
-                  #f0f0f0 89%,
-                  #ffffff 90%,
-                  #ffffff
-                ),
-                linear-gradient(to bottom, transparent, transparent 97%, #f0f0f0 98%, #f0f0f0);
-              background-size: 40px 40px;
-              background-repeat: repeat;
-              background-position: left top;
               width: 100%;
               height: 100%;
             `}
