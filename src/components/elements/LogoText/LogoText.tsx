@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useEffect, useState, type FC } from 'react';
+import { FC } from 'react';
 
 const style = () => css`
   white-space: nowrap;
@@ -22,22 +22,8 @@ export const LogoText: FC<LogoTextProps> = ({
   id = 'id',
   enabled = true,
 }) => {
-  const [isLayoutIdActive, setIsLayoutIdActive] = useState(true);
-
-  useEffect(() => {
-    if (initialism) {
-      setIsLayoutIdActive(true);
-    }
-    const timer = setTimeout(() => {
-      setIsLayoutIdActive(false);
-    }, 1000);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [initialism]);
-
   return (
-    <div css={style()}>
+    <motion.div layout layoutRoot transition={{ y: { type: false } }} css={style()}>
       <AnimatePresence initial={false}>
         {text.split(' ').map((word, wordIndex) =>
           word.split('').map((char, index) =>
@@ -45,7 +31,7 @@ export const LogoText: FC<LogoTextProps> = ({
               // eslint-disable-next-line react/no-array-index-key
               <span key={`${id}-${String(wordIndex)}-${index}`} className="text">
                 <motion.span
-                  layoutId={isLayoutIdActive ? `${id}-${String(wordIndex)}-${index}` : undefined}
+                  layoutId={`${id}-${String(wordIndex)}-${index}`}
                   variants={enabled ? listItem(index) : undefined}
                   initial="hidden"
                   animate="show"
@@ -64,6 +50,6 @@ export const LogoText: FC<LogoTextProps> = ({
           )
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 };

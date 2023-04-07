@@ -38,12 +38,12 @@ const useStyles = createStyles((theme) => ({
     maxWidth: 550,
   },
   mainText: {
-    fontSize: rem(24),
+    fontSize: rem(22),
     [theme.fn.smallerThan('md')]: {
-      fontSize: rem(22),
+      fontSize: rem(20),
     },
     [theme.fn.smallerThan('sm')]: {
-      fontSize: rem(20),
+      fontSize: rem(18),
     },
   },
   subText: {
@@ -99,14 +99,14 @@ export const IntroduceItem = ({
             }
           `}
         >
-          <ParallaxPc offset={30}>
+          <ParallaxPc offset={20}>
             <div className={classes.shadowBox} />
           </ParallaxPc>
-          <ParallaxPc offset={60}>
+          <ParallaxPc offset={40}>
             <div className="box-001" />
           </ParallaxPc>
 
-          <ParallaxPc offset={100}>
+          <ParallaxPc offset={60}>
             <Center className={classes.content}>
               <Icon style={{ height: '80%', transform: 'translate(0, 5px)' }} />
             </Center>

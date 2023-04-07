@@ -37,6 +37,7 @@ const App = ({ Component, pageProps }: AppProps) => {
                   boxSizing: 'border-box',
                 },
 
+                html: { scrollBehavior: 'smooth' },
                 body: {
                   ...theme.fn.fontStyles(),
                   fontFamily: `${font.style.fontFamily}`,

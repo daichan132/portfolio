@@ -59,7 +59,7 @@ const useStyles = createStyles((theme, { color }: { color: string }) => ({
     backgroundPosition: 'left top',
   },
   title: {
-    fontSize: rem(36),
+    fontSize: rem(32),
     [theme.fn.smallerThan('sm')]: {
       fontSize: rem(28),
     },
@@ -105,13 +105,13 @@ export const Work: FC<WorkProps> = ({
               }
             `}
           >
-            <ParallaxPc offset={30}>
+            <ParallaxPc offset={20}>
               <div className={classes.shadowBox} />
             </ParallaxPc>
-            <ParallaxPc offset={60}>
+            <ParallaxPc offset={40}>
               <div className={classes.box} />
             </ParallaxPc>
-            <ParallaxPc offset={80}>
+            <ParallaxPc offset={60}>
               <Center
                 css={css`
                   height: 100%;

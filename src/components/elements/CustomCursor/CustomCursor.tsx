@@ -6,7 +6,7 @@ import { cursorAtom } from '@/stores/cursorAtom';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
-const smCursorSize = 15;
+const smCursorSize = 16;
 const smallStyle = css`
   position: fixed;
   z-index: 1000;
@@ -29,6 +29,11 @@ const smallVariants = (x: number, y: number) => ({
   hover: {
     opacity: 1,
     scale: 5,
+    transition: {
+      type: 'spring',
+      damping: 15,
+      stiffness: 150,
+    },
     x: x - smCursorSize / 2,
     y: y - smCursorSize / 2,
   },
@@ -50,7 +55,7 @@ export const CustomCursor = () => {
       css={smallStyle}
       transition={{
         type: 'spring',
-        damping: 20,
+        damping: 25,
         stiffness: 150,
       }}
     />

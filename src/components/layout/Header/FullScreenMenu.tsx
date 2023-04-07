@@ -98,7 +98,29 @@ export const FullscreenMenu = ({ open }: { open: boolean }) => {
                 height: 100%;
               `}
             >
-              <div className={classes.container}>
+              <div
+                className={classes.container}
+                css={css`
+                  background-image: linear-gradient(
+                      to right,
+                      transparent,
+                      transparent 10%,
+                      #f0f0f0 11%,
+                      #f0f0f0 12%,
+                      transparent 13%,
+                      transparent 87%,
+                      #f0f0f0 88%,
+                      #f0f0f0 89%,
+                      transparent 90%,
+                      transparent
+                    ),
+                    linear-gradient(to bottom, transparent, transparent 97%, #f0f0f0 98%, #f0f0f0);
+                  background-size: 40px 40px;
+                  background-repeat: repeat;
+                  background-position: left top;
+                  padding: 100px;
+                `}
+              >
                 <Link
                   href="/"
                   className={classes.linkItem}

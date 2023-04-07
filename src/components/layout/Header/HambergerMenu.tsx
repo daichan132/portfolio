@@ -4,6 +4,7 @@ import { Center } from '@mantine/core';
 import { motion, useAnimation } from 'framer-motion';
 import { useAtom } from 'jotai';
 import { Dispatch, SetStateAction, useEffect } from 'react';
+import { useLockBodyScroll, useToggle } from 'react-use';
 
 const path01Variants = {
   open: { d: 'M3.06061 2.99999L21.0606 21' },
@@ -16,8 +17,14 @@ const path02Variants = {
   closed: { d: 'M0 14.5L15 14.5' },
 };
 const style = css`
-  background-color: transparent;
-  border: none;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 1000px;
+  width: 50px;
+  height: 50px;
+  .button {
+    transform: translate(0, 3px);
+  }
 `;
 
 export const HambergerMenu = ({
@@ -31,10 +38,14 @@ export const HambergerMenu = ({
 }) => {
   const path01Controls = useAnimation();
   const path02Controls = useAnimation();
+  const [locked, toggleLocked] = useToggle(false);
+
+  useLockBodyScroll(locked);
 
   const onClick = () => {
     setOpened(!opened);
     setPanelComplete(false);
+    toggleLocked();
   };
   useEffect(() => {
     const func = async () => {
@@ -53,10 +64,9 @@ export const HambergerMenu = ({
   const [, setCursorData] = useAtom(cursorAtom);
 
   return (
-    <Center>
+    <Center css={style}>
       <div
         onClick={onClick}
-        css={style}
         aria-hidden="true"
         onMouseEnter={() => {
           setCursorData({ cursorVariant: 'hover' });
@@ -64,6 +74,7 @@ export const HambergerMenu = ({
         onMouseLeave={() => {
           setCursorData({ cursorVariant: 'default' });
         }}
+        className="button"
       >
         <svg width="32" height="32" viewBox="0 0 24 24">
           <motion.path
