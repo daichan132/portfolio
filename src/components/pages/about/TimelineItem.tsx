@@ -3,7 +3,7 @@ import { YellowColor } from '@/utils/Colors';
 import { css } from '@emotion/react';
 import { Text, Flex, rem, Space, createStyles, Stack, useMantineTheme } from '@mantine/core';
 import { useElementSize, useMediaQuery } from '@mantine/hooks';
-import { motion, useScroll, useSpring } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { FC, ReactNode, useRef } from 'react';
 
 export type TimelineItemProps = {
@@ -49,11 +49,6 @@ export const TimelineItem: FC<TimelineItemProps> = ({
   color = YellowColor,
 }) => {
   const scrollRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: scrollRef,
-    offset: ['center end', 'end'],
-  });
-  const scaleY = useSpring(scrollYProgress, { damping: 300, stiffness: 1100 });
   const { classes } = useStyles();
   const { ref, height } = useElementSize();
   const theme = useMantineTheme();
@@ -94,7 +89,7 @@ export const TimelineItem: FC<TimelineItemProps> = ({
               strokeWidth={16}
               stroke={color}
               fill="#f0f0f0"
-              style={{ pathLength: sm ? 1 : scaleY }}
+              style={{ pathLength: 1 }}
             />
           </svg>
         </figure>
@@ -103,7 +98,7 @@ export const TimelineItem: FC<TimelineItemProps> = ({
         className={classes.contentBox}
         css={css`
           width: 100%;
-          height: ${height + 50}px;
+          height: ${height + 60}px;
           z-index: 1;
           .Parallax {
             position: absolute;
