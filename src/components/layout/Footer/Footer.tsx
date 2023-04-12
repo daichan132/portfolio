@@ -12,7 +12,7 @@ const useStyles = createStyles((theme) => ({
     marginTop: 'auto',
     borderTop: '1px solid',
     [theme.fn.smallerThan('sm')]: {
-      padding: '1em 0em',
+      padding: '0em 0em',
     },
   },
   container: {

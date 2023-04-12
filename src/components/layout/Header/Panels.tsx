@@ -9,7 +9,7 @@ const transition = { ease: [0.6, -0.05, 0.01, 0.9] };
 
 export const Panels = ({
   setPanelComplete,
-  num = 4,
+  num = 2,
 }: {
   setPanelComplete: Dispatch<SetStateAction<boolean>>;
   num?: number;

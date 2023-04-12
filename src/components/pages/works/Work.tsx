@@ -1,17 +1,21 @@
-import { createStyles, Grid, rem, Stack, Badge, Flex, Center } from '@mantine/core';
+import {
+  createStyles,
+  Grid,
+  rem,
+  Stack,
+  Badge,
+  Flex,
+  Center,
+  useMantineTheme,
+} from '@mantine/core';
 import { ReactNode, type FC } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
+import { useMediaQuery } from '@mantine/hooks';
 import { ExternalLinkCursor } from '../../elements/ExternalLink';
 import { ParallaxPc } from '../../elements/Parallax';
 
 const useStyles = createStyles((theme, { color }: { color: string }) => ({
-  container: {
-    transition: 'all 0.5s ease-in-out',
-    display: 'flex',
-    alignItems: 'center',
-    maxWidth: '1200px',
-  },
   contentBox: {
     position: 'relative',
     height: rem(350),
@@ -57,6 +61,8 @@ const useStyles = createStyles((theme, { color }: { color: string }) => ({
     backgroundSize: '40px 40px',
     backgroundRepeat: 'repeat',
     backgroundPosition: 'left top',
+    backgroundColor: 'white',
+    borderRadius: 5,
   },
   title: {
     fontSize: rem(32),
@@ -91,45 +97,51 @@ export const Work: FC<WorkProps> = ({
   reverse = false,
 }) => {
   const { classes } = useStyles({ color });
+  const theme = useMantineTheme();
+  const sm = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
+
   return (
-    <div className={classes.container}>
-      <Grid gutterSm={30} gutterMd={70} w="100%">
-        <Grid.Col span={12} sm={6} order={reverse ? 2 : 1}>
-          <div
-            className={classes.contentBox}
-            css={css`
-              .Parallax {
-                position: absolute;
+    <Grid gutter={rem(20)} gutterSm={rem(50)} gutterMd={rem(70)}>
+      <Grid.Col span={12} sm={6} md={5} order={reverse ? 2 : 1}>
+        <div
+          className={classes.contentBox}
+          css={css`
+            width: 100%;
+            .Parallax {
+              position: absolute;
+              height: 100%;
+              width: 100%;
+            }
+          `}
+        >
+          <ParallaxPc offset={25}>
+            <div className={classes.shadowBox} />
+          </ParallaxPc>
+          <ParallaxPc offset={50}>
+            <div className={classes.box} />
+          </ParallaxPc>
+          <ParallaxPc offset={75}>
+            <Center
+              css={css`
                 height: 100%;
                 width: 100%;
-              }
-            `}
-          >
-            <ParallaxPc offset={20}>
-              <div className={classes.shadowBox} />
-            </ParallaxPc>
-            <ParallaxPc offset={40}>
-              <div className={classes.box} />
-            </ParallaxPc>
-            <ParallaxPc offset={60}>
-              <Center
-                css={css`
-                  height: 100%;
-                  width: 100%;
-                `}
-              >
-                <div className={classes.content}>
-                  <Image fill src={src} alt={src} className={classes.image} />
-                </div>
-              </Center>
-            </ParallaxPc>
-          </div>
-        </Grid.Col>
-        <Grid.Col
-          span={12}
-          sm="auto"
-          order={reverse ? 1 : 2}
+              `}
+            >
+              <div className={classes.content}>
+                <Image fill src={src} alt={src} className={classes.image} />
+              </div>
+            </Center>
+          </ParallaxPc>
+        </div>
+      </Grid.Col>
+      <Grid.Col span={12} sm="auto" order={reverse ? 1 : 2}>
+        <div
           css={css`
+            position: relative;
+            height: ${sm ? '100' : '120'}%;
+            transform: ${sm ? '0' : 'translate(0, -10%)'};
+            padding: ${sm ? '2rem 2rem' : '1rem 3rem'};
+            width: 100%;
             .Parallax {
               height: 100%;
               width: 100%;
@@ -165,8 +177,8 @@ export const Work: FC<WorkProps> = ({
               </Flex>
             </Stack>
           </ParallaxPc>
-        </Grid.Col>
-      </Grid>
-    </div>
+        </div>
+      </Grid.Col>
+    </Grid>
   );
 };

@@ -1,9 +1,10 @@
 import { ExternalLinkCursor } from '@/components/elements';
 import { BlueColor, RedColor, YellowColor } from '@/utils/Colors';
 import { css } from '@emotion/react';
-import { Mark, rem, Stack, Text } from '@mantine/core';
+import { Mark, rem, Stack, Text, useMantineTheme } from '@mantine/core';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import React, { Fragment, useRef } from 'react';
+import { useMediaQuery } from '@mantine/hooks';
 import { TimelineItem, TimelineItemProps } from './TimelineItem';
 
 const timelineItemData: TimelineItemProps[] = [
@@ -55,25 +56,30 @@ export const Timeline = () => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['0 0.8', 'end'] });
   const scaleY = useSpring(scrollYProgress, { damping: 300, stiffness: 1100, restDelta: 0.001 });
+  const theme = useMantineTheme();
+  const sm = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
+
   return (
     <div
       css={css`
         position: relative;
       `}
     >
-      <motion.div
-        style={{ scaleY }}
-        css={css`
-          position: absolute;
-          left: 68px;
-          top: -75px;
-          width: 4px;
-          height: 100%;
-          background-color: black;
-          transform-origin: top;
-        `}
-      />
-      <Stack spacing={rem(60)} ref={ref}>
+      {!sm && (
+        <motion.div
+          style={{ scaleY }}
+          css={css`
+            position: absolute;
+            left: 68px;
+            top: -75px;
+            width: 4px;
+            height: 100%;
+            background-color: black;
+            transform-origin: top;
+          `}
+        />
+      )}
+      <Stack spacing={rem(30)} ref={ref}>
         {timelineItemData.map((props: TimelineItemProps) => (
           <Fragment key={props.title}>
             <TimelineItem {...props} />

@@ -14,6 +14,7 @@ const style = css`
     border: 2px solid;
     z-index: 1;
     border-radius: 5px;
+    background-color: white;
     &:before,
     &:after {
       content: '';

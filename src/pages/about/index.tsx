@@ -1,5 +1,5 @@
 import { IntroduceItem } from '@/components/pages/about/IntroduceItem';
-import { Box, Center, Container, rem, Stack, useMantineTheme } from '@mantine/core';
+import { Center, Container, rem, Stack, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import TeenagerIcon from 'public/36-Teenager.svg';
 import TeamworkIcon from 'public/58-Teamwork.svg';
@@ -21,13 +21,13 @@ const Home = () => {
     <Container
       size="xl"
       px="xs"
-      pt={sm ? rem(80) : rem(280)}
-      pb={sm ? rem(80) : rem(200)}
+      pt={sm ? rem(120) : rem(280)}
+      pb={sm ? rem(60) : rem(200)}
       css={css`
         width: 100%;
       `}
     >
-      <Stack spacing={sm ? rem(40) : rem(60)}>
+      <Stack spacing={sm ? rem(100) : rem(152)}>
         <IntroduceItem
           text="私の名前はdaichan132です。プログラミングが大好きな大学院生です。"
           subText="My name is daichan132. I am a graduate student who loves programming."
@@ -54,29 +54,17 @@ const Home = () => {
           reverse={!sm}
           color={YellowColor}
         />
-        <Center pt={rem(60)}>
+        <Center>
           <WorkButton />
         </Center>
-
         <div
           css={css`
             font-size: ${rem(16)};
-            padding: ${rem(80)} 0;
+            padding-bottom: ${rem(30)};
           `}
         >
           <Marquee text="PROFILE" />
         </div>
-
-        <Box pb={rem(32)}>
-          <div
-            css={css`
-              font-weight: bold;
-              font-size: ${rem(36)};
-            `}
-          >
-            Experience
-          </div>
-        </Box>
         <Timeline />
       </Stack>
     </Container>

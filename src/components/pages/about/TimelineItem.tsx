@@ -1,8 +1,8 @@
 import { ExternalLinkCursor, ParallaxPc } from '@/components/elements';
 import { YellowColor } from '@/utils/Colors';
 import { css } from '@emotion/react';
-import { Text, Flex, rem, Space, createStyles } from '@mantine/core';
-import { useElementSize } from '@mantine/hooks';
+import { Text, Flex, rem, Space, createStyles, Stack, useMantineTheme } from '@mantine/core';
+import { useElementSize, useMediaQuery } from '@mantine/hooks';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { FC, ReactNode, useRef } from 'react';
 
@@ -37,7 +37,7 @@ const useStyles = createStyles((theme) => ({
   title: {
     fontSize: rem(22),
     [theme.fn.smallerThan('sm')]: {
-      fontSize: rem(20),
+      fontSize: rem(18),
     },
     fontWeight: 'bold',
   },
@@ -58,12 +58,16 @@ export const TimelineItem: FC<TimelineItemProps> = ({
   const scaleY = useSpring(scrollYProgress, { damping: 300, stiffness: 1100 });
   const { classes } = useStyles();
   const { ref, height } = useElementSize();
+  const theme = useMantineTheme();
+  const sm = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
+
   return (
-    <div
+    <Stack
       ref={scrollRef}
       css={css`
-        padding-left: 160px;
+        padding-left: ${sm ? 0 : 160}px;
         position: relative;
+        max-width: 1200px;
         .Parallax {
           position: absolute;
           left: 0;
@@ -97,8 +101,8 @@ export const TimelineItem: FC<TimelineItemProps> = ({
         className={classes.contentBox}
         css={css`
           width: 100%;
-          height: ${height + 100}px;
-          max-width: 1000px;
+          height: ${height + 70}px;
+          z-index: 1;
           .Parallax {
             position: absolute;
             height: 100%;
@@ -106,42 +110,28 @@ export const TimelineItem: FC<TimelineItemProps> = ({
           }
         `}
       >
-        <ParallaxPc offset={20}>
+        <ParallaxPc offset={15}>
           <div className={classes.shadowBox} />
         </ParallaxPc>
-        <ParallaxPc offset={40}>
+        <ParallaxPc offset={30}>
           <div className={classes.box}>
             <div
               ref={ref}
               css={css`
                 width: 100%;
-                max-width: 1000px;
-                padding: ${rem(30)} ${rem(30)} ${rem(30)} ${rem(30)};
-                border: 2px solid;
+                padding: ${sm ? rem(20) : rem(30)};
+                border: 3px solid;
                 border-radius: 5px;
                 background-color: white;
-                background-image: linear-gradient(
-                    to right,
-                    transparent,
-                    transparent 10%,
-                    #f0f0f0 11%,
-                    #f0f0f0 12%,
-                    transparent 13%,
-                    transparent 87%,
-                    #f0f0f0 88%,
-                    #f0f0f0 89%,
-                    transparent 90%,
-                    transparent
-                  ),
-                  linear-gradient(to bottom, transparent, transparent 97%, #f0f0f0 98%, #f0f0f0);
-                background-size: 40px 40px;
-                background-repeat: repeat;
-                background-position: left top;
               `}
             >
-              <Flex gap={rem(20)} align="center" justify="space-between">
+              <Flex
+                direction={sm ? 'column' : 'row'}
+                gap={sm ? rem(10) : rem(20)}
+                align={sm ? 'start' : 'center'}
+                justify="space-between"
+              >
                 <div className={classes.title}>{title}</div>
-
                 <Flex gap={rem(20)} align="center">
                   <Text c="dimmed" size="sm">
                     {period}
@@ -150,17 +140,38 @@ export const TimelineItem: FC<TimelineItemProps> = ({
                 </Flex>
               </Flex>
               <Space h="MD" />
-              <div
-                css={css`
-                  padding: ${rem(20)} ${rem(10)} ${rem(20)} ${rem(10)};
-                `}
-              >
-                {children}
-              </div>
             </div>
           </div>
         </ParallaxPc>
       </div>
-    </div>
+      <div
+        css={css`
+          margin-top: ${rem(20)};
+          padding: ${sm ? rem(30) : rem(50)};
+          transform: translate(0, -50px);
+          background-image: linear-gradient(
+              to right,
+              transparent,
+              transparent 10%,
+              #f0f0f0 11%,
+              #f0f0f0 12%,
+              transparent 13%,
+              transparent 87%,
+              #f0f0f0 88%,
+              #f0f0f0 89%,
+              transparent 90%,
+              transparent
+            ),
+            linear-gradient(to bottom, transparent, transparent 97%, #f0f0f0 98%, #f0f0f0);
+          background-size: 40px 40px;
+          background-repeat: repeat;
+          background-position: left top;
+          background-color: #fbfbfb;
+          border-radius: 5px;
+        `}
+      >
+        {children}
+      </div>
+    </Stack>
   );
 };

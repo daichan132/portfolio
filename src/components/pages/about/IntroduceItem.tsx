@@ -36,6 +36,10 @@ const useStyles = createStyles((theme) => ({
     justifyContent: 'center',
     height: '100%',
     maxWidth: 550,
+    padding: '0 30px',
+    [theme.fn.smallerThan('sm')]: {
+      padding: '0 10px',
+    },
   },
   mainText: {
     fontSize: rem(22),
@@ -99,14 +103,14 @@ export const IntroduceItem = ({
             }
           `}
         >
-          <ParallaxPc offset={20}>
+          <ParallaxPc offset={25}>
             <div className={classes.shadowBox} />
           </ParallaxPc>
-          <ParallaxPc offset={40}>
+          <ParallaxPc offset={50}>
             <div className="box-001" />
           </ParallaxPc>
 
-          <ParallaxPc offset={60}>
+          <ParallaxPc offset={75}>
             <Center className={classes.content}>
               <Icon style={{ height: '80%', transform: 'translate(0, 5px)' }} />
             </Center>
@@ -116,7 +120,8 @@ export const IntroduceItem = ({
       <Grid.Col span={12} sm="auto" order={reverse ? 1 : 2}>
         <Center
           css={css`
-            height: 100%;
+            height: 120%;
+            transform: translate(0, -10%);
             background-image: linear-gradient(
                 to right,
                 transparent,
@@ -134,6 +139,8 @@ export const IntroduceItem = ({
             background-size: 40px 40px;
             background-repeat: repeat;
             background-position: left top;
+            background-color: #fbfbfb;
+            border-radius: 5px;
           `}
           px="md"
         >

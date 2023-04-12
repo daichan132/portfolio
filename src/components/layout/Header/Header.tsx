@@ -70,7 +70,7 @@ const useStyles = createStyles((theme, { initialism }: { initialism: boolean }) 
     transition: 'all 0.4s ease-in-out',
     lineHeight: '1',
     [theme.fn.smallerThan('sm')]: {
-      fontSize: '1.7rem',
+      fontSize: initialism ? rem(30) : rem(30),
     },
   },
   text: {
@@ -187,7 +187,7 @@ export const Header = () => {
               setCursorData({ cursorVariant: 'default' });
             }}
           >
-            <LogoText text="DAICHAN 132" initialism={!isTop} id="header" enabled={!sm} />
+            <LogoText text="DAICHAN 132" initialism={!isTop} id="header" enabled={!sm || isTop} />
           </Link>
           <AnimatePresence initial={false} mode="wait">
             {isTop && !sm ? (
