@@ -3,7 +3,7 @@ import { cursorAtom } from '@/stores/cursorAtom';
 import { createStyles, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useAtom } from 'jotai';
+import { useSetAtom } from 'jotai';
 import { useRouter } from 'next/router';
 import { Footer } from '../Footer';
 import { Header } from '../Header';
@@ -36,7 +36,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
 
   const router = useRouter();
   const path = router.pathname;
-  const [, setCursorData] = useAtom(cursorAtom);
+  const setCursorData = useSetAtom(cursorAtom);
   return (
     <>
       {!sm && <CustomCursor />}

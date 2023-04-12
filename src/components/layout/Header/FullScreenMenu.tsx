@@ -3,7 +3,7 @@ import { panelDuration } from '@/utils/Const';
 import { css } from '@emotion/react';
 import { Container, Box, rem, createStyles } from '@mantine/core';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useAtom } from 'jotai';
+import { useSetAtom } from 'jotai';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
@@ -20,7 +20,7 @@ const useStyles = createStyles(() => ({
     overflow: 'hidden',
     color: '#333333',
     textDecoration: 'none',
-    fontSize: rem(28),
+    fontSize: rem(24),
     position: 'relative',
     paddingBottom: '2px',
     '&::after': {
@@ -46,7 +46,7 @@ const useStyles = createStyles(() => ({
 export const FullscreenMenu = ({ open }: { open: boolean }) => {
   const { classes } = useStyles();
 
-  const [, setCursorData] = useAtom(cursorAtom);
+  const setCursorData = useSetAtom(cursorAtom);
   const [isActive, setActive] = useState(false);
 
   useEffect(() => {
@@ -120,7 +120,6 @@ export const FullscreenMenu = ({ open }: { open: boolean }) => {
                   background-position: left top;
                   padding: 100px;
                   background-color: white;
-                  border-radius: 5px;
                 `}
               >
                 <Link

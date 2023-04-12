@@ -14,13 +14,14 @@ const useStyles = createStyles((theme) => ({
     [theme.fn.smallerThan('sm')]: {
       height: rem(300),
     },
+    maxWidth: '500px',
+    margin: '0 auto',
   },
   shadowBox: {
     backgroundImage: 'url(/shadowPattern.svg)',
     width: '100%',
     height: '100%',
     transform: 'translate(10px, 30px)',
-    borderRadius: '5px',
     [theme.fn.smallerThan('sm')]: {
       display: 'none',
     },
@@ -35,10 +36,9 @@ const useStyles = createStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'center',
     height: '100%',
-    maxWidth: 550,
     padding: '0 30px',
     [theme.fn.smallerThan('sm')]: {
-      padding: '0 10px',
+      padding: '20px 20px',
     },
   },
   mainText: {
@@ -66,7 +66,6 @@ const style = (color: string) => css`
     position: relative;
     margin: 0 auto;
     border: 2px solid #e6edf3;
-    border-radius: 5px;
     overflow: auto;
     width: 100%;
     height: 100%;
@@ -99,7 +98,6 @@ export const IntroduceItem = ({
               position: absolute;
               height: 100%;
               width: 100%;
-              max-width: 550px;
             }
           `}
         >
@@ -120,35 +118,39 @@ export const IntroduceItem = ({
       <Grid.Col span={12} sm="auto" order={reverse ? 1 : 2}>
         <Center
           css={css`
-            height: 120%;
-            transform: translate(0, -10%);
-            background-image: linear-gradient(
-                to right,
-                transparent,
-                transparent 10%,
-                #f0f0f0 11%,
-                #f0f0f0 12%,
-                transparent 13%,
-                transparent 87%,
-                #f0f0f0 88%,
-                #f0f0f0 89%,
-                transparent 90%,
-                transparent
-              ),
-              linear-gradient(to bottom, transparent, transparent 97%, #f0f0f0 98%, #f0f0f0);
-            background-size: 40px 40px;
-            background-repeat: repeat;
-            background-position: left top;
-            background-color: #fbfbfb;
-            border-radius: 5px;
+            height: 110%;
+            transform: translate(0, -5%);
           `}
-          px="md"
         >
-          <div className={classes.textBox}>
-            <ParallaxPc offset={0}>
-              <div className={classes.mainText}>{text}</div>
-              <div className={classes.subText}>{subText}</div>
-            </ParallaxPc>
+          <div
+            css={css`
+              height: 100%;
+              background-image: linear-gradient(
+                  to right,
+                  transparent,
+                  transparent 10%,
+                  #f0f0f0 11%,
+                  #f0f0f0 12%,
+                  transparent 13%,
+                  transparent 87%,
+                  #f0f0f0 88%,
+                  #f0f0f0 89%,
+                  transparent 90%,
+                  transparent
+                ),
+                linear-gradient(to bottom, transparent, transparent 97%, #f0f0f0 98%, #f0f0f0);
+              background-size: 40px 40px;
+              background-repeat: repeat;
+              background-position: left top;
+              background-color: #fbfbfb;
+            `}
+          >
+            <div className={classes.textBox}>
+              <ParallaxPc offset={0}>
+                <div className={classes.mainText}>{text}</div>
+                <div className={classes.subText}>{subText}</div>
+              </ParallaxPc>
+            </div>
           </div>
         </Center>
       </Grid.Col>

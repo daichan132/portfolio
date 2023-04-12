@@ -22,7 +22,6 @@ const useStyles = createStyles((theme) => ({
     width: '100%',
     height: '100%',
     position: 'relative',
-    borderRadius: 5,
   },
   shadowBox: {
     backgroundImage: 'url(/shadowPattern.svg)',
@@ -32,7 +31,6 @@ const useStyles = createStyles((theme) => ({
     [theme.fn.smallerThan('sm')]: {
       display: 'none',
     },
-    borderRadius: 5,
   },
   title: {
     fontSize: rem(22),
@@ -65,7 +63,7 @@ export const TimelineItem: FC<TimelineItemProps> = ({
     <Stack
       ref={scrollRef}
       css={css`
-        padding-left: ${sm ? 0 : 160}px;
+        padding-left: ${sm ? 0 : 120}px;
         position: relative;
         max-width: 1200px;
         .Parallax {
@@ -75,7 +73,11 @@ export const TimelineItem: FC<TimelineItemProps> = ({
       `}
     >
       <ParallaxPc offset={20}>
-        <figure>
+        <figure
+          css={css`
+            transform: ${sm ? 'translate(-40px, -40px)' : undefined};
+          `}
+        >
           <svg
             width="60"
             height="60"
@@ -84,15 +86,15 @@ export const TimelineItem: FC<TimelineItemProps> = ({
               transform: rotate(-90deg);
             `}
           >
-            <circle cx="50" cy="50" r="40" fill="white" />
+            <circle cx="50" cy="50" r="40" fill="#f0f0f0" />
             <motion.circle
               cx="50"
               cy="50"
               r="30"
-              strokeWidth={7}
+              strokeWidth={16}
               stroke={color}
-              fill="white"
-              style={{ pathLength: scaleY }}
+              fill="#f0f0f0"
+              style={{ pathLength: sm ? 1 : scaleY }}
             />
           </svg>
         </figure>
@@ -101,7 +103,7 @@ export const TimelineItem: FC<TimelineItemProps> = ({
         className={classes.contentBox}
         css={css`
           width: 100%;
-          height: ${height + 70}px;
+          height: ${height + 50}px;
           z-index: 1;
           .Parallax {
             position: absolute;
@@ -119,9 +121,8 @@ export const TimelineItem: FC<TimelineItemProps> = ({
               ref={ref}
               css={css`
                 width: 100%;
-                padding: ${sm ? rem(20) : rem(30)};
-                border: 3px solid;
-                border-radius: 5px;
+                padding: ${sm ? rem(20) : rem(25)};
+                border: 2px solid;
                 background-color: white;
               `}
             >
@@ -133,9 +134,7 @@ export const TimelineItem: FC<TimelineItemProps> = ({
               >
                 <div className={classes.title}>{title}</div>
                 <Flex gap={rem(20)} align="center">
-                  <Text c="dimmed" size="sm">
-                    {period}
-                  </Text>
+                  <Text size="sm">{period}</Text>
                   {link && <ExternalLinkCursor href={link}>link</ExternalLinkCursor>}
                 </Flex>
               </Flex>
@@ -147,7 +146,9 @@ export const TimelineItem: FC<TimelineItemProps> = ({
       <div
         css={css`
           margin-top: ${rem(20)};
-          padding: ${sm ? rem(30) : rem(50)};
+          padding: ${sm ? rem(30) : rem(40)};
+          padding-top: ${sm ? rem(30) : rem(60)};
+          padding-bottom: ${sm ? rem(30) : rem(60)};
           transform: translate(0, -50px);
           background-image: linear-gradient(
               to right,

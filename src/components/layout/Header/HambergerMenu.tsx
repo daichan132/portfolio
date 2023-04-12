@@ -2,7 +2,7 @@ import { cursorAtom } from '@/stores/cursorAtom';
 import { css } from '@emotion/react';
 import { Center } from '@mantine/core';
 import { motion, useAnimation } from 'framer-motion';
-import { useAtom } from 'jotai';
+import { useSetAtom } from 'jotai';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useLockBodyScroll } from 'react-use';
 
@@ -19,7 +19,6 @@ const path02Variants = {
 const style = css`
   background-color: transparent;
   border: 2px solid black;
-  border-radius: 1000px;
   width: 45px;
   height: 45px;
   .button {
@@ -63,7 +62,7 @@ export const HambergerMenu = ({
     };
     func();
   }, [opened, path01Controls, path02Controls]);
-  const [, setCursorData] = useAtom(cursorAtom);
+  const setCursorData = useSetAtom(cursorAtom);
 
   return (
     <Center css={style}>

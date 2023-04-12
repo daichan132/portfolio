@@ -22,7 +22,7 @@ const Home = () => {
       size="xl"
       px="xs"
       pt={sm ? rem(120) : rem(280)}
-      pb={sm ? rem(60) : rem(200)}
+      pb={sm ? rem(60) : rem(120)}
       css={css`
         width: 100%;
       `}

@@ -31,7 +31,6 @@ const useStyles = createStyles((theme, { color }: { color: string }) => ({
     width: '100%',
     height: '100%',
     position: 'relative',
-    borderRadius: 5,
   },
   shadowBox: {
     backgroundImage: 'url(/shadowPattern.svg)',
@@ -41,14 +40,12 @@ const useStyles = createStyles((theme, { color }: { color: string }) => ({
     [theme.fn.smallerThan('sm')]: {
       display: 'none',
     },
-    borderRadius: 5,
   },
   content: {
     position: 'relative',
     width: '90%',
     height: '75%',
     overflow: 'hidden',
-    borderRadius: 5,
   },
   image: {
     objectFit: 'cover',
@@ -62,7 +59,6 @@ const useStyles = createStyles((theme, { color }: { color: string }) => ({
     backgroundRepeat: 'repeat',
     backgroundPosition: 'left top',
     backgroundColor: 'white',
-    borderRadius: 5,
   },
   title: {
     fontSize: rem(32),
@@ -102,7 +98,7 @@ export const Work: FC<WorkProps> = ({
 
   return (
     <Grid gutter={rem(20)} gutterSm={rem(50)} gutterMd={rem(70)}>
-      <Grid.Col span={12} sm={6} md={5} order={reverse ? 2 : 1}>
+      <Grid.Col span={12} sm={6} md={5.5} order={reverse ? 2 : 1}>
         <div
           className={classes.contentBox}
           css={css`

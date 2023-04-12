@@ -1,7 +1,7 @@
 import { cursorAtom } from '@/stores/cursorAtom';
 import { Container, createStyles, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
-import { useAtom } from 'jotai';
+import { useSetAtom } from 'jotai';
 import Link from 'next/link';
 import { type FC } from 'react';
 
@@ -51,7 +51,7 @@ export const Footer: FC = () => {
   const { classes } = useStyles();
   const theme = useMantineTheme();
   const sm = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
-  const [, setCursorData] = useAtom(cursorAtom);
+  const setCursorData = useSetAtom(cursorAtom);
   return (
     <footer className={classes.footer}>
       <Container size="xl" className={classes.container}>

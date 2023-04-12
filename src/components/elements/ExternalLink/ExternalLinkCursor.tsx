@@ -1,5 +1,5 @@
 import { cursorAtom } from '@/stores/cursorAtom';
-import { useAtom } from 'jotai';
+import { useSetAtom } from 'jotai';
 import { type FC } from 'react';
 import { ExternalLink, ExternalLinkProps } from './ExternalLink';
 
@@ -8,7 +8,7 @@ export const ExternalLinkCursor: FC<ExternalLinkProps> = ({
   href,
   color = '#333333',
 }) => {
-  const [, setCursorData] = useAtom(cursorAtom);
+  const setCursorData = useSetAtom(cursorAtom);
   return (
     <div
       onMouseEnter={() => {

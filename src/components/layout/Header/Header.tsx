@@ -6,7 +6,7 @@ import { css } from '@emotion/react';
 import { Container, createStyles, Flex, rem, Space, useMantineTheme, Box } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useAtom } from 'jotai';
+import { useSetAtom } from 'jotai';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -150,7 +150,7 @@ export const Header = () => {
     return (): void => document.removeEventListener('scroll', onScroll);
   });
 
-  const [, setCursorData] = useAtom(cursorAtom);
+  const setCursorData = useSetAtom(cursorAtom);
   const router = useRouter();
 
   useEffect(() => {

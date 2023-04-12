@@ -1,6 +1,6 @@
 import { cursorAtom } from '@/stores/cursorAtom';
 import { css } from '@emotion/react';
-import { useAtom } from 'jotai';
+import { useSetAtom } from 'jotai';
 import Link from 'next/link';
 
 const style = css`
@@ -13,7 +13,6 @@ const style = css`
     text-decoration: none;
     border: 2px solid;
     z-index: 1;
-    border-radius: 5px;
     background-color: white;
     &:before,
     &:after {
@@ -52,7 +51,7 @@ const style = css`
   }
 `;
 export const WorkButton = () => {
-  const [, setCursorData] = useAtom(cursorAtom);
+  const setCursorData = useSetAtom(cursorAtom);
   return (
     <div css={style}>
       <Link
