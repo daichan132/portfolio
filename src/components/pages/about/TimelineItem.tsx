@@ -88,7 +88,7 @@ export const TimelineItem: FC<TimelineItemProps> = ({
               r="30"
               strokeWidth={16}
               stroke={color}
-              fill="#f0f0f0"
+              fill="#fff"
               style={{ pathLength: 1 }}
             />
           </svg>
@@ -162,7 +162,6 @@ export const TimelineItem: FC<TimelineItemProps> = ({
           background-size: 40px 40px;
           background-repeat: repeat;
           background-position: left top;
-          background-color: #fbfbfb;
           border-radius: 5px;
         `}
       >

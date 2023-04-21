@@ -14,7 +14,7 @@ const useStyles = createStyles(() => ({
     flexDirection: 'column',
     minHeight: '100vh',
     overflow: 'hidden',
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#fff',
     // backgroundImage:
     //   'linear-gradient(to right,#ffffff,#ffffff 10%,#f0f0f0 11%,#f0f0f0 12%,transparent 13%,transparent 87%,#f0f0f0 88%,#f0f0f0 89%,#ffffff 90%,#ffffff),   linear-gradient(to bottom,transparent,transparent 97%,#f0f0f0 98%,#f0f0f0)',
     // backgroundSize: '40px 40px',
