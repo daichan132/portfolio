@@ -16,7 +16,7 @@ const smallStyle = css`
   mix-blend-mode: exclusion;
   transition: background-color 0.3s;
   pointer-events: none;
-  border: 1px solid;
+  border: 2px solid;
 `;
 
 const smallVariants = (x: number, y: number, idle: boolean) => ({
@@ -33,8 +33,8 @@ const smallVariants = (x: number, y: number, idle: boolean) => ({
     width: `${smCursorSize * 5}px`,
     transition: {
       type: 'spring',
-      damping: 15,
-      stiffness: 150,
+      damping: 17,
+      stiffness: 170,
     },
     x: x - (smCursorSize * 5) / 2,
     y: y - (smCursorSize * 5) / 2,
@@ -57,8 +57,8 @@ export const CustomCursor = () => {
       css={smallStyle}
       transition={{
         type: 'spring',
-        damping: 25,
-        stiffness: 150,
+        damping: 20,
+        stiffness: 170,
       }}
     />
   );

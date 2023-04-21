@@ -86,7 +86,7 @@ export const FullscreenMenu = ({ open }: { open: boolean }) => {
               transition: { delay: panelDuration / 2 },
             }}
             css={css`
-              background-color: #f0f0f0;
+              background-color: #fff;
               width: 100%;
               height: 100%;
             `}
