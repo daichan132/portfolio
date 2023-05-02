@@ -264,7 +264,7 @@ export const Header = () => {
                   animate="show"
                   exit="hidden"
                   transition={{
-                    duration: 0.3,
+                    duration: 0.4,
                   }}
                 >
                   <motion.div variants={linkVariants}>
@@ -321,7 +321,7 @@ export const Header = () => {
                   animate="show"
                   exit="hidden"
                   transition={{
-                    duration: 0.3,
+                    duration: 0.4,
                   }}
                 >
                   <HambergerMenu

@@ -9,7 +9,7 @@ const style = () => css`
 const listItem = (index: number) => {
   return {
     hidden: { opacity: 0 },
-    show: { opacity: 1, transition: { delay: 0.2 + index * 0.02 } },
+    show: { opacity: 1, transition: { delay: 0.2 + index * 0.05 } },
     exit: { opacity: 0 },
   };
 };
@@ -37,7 +37,7 @@ export const LogoText: FC<LogoTextProps> = ({
                   animate="show"
                   exit="exit"
                   transition={{
-                    duration: 0.4,
+                    duration: 0.5,
                   }}
                   style={{
                     display: 'inline-block',

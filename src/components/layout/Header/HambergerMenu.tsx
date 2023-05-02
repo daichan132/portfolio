@@ -3,8 +3,7 @@ import { css } from '@emotion/react';
 import { Center } from '@mantine/core';
 import { motion, useAnimation } from 'framer-motion';
 import { useSetAtom } from 'jotai';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { useLockBodyScroll } from 'react-use';
+import { Dispatch, SetStateAction, useEffect } from 'react';
 
 const path01Variants = {
   open: { d: 'M3.06061 2.99999L21.0606 21' },
@@ -37,17 +36,11 @@ export const HambergerMenu = ({
 }) => {
   const path01Controls = useAnimation();
   const path02Controls = useAnimation();
-  const [locked, setLocked] = useState(false);
-
-  useLockBodyScroll(locked);
 
   const onClick = () => {
     setOpened(!opened);
     setPanelComplete(false);
   };
-  useEffect(() => {
-    setLocked(opened);
-  }, [opened]);
   useEffect(() => {
     const func = async () => {
       if (opened) {
