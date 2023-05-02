@@ -10,7 +10,6 @@ const useStyles = createStyles((theme) => ({
     width: '100%',
     boxSizing: 'border-box',
     marginTop: 'auto',
-    borderTop: '1px solid',
     [theme.fn.smallerThan('sm')]: {
       padding: '0em 0em',
     },

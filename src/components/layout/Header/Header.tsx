@@ -65,7 +65,6 @@ const useStyles = createStyles((theme, { initialism }: { initialism: boolean }) 
   logo: {
     zIndex: 99,
     color: '#333333',
-    fontWeight: 'bold',
     fontSize: initialism ? rem(40) : rem(56),
     transition: 'all 0.4s ease-in-out',
     lineHeight: '1',

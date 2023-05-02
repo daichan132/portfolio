@@ -10,7 +10,6 @@ import { WorkButton } from '@/components/pages/about/WorkButton';
 import { css } from '@emotion/react';
 import { BlueColor, RedColor, YellowColor } from '@/utils/Colors';
 import { Timeline } from '@/components/pages/about/Timeline';
-import { Marquee } from '@/components/elements';
 
 // https://designs.ai/graphicmaker/illustrations/Duotone_Cartoon_Set
 const Home = () => {
@@ -21,8 +20,8 @@ const Home = () => {
     <Container
       size="xl"
       px="xs"
-      pt={sm ? rem(120) : rem(280)}
-      pb={sm ? rem(60) : rem(120)}
+      pt={sm ? rem(120) : rem(340)}
+      pb={sm ? rem(60) : rem(100)}
       css={css`
         width: 100%;
       `}
@@ -57,14 +56,7 @@ const Home = () => {
         <Center>
           <WorkButton />
         </Center>
-        <div
-          css={css`
-            font-size: ${rem(16)};
-            padding-bottom: ${rem(30)};
-          `}
-        >
-          <Marquee text="PROFILE" />
-        </div>
+        <div />
         <Timeline />
       </Stack>
     </Container>

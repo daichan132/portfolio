@@ -17,7 +17,6 @@ const path02Variants = {
 };
 const style = css`
   background-color: transparent;
-  border: 2px solid black;
   width: 45px;
   height: 45px;
   .button {
