@@ -1,5 +1,5 @@
 import { IntroduceItem } from '@/components/pages/about/IntroduceItem';
-import { Center, Container, rem, Stack, useMantineTheme } from '@mantine/core';
+import { Box, Center, Container, rem, Stack, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import TeenagerIcon from 'public/36-Teenager.svg';
 import TeamworkIcon from 'public/58-Teamwork.svg';
@@ -56,8 +56,9 @@ const Home = () => {
         <Center>
           <WorkButton />
         </Center>
-        <div />
-        <Timeline />
+        <Box pt={100} pb={30}>
+          <Timeline />
+        </Box>
       </Stack>
     </Container>
   );

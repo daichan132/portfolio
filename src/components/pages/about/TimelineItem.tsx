@@ -33,9 +33,9 @@ const useStyles = createStyles((theme) => ({
     },
   },
   title: {
-    fontSize: rem(22),
+    fontSize: rem(18),
     [theme.fn.smallerThan('sm')]: {
-      fontSize: rem(18),
+      fontSize: rem(16),
     },
     fontWeight: 'bold',
   },
@@ -70,7 +70,7 @@ export const TimelineItem: FC<TimelineItemProps> = ({
       <ParallaxPc offset={20}>
         <figure
           css={css`
-            transform: ${sm ? 'translate(-40px, -40px)' : undefined};
+            transform: ${sm ? 'translate(-40px, -40px)' : 'translate(0px, -10px)'};
           `}
         >
           <svg
@@ -81,11 +81,10 @@ export const TimelineItem: FC<TimelineItemProps> = ({
               transform: rotate(-90deg);
             `}
           >
-            <circle cx="50" cy="50" r="40" fill="#f0f0f0" />
             <motion.circle
               cx="50"
               cy="50"
-              r="30"
+              r="20"
               strokeWidth={16}
               stroke={color}
               fill="#fff"
@@ -98,7 +97,7 @@ export const TimelineItem: FC<TimelineItemProps> = ({
         className={classes.contentBox}
         css={css`
           width: 100%;
-          height: ${height + 60}px;
+          height: ${height + 50}px;
           z-index: 1;
           .Parallax {
             position: absolute;
@@ -110,13 +109,13 @@ export const TimelineItem: FC<TimelineItemProps> = ({
         <ParallaxPc offset={15}>
           <div className={classes.shadowBox} />
         </ParallaxPc>
-        <ParallaxPc offset={30}>
+        <ParallaxPc offset={25}>
           <div className={classes.box}>
             <div
               ref={ref}
               css={css`
                 width: 100%;
-                padding: ${sm ? rem(20) : rem(25)};
+                padding: ${sm ? rem(16) : rem(20)};
                 border: 2px solid;
                 background-color: white;
               `}
@@ -143,7 +142,7 @@ export const TimelineItem: FC<TimelineItemProps> = ({
           margin-top: ${rem(20)};
           padding: ${sm ? rem(30) : rem(40)};
           padding-top: ${sm ? rem(30) : rem(60)};
-          padding-bottom: ${sm ? rem(30) : rem(60)};
+          padding-bottom: ${sm ? rem(30) : rem(30)};
           transform: translate(0, -50px);
           background-image: linear-gradient(
               to right,
