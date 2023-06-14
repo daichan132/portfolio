@@ -1,11 +1,11 @@
 /* eslint-disable react/no-array-index-key */
-import { ExternalLinkCursor } from '@/components/elements';
-import { Work, WorkProps } from '@/components/pages/works/Work';
-import { BlueColor, YellowColor } from '@/utils/Colors';
 import { Container, List, Mark, rem, Stack, Text, Title, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { motion } from 'framer-motion';
 import { Fragment } from 'react';
+import { BlueColor, YellowColor } from '@/utils/Colors';
+import { Work, WorkProps } from '@/components/pages/works/Work';
+import { ExternalLinkCursor } from '@/components/elements';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -72,7 +72,7 @@ const Home = () => {
     },
   ];
   return (
-    <Container size="xl" pt={sm ? rem(120) : rem(340)} pb={sm ? rem(60) : rem(260)}>
+    <Container size="xl" pt={sm ? rem(120) : rem(300)} pb={sm ? rem(60) : rem(260)}>
       <motion.div variants={containerVariants} initial="hidden" animate="show">
         <Stack spacing={sm ? rem(80) : rem(200)}>
           {worksData.map((props: WorkProps) => (
