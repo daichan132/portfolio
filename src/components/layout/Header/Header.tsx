@@ -207,7 +207,7 @@ export const Header = () => {
                     duration: 0.5,
                   }}
                 >
-                  <Flex w={300} justify="space-between">
+                  <Flex gap="sm">
                     <Clock />
                     <a
                       href="mailto:daichan133322@gmail.com"

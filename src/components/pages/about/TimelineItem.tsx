@@ -3,7 +3,6 @@ import { YellowColor } from '@/utils/Colors';
 import { css } from '@emotion/react';
 import { Text, Flex, rem, Space, createStyles, Stack, useMantineTheme } from '@mantine/core';
 import { useElementSize, useMediaQuery } from '@mantine/hooks';
-import { motion } from 'framer-motion';
 import { FC, ReactNode, useRef } from 'react';
 
 export type TimelineItemProps = {
@@ -22,12 +21,14 @@ const useStyles = createStyles((theme) => ({
     width: '100%',
     height: '100%',
     position: 'relative',
+    paddingLeft: 20,
   },
   shadowBox: {
+    width: '98%',
     backgroundImage: 'url(/shadowPattern.svg)',
-    width: '100%',
     height: '100%',
-    transform: 'translate(10px,10px)',
+    transform: 'translate(10px,0px)',
+    marginLeft: 20,
     [theme.fn.smallerThan('sm')]: {
       display: 'none',
     },
@@ -58,9 +59,10 @@ export const TimelineItem: FC<TimelineItemProps> = ({
     <Stack
       ref={scrollRef}
       css={css`
-        padding-left: ${sm ? 0 : 120}px;
         position: relative;
-        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        width: ${sm ? 100 : 90}%;
         .Parallax {
           position: absolute;
           left: 0;
@@ -70,26 +72,19 @@ export const TimelineItem: FC<TimelineItemProps> = ({
       <ParallaxPc offset={20}>
         <figure
           css={css`
-            transform: ${sm ? 'translate(-40px, -40px)' : 'translate(0px, -10px)'};
+            transform: ${sm ? 'translate(-40px, -40px)' : 'translate(-40px, -40px)'};
           `}
         >
           <svg
             width="60"
             height="60"
             viewBox="0 0 100 100"
+            fill={color}
             css={css`
               transform: rotate(-90deg);
             `}
           >
-            <motion.circle
-              cx="50"
-              cy="50"
-              r="20"
-              strokeWidth={16}
-              stroke={color}
-              fill="#fff"
-              style={{ pathLength: 1 }}
-            />
+            <rect width="80" height="80" />
           </svg>
         </figure>
       </ParallaxPc>
@@ -115,7 +110,7 @@ export const TimelineItem: FC<TimelineItemProps> = ({
               ref={ref}
               css={css`
                 width: 100%;
-                padding: ${sm ? rem(16) : rem(20)};
+                padding: ${sm ? rem(12) : rem(16)};
                 border: 2px solid;
                 background-color: white;
               `}

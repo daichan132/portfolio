@@ -33,7 +33,10 @@ export const SmoothScroll: FC<SmoothScrollProps> = ({ children, enabled = true }
   }, [scrollRef, resizePageHeight, enabled]);
   const { scrollY } = useScroll();
   const transform = useTransform(scrollY, [0, pageHeight], [0, -pageHeight]);
-  const physics = { damping: 250, stiffness: 1300 };
+  const physics = {
+    damping: 250,
+    stiffness: 1500,
+  };
   const spring = useSpring(transform, physics);
 
   if (!enabled) {

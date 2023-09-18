@@ -1,4 +1,4 @@
-import { CustomCursor, SmoothScroll } from '@/components/elements';
+import { CustomCursor } from '@/components/elements';
 import { cursorAtom } from '@/stores/cursorAtom';
 import { createStyles, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
@@ -43,28 +43,26 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
 
       <Header />
 
-      <SmoothScroll enabled={!sm}>
-        <div className={classes.main}>
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.main
-              variants={variants}
-              initial="hidden"
-              animate="enter"
-              exit="exit"
-              transition={{
-                duration: 0.4,
-              }}
-              key={path}
-              onMouseEnter={() => {
-                setCursorData({ cursorVariant: 'default' });
-              }}
-            >
-              {children}
-              {path !== '/' && <Footer />}
-            </motion.main>
-          </AnimatePresence>
-        </div>
-      </SmoothScroll>
+      <div className={classes.main}>
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.main
+            variants={variants}
+            initial="hidden"
+            animate="enter"
+            exit="exit"
+            transition={{
+              duration: 0.4,
+            }}
+            key={path}
+            onMouseEnter={() => {
+              setCursorData({ cursorVariant: 'default' });
+            }}
+          >
+            {children}
+            {path !== '/' && <Footer />}
+          </motion.main>
+        </AnimatePresence>
+      </div>
     </>
   );
 };
