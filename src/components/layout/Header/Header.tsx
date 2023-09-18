@@ -175,7 +175,7 @@ export const Header = () => {
   return (
     <header className={classes.header}>
       <Container size="xl" className={classes.container}>
-        <div>
+        <Box pl="sm">
           <Link
             href="/"
             className={classes.logo}
@@ -246,7 +246,7 @@ export const Header = () => {
               </motion.div>
             ) : null}
           </AnimatePresence>
-        </div>
+        </Box>
         <div>
           <div
             css={css`

@@ -157,6 +157,7 @@ export const TimelineItem: FC<TimelineItemProps> = ({
           background-repeat: repeat;
           background-position: left top;
           border-radius: 5px;
+          background-color: white;
         `}
       >
         {children}

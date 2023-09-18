@@ -142,6 +142,7 @@ export const IntroduceItem = ({
               background-size: 40px 40px;
               background-repeat: repeat;
               background-position: left top;
+              background-color: white;
             `}
           >
             <div className={classes.textBox}>

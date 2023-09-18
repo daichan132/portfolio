@@ -56,7 +56,7 @@ const Home = () => {
         <Center>
           <WorkButton />
         </Center>
-        <Box pt={50} pb={30}>
+        <Box pt={0} pb={30}>
           <Timeline />
         </Box>
       </Stack>

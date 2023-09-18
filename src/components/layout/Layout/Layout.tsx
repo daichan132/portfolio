@@ -14,13 +14,13 @@ const useStyles = createStyles(() => ({
     flexDirection: 'column',
     minHeight: '100vh',
     overflow: 'hidden',
-    backgroundColor: '#fff',
-    // backgroundImage:
-    //   'linear-gradient(to right,#ffffff,#ffffff 10%,#f0f0f0 11%,#f0f0f0 12%,transparent 13%,transparent 87%,#f0f0f0 88%,#f0f0f0 89%,#ffffff 90%,#ffffff),   linear-gradient(to bottom,transparent,transparent 97%,#f0f0f0 98%,#f0f0f0)',
-    // backgroundSize: '40px 40px',
-    // backgroundRepeat: 'repeat',
-    // backgroundPosition: 'left top',
+    backgroundImage: "url('/6.png')",
+    backgroundRepeat: 'repeat',
+    backgroundSize: '500px',
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    backgroundBlendMode: 'lighten',
   },
+  background: {},
 }));
 
 const variants = {
@@ -46,6 +46,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
       <div className={classes.main}>
         <AnimatePresence mode="wait" initial={false}>
           <motion.main
+            className={classes.background}
             variants={variants}
             initial="hidden"
             animate="enter"
