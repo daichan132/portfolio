@@ -33,7 +33,7 @@ const Home = () => {
   const worksData: WorkProps[] = [
     {
       src: '/portfolio.png',
-      color: YellowColor,
+      color: BlueColor,
       title: 'Portfolio',
       skills: ['Nextjs', 'Typescript', 'framer motion', 'Design'],
       githubLink: 'https://github.com/daichan132/portfolio',
@@ -46,7 +46,7 @@ const Home = () => {
     },
     {
       src: '/vroom.png',
-      color: BlueColor,
+      color: YellowColor,
       title: 'VRooM',
       skills: ['Nextjs', 'Typescript', 'zustand', 'Threejs'],
       link: 'https://jphacks-2022-4839e.web.app/',

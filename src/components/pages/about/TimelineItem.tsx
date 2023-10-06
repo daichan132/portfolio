@@ -134,7 +134,7 @@ export const TimelineItem: FC<TimelineItemProps> = ({
       </div>
       <div
         css={css`
-          margin-top: ${rem(20)};
+          margin-top: ${rem(10)};
           padding: ${sm ? rem(30) : rem(40)};
           padding-top: ${sm ? rem(30) : rem(60)};
           padding-bottom: ${sm ? rem(30) : rem(30)};

@@ -7,6 +7,16 @@ import { TimelineItem, TimelineItemProps } from './TimelineItem';
 
 const timelineItemData: TimelineItemProps[] = [
   {
+    title: '楽天グループ株式会社の長期インターン',
+    period: '01/08/2023 ~ 22/09/2023',
+    color: RedColor,
+    children: (
+      <Text>
+        楽天グループ株式会社で約2ヶ月間の間、長期インターンとしてLLMを用いたプロダクト開発のプロジェクトに参加させていただきました。
+      </Text>
+    ),
+  },
+  {
     title: '東北大学 大学院情報科学研究科',
     period: '2023-Present',
     link: 'https://www.is.tohoku.ac.jp/',
@@ -59,7 +69,7 @@ export const Timeline = () => {
         position: relative;
       `}
     >
-      <Stack spacing={rem(0)} ref={ref}>
+      <Stack spacing={rem(30)} ref={ref}>
         {timelineItemData.map((props: TimelineItemProps) => (
           <Fragment key={props.title}>
             <TimelineItem {...props} />

@@ -8,11 +8,12 @@ const Home = () => {
   const sm = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
 
   return (
-    <Container size="xl" px="xs" pt={sm ? rem(120) : rem(200)} pb={sm ? rem(52) : rem(100)}>
+    <Container size="xl">
       <Center
         css={css`
           pointer-events: none;
         `}
+        h="100vh"
       >
         <Image
           src="/main-image/IMG_1182.PNG"
