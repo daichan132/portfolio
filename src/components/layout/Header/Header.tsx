@@ -22,10 +22,10 @@ const useStyles = createStyles((theme, { initialism }: { initialism: boolean }) 
     zIndex: 100,
     width: '100%',
     boxSizing: 'border-box',
-    padding: '0 2em 3em 0',
+    padding: '0 2em 0 1em',
     transition: 'all 0.5s ease',
     [theme.fn.smallerThan('sm')]: {
-      padding: '0 0em',
+      padding: '0.25em',
     },
   },
   container: {
@@ -175,7 +175,7 @@ export const Header = () => {
   return (
     <header className={classes.header}>
       <Container size="xl" className={classes.container}>
-        <Box pl="sm">
+        <Box pl="sm" pt="0.25em">
           <Link
             href="/"
             className={classes.logo}

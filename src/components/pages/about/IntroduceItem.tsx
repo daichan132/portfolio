@@ -70,7 +70,8 @@ const style = (color: string) => css`
     width: 100%;
     height: 100%;
     background-color: white;
-    border: 20px solid ${color};
+    border-color: ${color};
+    border-width: 40px 24px;
   }
 `;
 export const IntroduceItem = ({
@@ -97,7 +98,7 @@ export const IntroduceItem = ({
             .Parallax {
               position: absolute;
               height: 100%;
-              width: 100%;
+              width: 95%;
             }
           `}
         >
