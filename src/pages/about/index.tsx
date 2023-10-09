@@ -26,7 +26,7 @@ const Home = () => {
         width: 100%;
       `}
     >
-      <Stack spacing={sm ? rem(100) : rem(152)}>
+      <Stack spacing={sm ? rem(100) : rem(160)}>
         <IntroduceItem
           text="私の名前はdaichan132です。プログラミングが大好きな大学院生です。"
           subText="My name is daichan132. I am a graduate student who loves programming."
@@ -38,7 +38,6 @@ const Home = () => {
           subText="I am passionate about programming because I like the fact that I can put my ideas and thoughts into code and give them shape."
           Icon={ProgrammerIcon}
           color={YellowColor}
-          reverse={!sm}
         />
         <IntroduceItem
           text="人の思いや独創性の詰まった物が大好きで、そういったプロダクトを作ることが目標です。"
@@ -50,7 +49,6 @@ const Home = () => {
           text="ここまで見てくれてありがとうございます。私が作ってきた作品も見ていただけると嬉しいです！"
           subText="Thanks for taking the time to look this far. I hope you'll take a look at some of the pieces I've been working on too!"
           Icon={AdventurerIcon}
-          reverse={!sm}
           color={BlueColor}
         />
         <Center>

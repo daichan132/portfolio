@@ -14,7 +14,7 @@ const useStyles = createStyles((theme) => ({
     [theme.fn.smallerThan('sm')]: {
       height: rem(300),
     },
-    maxWidth: '500px',
+    maxWidth: '540px',
     margin: '0 auto',
   },
   shadowBox: {
