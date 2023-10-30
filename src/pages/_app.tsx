@@ -4,6 +4,7 @@ import '@/styles/globals.css';
 import { Layout } from '@/components/layout';
 import { ColorScheme, ColorSchemeProvider, MantineProvider } from '@mantine/core';
 import { Provider } from 'jotai';
+import Head from 'next/head';
 // eslint-disable-next-line camelcase
 import { Zen_Kaku_Gothic_New } from 'next/font/google';
 import { useState } from 'react';
@@ -18,37 +19,52 @@ const App = ({ Component, pageProps }: AppProps) => {
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
   return (
-    <Provider>
-      <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
-        <MantineProvider
-          withGlobalStyles
-          withNormalizeCSS
-          theme={{
-            globalStyles: (theme) => ({
-              '*, *::before, *::after': {
-                boxSizing: 'border-box',
-              },
+    <>
+      <Head>
+        <title>DAICHAN132-PF</title>
+        <meta charSet="utf-8" />
+        <meta property="og:image" content="/main-image/IMG_1182.PNG" />
+        <meta property="og:title" content="DAICHAN132-PF" />
+        <meta property="og:url" content="daichan132.com" />
+        <meta property="og:description" content="daichan132's portfolio-若山大智" />
+        <meta property="og:type" content="website" />
+        <meta name="language" content="Japanese" />
+        <meta name="description" content="daichan132's portfolio" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Provider>
+        <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
+          <MantineProvider
+            withGlobalStyles
+            withNormalizeCSS
+            theme={{
+              globalStyles: (theme) => ({
+                '*, *::before, *::after': {
+                  boxSizing: 'border-box',
+                },
 
-              html: { scrollBehavior: 'smooth' },
-              body: {
-                ...theme.fn.fontStyles(),
-                fontFamily: `${font.style.fontFamily}`,
-                color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : '#333333',
-                lineHeight: 1.5,
-                letterSpacing: '0.05rem',
-              },
-              '.globalFont': {
-                '*': { fontFamily: `${font.style.fontFamily}` },
-              },
-            }),
-          }}
-        >
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </MantineProvider>
-      </ColorSchemeProvider>
-    </Provider>
+                html: { scrollBehavior: 'smooth' },
+                body: {
+                  ...theme.fn.fontStyles(),
+                  fontFamily: `${font.style.fontFamily}`,
+                  color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : '#333333',
+                  lineHeight: 1.5,
+                  letterSpacing: '0.05rem',
+                },
+                '.globalFont': {
+                  '*': { fontFamily: `${font.style.fontFamily}` },
+                },
+              }),
+            }}
+          >
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </MantineProvider>
+        </ColorSchemeProvider>
+      </Provider>
+    </>
   );
 };
 
