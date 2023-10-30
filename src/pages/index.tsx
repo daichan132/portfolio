@@ -15,12 +15,7 @@ const Home = () => {
         `}
         h="100vh"
       >
-        <Image
-          src="/main-image/IMG_1182.PNG"
-          width={500}
-          height={500}
-          alt="Picture of the author"
-        />
+        <Image src="/main-image/IMG_1182.PNG" width={500} height={500} alt="若山大智" />
       </Center>
     </Container>
   );
