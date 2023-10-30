@@ -22,7 +22,9 @@ const App = ({ Component, pageProps }: AppProps) => {
     <>
       <Head>
         <title>DAICHAN132-PF</title>
-        <meta name="description" content="daichan132's portfolio" />
+        <meta charSet="utf-8" />
+        <meta name="language" content="Japanese" />
+        <meta name="description" content="daichan132's portfolio-若山大智" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
