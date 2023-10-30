@@ -18,7 +18,7 @@ const useStyles = createStyles(() => ({
     backgroundImage: "url('/6.png')",
     backgroundRepeat: 'repeat',
     backgroundSize: '500px',
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    backgroundColor: 'rgba(244, 244, 244, 0.8)',
     backgroundBlendMode: 'lighten',
   },
   background: {},

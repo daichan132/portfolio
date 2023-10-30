@@ -66,6 +66,7 @@ export const TimelineItem: FC<TimelineItemProps> = ({
         .Parallax {
           position: absolute;
           left: 0;
+          z-index: 1;
         }
       `}
     >
@@ -137,10 +138,11 @@ export const TimelineItem: FC<TimelineItemProps> = ({
       <div
         css={css`
           margin-top: ${rem(10)};
+          margin-left: 10px;
           padding: ${sm ? rem(30) : rem(40)};
           padding-top: ${sm ? rem(30) : rem(60)};
           padding-bottom: ${sm ? rem(30) : rem(30)};
-          transform: translate(0, -50px);
+          transform: translate(0, -70px);
           background-image: linear-gradient(
               to right,
               transparent,
@@ -158,7 +160,6 @@ export const TimelineItem: FC<TimelineItemProps> = ({
           background-size: 40px 40px;
           background-repeat: repeat;
           background-position: left top;
-          border-radius: 5px;
           background-color: white;
         `}
       >
