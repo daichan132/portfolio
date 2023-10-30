@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useSetAtom } from 'jotai';
 import { useRouter } from 'next/router';
 import { Analytics } from '@vercel/analytics/react';
+import Head from 'next/head';
 import { Footer } from '../Footer';
 import { Header } from '../Header';
 
@@ -40,6 +41,20 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
   const setCursorData = useSetAtom(cursorAtom);
   return (
     <>
+      <Head>
+        <title>DAICHAN132-PF</title>
+        <meta charSet="utf-8" />
+        <meta property="og:image" content="/main-image/IMG_1182.PNG" />
+        <meta property="og:title" content="DAICHAN132-PF" />
+        <meta property="og:url" content="daichan132.com" />
+        <meta property="og:description" content="daichan132's portfolio-若山大智" />
+        <meta property="og:type" content="website" />
+        <meta name="language" content="Japanese" />
+        <meta name="description" content="daichan132's portfolio" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <Analytics />
       {!sm && <CustomCursor />}
 
