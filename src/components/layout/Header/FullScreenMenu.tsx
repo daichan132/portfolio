@@ -86,7 +86,11 @@ export const FullscreenMenu = ({ open }: { open: boolean }) => {
               transition: { delay: panelDuration / 2 },
             }}
             css={css`
-              background-color: #fff;
+              background-image: url('/6.png');
+              background-repeat: repeat;
+              background-size: 500px;
+              background-color: rgba(255, 255, 255, 0.8);
+              background-blend-mode: lighten;
               width: 100%;
               height: 100%;
             `}
