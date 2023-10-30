@@ -97,7 +97,7 @@ export const Work: FC<WorkProps> = ({
   const sm = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
 
   return (
-    <Grid gutter={rem(20)} gutterSm={rem(50)} gutterMd={rem(70)}>
+    <Grid gutter={rem(20)} gutterSm={rem(36)} gutterMd={rem(52)}>
       <Grid.Col span={12} sm={6} md={5.5} order={reverse ? 2 : 1}>
         <div
           className={classes.contentBox}

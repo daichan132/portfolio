@@ -21,15 +21,15 @@ const Home = () => {
       size="xl"
       px="xs"
       pt={sm ? rem(120) : rem(300)}
-      pb={sm ? rem(60) : rem(100)}
+      pb={sm ? rem(40) : rem(60)}
       css={css`
         width: 100%;
       `}
     >
       <Stack spacing={sm ? rem(100) : rem(160)}>
         <IntroduceItem
-          text="私の名前はdaichan132です。プログラミングが大好きな大学院生です。"
-          subText="My name is daichan132. I am a graduate student who loves programming."
+          text="私の名前は若山大智です。プログラミングが大好きな大学院生です。"
+          subText="My name is daichi wakayama. I am a graduate student who loves programming."
           Icon={TeenagerIcon}
           color={BlueColor}
         />
@@ -40,16 +40,10 @@ const Home = () => {
           color={YellowColor}
         />
         <IntroduceItem
-          text="人の思いや独創性の詰まった物が大好きで、そういったプロダクトを作ることが目標です。"
-          subText="I love things that are filled with people's thoughts and originality. My goal is to create such products."
-          Icon={TeamworkIcon}
-          color={RedColor}
-        />
-        <IntroduceItem
-          text="ここまで見てくれてありがとうございます。私が作ってきた作品も見ていただけると嬉しいです！"
-          subText="Thanks for taking the time to look this far. I hope you'll take a look at some of the pieces I've been working on too!"
+          text="私が作ってきた作品も見ていただけると嬉しいです！"
+          subText="I hope you'll take a look at some of the pieces I've been working on too!"
           Icon={AdventurerIcon}
-          color={BlueColor}
+          color={RedColor}
         />
         <Center>
           <WorkButton />

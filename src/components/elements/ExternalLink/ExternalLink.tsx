@@ -4,15 +4,13 @@ import { VscLinkExternal } from 'react-icons/vsc';
 
 const style = (color: string) => css`
   color: ${color};
-  text-decoration: none;
-  border-bottom: 1.5px solid ${color};
   p {
     display: inline;
   }
   .icon {
     display: inline;
     transform: translate(0, 3px);
-    margin: 0 4px;
+    margin: 0 0 0 2px;
     stroke-width: 0.3px;
   }
 `;

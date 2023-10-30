@@ -175,7 +175,7 @@ export const Header = () => {
   return (
     <header className={classes.header}>
       <Container size="xl" className={classes.container}>
-        <Box pl="sm" pt="0.25em">
+        <Box pl={{ md: 'sm' }} pt="0.25em">
           <Link
             href="/"
             className={classes.logo}

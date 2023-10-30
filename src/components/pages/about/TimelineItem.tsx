@@ -26,8 +26,8 @@ const useStyles = createStyles((theme) => ({
   shadowBox: {
     width: '98%',
     backgroundImage: 'url(/shadowPattern.svg)',
-    height: '100%',
-    transform: 'translate(10px,0px)',
+    height: '70%',
+    transform: 'translate(12px,16px)',
     marginLeft: 20,
     [theme.fn.smallerThan('sm')]: {
       display: 'none',
@@ -51,7 +51,7 @@ export const TimelineItem: FC<TimelineItemProps> = ({
 }) => {
   const scrollRef = useRef(null);
   const { classes } = useStyles();
-  const { ref, height } = useElementSize();
+  const { ref, height, width } = useElementSize();
   const theme = useMantineTheme();
   const sm = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
 
@@ -69,7 +69,7 @@ export const TimelineItem: FC<TimelineItemProps> = ({
         }
       `}
     >
-      <ParallaxPc offset={20}>
+      <ParallaxPc offset={10}>
         <figure
           css={css`
             transform: ${sm ? 'translate(-40px, -40px)' : 'translate(-40px, -40px)'};
@@ -82,6 +82,8 @@ export const TimelineItem: FC<TimelineItemProps> = ({
             fill={color}
             css={css`
               transform: rotate(-90deg);
+              filter: grayscale(${period.includes('Present') ? 0 : 90}%)
+                brightness(${period.includes('Present') ? 100 : 80}%);
             `}
           >
             <rect width="80" height="80" />
@@ -97,38 +99,38 @@ export const TimelineItem: FC<TimelineItemProps> = ({
           .Parallax {
             position: absolute;
             height: 100%;
-            width: 100%;
           }
         `}
       >
-        <ParallaxPc offset={15}>
-          <div className={classes.shadowBox} />
+        <ParallaxPc offset={5}>
+          <div
+            css={css`
+              width: ${width + 32}px;
+            `}
+            className={classes.shadowBox}
+          />
         </ParallaxPc>
-        <ParallaxPc offset={25}>
+        <ParallaxPc offset={10}>
           <div className={classes.box}>
-            <div
+            <Flex
               ref={ref}
+              gap={sm ? rem(10) : rem(20)}
+              align={sm ? 'start' : 'center'}
+              justify="space-between"
+              wrap="wrap"
               css={css`
-                width: 100%;
-                padding: ${sm ? rem(12) : rem(16)};
+                padding: ${sm ? rem(12) : rem(12)} ${sm ? rem(12) : rem(16)};
                 border: 2px solid;
                 background-color: white;
               `}
             >
-              <Flex
-                direction={sm ? 'column' : 'row'}
-                gap={sm ? rem(10) : rem(20)}
-                align={sm ? 'start' : 'center'}
-                justify="space-between"
-              >
-                <div className={classes.title}>{title}</div>
-                <Flex gap={rem(20)} align="center">
-                  <Text size="sm">{period}</Text>
-                  {link && <ExternalLinkCursor href={link}>link</ExternalLinkCursor>}
-                </Flex>
+              <div className={classes.title}>{title}</div>
+              <Flex gap={rem(20)} align="center">
+                <Text size="sm">{period}</Text>
+                {link && <ExternalLinkCursor href={link}>link</ExternalLinkCursor>}
               </Flex>
-              <Space h="MD" />
-            </div>
+            </Flex>
+            <Space h="MD" />
           </div>
         </ParallaxPc>
       </div>

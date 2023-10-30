@@ -54,10 +54,10 @@ const Home = () => {
       children: (
         <>
           <Text>
-            こちらの作品は
+            この作品は
             <Mark>誰かと一緒に作業をしている感覚</Mark>
             を体験しながら、作業を楽しく効率的に行うことを支援するWebアプリケーションです。
-            <ExternalLinkCursor href="https://jphacks.com/">JPJACKS</ExternalLinkCursor>
+            <ExternalLinkCursor href="https://jphacks.com/">JPJACKS2022</ExternalLinkCursor>
             に参加した際に作成しました。
           </Text>
           <Title order={5} pt={rem(16)}>
@@ -72,7 +72,7 @@ const Home = () => {
     },
   ];
   return (
-    <Container size="xl" pt={sm ? rem(120) : rem(300)} pb={sm ? rem(60) : rem(260)}>
+    <Container size="xl" pt={sm ? rem(120) : rem(300)} pb={sm ? rem(60) : rem(220)}>
       <motion.div variants={containerVariants} initial="hidden" animate="show">
         <Stack spacing={sm ? rem(80) : rem(200)}>
           {worksData.map((props: WorkProps) => (

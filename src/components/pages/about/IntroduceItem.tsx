@@ -102,14 +102,14 @@ export const IntroduceItem = ({
             }
           `}
         >
-          <ParallaxPc offset={25}>
+          <ParallaxPc offset={15}>
             <div className={classes.shadowBox} />
           </ParallaxPc>
-          <ParallaxPc offset={50}>
+          <ParallaxPc offset={24}>
             <div className="box-001" />
           </ParallaxPc>
 
-          <ParallaxPc offset={75}>
+          <ParallaxPc offset={40}>
             <Center className={classes.content}>
               <Icon style={{ height: '80%', transform: 'translate(0, 5px)' }} />
             </Center>
