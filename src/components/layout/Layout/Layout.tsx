@@ -5,6 +5,7 @@ import { useMediaQuery } from '@mantine/hooks';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useSetAtom } from 'jotai';
 import { useRouter } from 'next/router';
+import { Analytics } from '@vercel/analytics/react';
 import { Footer } from '../Footer';
 import { Header } from '../Header';
 
@@ -39,6 +40,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
   const setCursorData = useSetAtom(cursorAtom);
   return (
     <>
+      <Analytics />
       {!sm && <CustomCursor />}
 
       <Header />
