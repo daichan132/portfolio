@@ -83,8 +83,8 @@ export const TimelineItem: FC<TimelineItemProps> = ({
             fill={color}
             css={css`
               transform: rotate(-90deg);
-              filter: grayscale(${period.includes('Present') ? 0 : 90}%)
-                brightness(${period.includes('Present') ? 100 : 80}%);
+              filter: grayscale(${period.includes('Present') ? 0 : 30}%)
+                brightness(${period.includes('Present') ? 100 : 70}%);
             `}
           >
             <rect width="80" height="80" />

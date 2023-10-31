@@ -10,7 +10,7 @@ const timelineItemData: TimelineItemProps[] = [
     title: '東北大学 大学院情報科学研究科',
     period: '04/2023-Present',
     link: 'https://www.is.tohoku.ac.jp/',
-    color: BlueColor,
+    color: RedColor,
     children: (
       <Text>
         周・鈴木研究室に所属しており、特に<Mark>グラフ理論</Mark>
@@ -51,7 +51,7 @@ const timelineItemData: TimelineItemProps[] = [
   {
     title: '東北大学 工学部 電気情報物理工学科',
     period: '04/2019-03/2023',
-    color: BlueColor,
+    color: YellowColor,
     link: 'https://www.eng.tohoku.ac.jp/',
     children: (
       <Text>
