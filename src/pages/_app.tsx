@@ -26,10 +26,10 @@ const App = ({ Component, pageProps }: AppProps) => {
         <meta property="og:image" content="/main-image/IMG_1182.PNG" />
         <meta property="og:title" content="DAICHAN132-PF" />
         <meta property="og:url" content="daichan132.com" />
-        <meta property="og:description" content="daichan132's portfolio-若山大智" />
+        <meta property="og:description" content="daichan132's portfolio-若山大智のポートフォリオ" />
         <meta property="og:type" content="website" />
         <meta name="language" content="Japanese" />
-        <meta name="description" content="daichan132's portfolio" />
+        <meta name="description" content="daichan132's portfolio-若山大智のポートフォリオ" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
