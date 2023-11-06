@@ -1,5 +1,6 @@
 import { ExternalLinkCursor, ParallaxPc } from '@/components/elements';
 import { YellowColor } from '@/utils/Colors';
+import { getRandomInt } from '@/utils/getRandomInt';
 import { css } from '@emotion/react';
 import { Text, Flex, rem, Space, createStyles, Stack, useMantineTheme } from '@mantine/core';
 import { useElementSize, useMediaQuery } from '@mantine/hooks';
@@ -54,6 +55,8 @@ export const TimelineItem: FC<TimelineItemProps> = ({
   const { ref, height, width } = useElementSize();
   const theme = useMantineTheme();
   const sm = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
+  const max = 20;
+  const random = getRandomInt(0, max);
 
   return (
     <Stack
@@ -70,15 +73,15 @@ export const TimelineItem: FC<TimelineItemProps> = ({
         }
       `}
     >
-      <ParallaxPc offset={10}>
+      <ParallaxPc offset={10 + random}>
         <figure
           css={css`
             transform: ${sm ? 'translate(-40px, -40px)' : 'translate(-40px, -40px)'};
           `}
         >
           <svg
-            width="60"
-            height="60"
+            width={60 + (random / max) * 10}
+            height={60 + (random / max) * 10}
             viewBox="0 0 100 100"
             fill={color}
             css={css`
@@ -102,7 +105,7 @@ export const TimelineItem: FC<TimelineItemProps> = ({
           }
         `}
       >
-        <ParallaxPc offset={5}>
+        <ParallaxPc offset={5 + random}>
           <div
             css={css`
               width: ${width + 32}px;
@@ -110,7 +113,7 @@ export const TimelineItem: FC<TimelineItemProps> = ({
             className={classes.shadowBox}
           />
         </ParallaxPc>
-        <ParallaxPc offset={10}>
+        <ParallaxPc offset={10 + random}>
           <div className={classes.box}>
             <Flex
               ref={ref}
@@ -121,7 +124,8 @@ export const TimelineItem: FC<TimelineItemProps> = ({
               css={css`
                 padding: ${sm ? rem(12) : rem(12)} ${sm ? rem(12) : rem(16)};
                 border: 2px solid;
-                background-color: ${period.includes('Present') ? '#fff' : '#f5f5f5'};
+                background-color: #fff;
+                color: ${period.includes('Present') ? '' : '#818181'};
               `}
             >
               <div className={classes.title}>{title}</div>

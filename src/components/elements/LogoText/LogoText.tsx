@@ -37,7 +37,7 @@ export const LogoText: FC<LogoTextProps> = ({
                   animate="show"
                   exit="exit"
                   transition={{
-                    duration: 0.5,
+                    duration: 0.3,
                   }}
                   style={{
                     display: 'inline-block',

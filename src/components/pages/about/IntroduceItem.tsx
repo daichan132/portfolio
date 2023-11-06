@@ -1,5 +1,6 @@
 import { ParallaxPc } from '@/components/elements';
 import { YellowColor } from '@/utils/Colors';
+import { getRandomInt } from '@/utils/getRandomInt';
 import { css } from '@emotion/react';
 import { Center, createStyles, Grid, rem } from '@mantine/core';
 
@@ -88,6 +89,8 @@ export const IntroduceItem = ({
   reverse?: boolean;
 }) => {
   const { classes } = useStyles();
+  const max = 40;
+  const random = getRandomInt(0, max);
 
   return (
     <Grid gutter="xl" gutterMd={rem(60)} css={[style(color)]} className={classes.container}>
@@ -97,19 +100,20 @@ export const IntroduceItem = ({
           css={css`
             .Parallax {
               position: absolute;
-              height: 100%;
-              width: 95%;
+              height: ${95 + (random / max) * 5}%;
+              width: ${90 + (random / max) * 5}%;
+              transition: ease-in-out 0.3s width, height;
             }
           `}
         >
-          <ParallaxPc offset={25}>
+          <ParallaxPc offset={10 + random}>
             <div className={classes.shadowBox} />
           </ParallaxPc>
-          <ParallaxPc offset={50}>
+          <ParallaxPc offset={20 + random}>
             <div className="box-001" />
           </ParallaxPc>
 
-          <ParallaxPc offset={75}>
+          <ParallaxPc offset={30 + random}>
             <Center className={classes.content}>
               <Icon style={{ height: '80%', transform: 'translate(0, 5px)' }} />
             </Center>

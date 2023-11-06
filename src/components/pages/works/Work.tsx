@@ -12,6 +12,7 @@ import { ReactNode, type FC } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 import { useMediaQuery } from '@mantine/hooks';
+import { getRandomInt } from '@/utils/getRandomInt';
 import { ExternalLinkCursor } from '../../elements/ExternalLink';
 import { ParallaxPc } from '../../elements/Parallax';
 
@@ -95,6 +96,7 @@ export const Work: FC<WorkProps> = ({
   const { classes } = useStyles({ color });
   const theme = useMantineTheme();
   const sm = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
+  const random = getRandomInt(0, 40);
 
   return (
     <Grid gutter={rem(20)} gutterSm={rem(36)} gutterMd={rem(52)}>
@@ -110,13 +112,13 @@ export const Work: FC<WorkProps> = ({
             }
           `}
         >
-          <ParallaxPc offset={25}>
+          <ParallaxPc offset={25 + random}>
             <div className={classes.shadowBox} />
           </ParallaxPc>
-          <ParallaxPc offset={50}>
+          <ParallaxPc offset={50 + random}>
             <div className={classes.box} />
           </ParallaxPc>
-          <ParallaxPc offset={75}>
+          <ParallaxPc offset={50 + random}>
             <Center
               css={css`
                 height: 100%;

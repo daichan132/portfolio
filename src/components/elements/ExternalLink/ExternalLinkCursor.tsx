@@ -3,11 +3,7 @@ import { useSetAtom } from 'jotai';
 import { type FC } from 'react';
 import { ExternalLink, ExternalLinkProps } from './ExternalLink';
 
-export const ExternalLinkCursor: FC<ExternalLinkProps> = ({
-  children,
-  href,
-  color = '#333333',
-}) => {
+export const ExternalLinkCursor: FC<ExternalLinkProps> = ({ children, href }) => {
   const setCursorData = useSetAtom(cursorAtom);
   return (
     <div
@@ -19,9 +15,7 @@ export const ExternalLinkCursor: FC<ExternalLinkProps> = ({
       }}
       style={{ display: 'inline' }}
     >
-      <ExternalLink href={href} color={color}>
-        {children}
-      </ExternalLink>
+      <ExternalLink href={href}>{children}</ExternalLink>
     </div>
   );
 };
