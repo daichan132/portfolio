@@ -77,7 +77,7 @@ export const Timeline = () => {
         position: relative;
       `}
     >
-      <Stack spacing={rem(32)} ref={ref}>
+      <Stack spacing={rem(0)} ref={ref}>
         {timelineItemData.map((props: TimelineItemProps) => (
           <Fragment key={props.title}>
             <TimelineItem {...props} />

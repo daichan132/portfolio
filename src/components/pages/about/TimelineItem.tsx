@@ -83,8 +83,7 @@ export const TimelineItem: FC<TimelineItemProps> = ({
             fill={color}
             css={css`
               transform: rotate(-90deg);
-              filter: grayscale(${period.includes('Present') ? 0 : 30}%)
-                brightness(${period.includes('Present') ? 100 : 70}%);
+              filter: grayscale(${period.includes('Present') ? 0 : 100}%);
             `}
           >
             <rect width="80" height="80" />
@@ -122,7 +121,7 @@ export const TimelineItem: FC<TimelineItemProps> = ({
               css={css`
                 padding: ${sm ? rem(12) : rem(12)} ${sm ? rem(12) : rem(16)};
                 border: 2px solid;
-                background-color: white;
+                background-color: ${period.includes('Present') ? '#fff' : '#f5f5f5'};
               `}
             >
               <div className={classes.title}>{title}</div>
