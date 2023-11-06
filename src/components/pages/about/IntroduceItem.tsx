@@ -100,9 +100,8 @@ export const IntroduceItem = ({
           css={css`
             .Parallax {
               position: absolute;
-              height: ${95 + (random / max) * 5}%;
-              width: ${90 + (random / max) * 5}%;
-              transition: ease-in-out 0.3s width, height;
+              height: 100%;
+              width: 95%;
             }
           `}
         >
