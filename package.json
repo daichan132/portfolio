@@ -85,5 +85,6 @@
     "start": "next start",
     "storybook": "start-storybook -p 6006",
     "typecheck": "tsc --noEmit"
-  }
+  },
+  "packageManager": "yarn@4.0.1"
 }
