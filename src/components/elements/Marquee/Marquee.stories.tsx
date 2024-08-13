@@ -1,17 +1,22 @@
 import { css } from "@emotion/react";
-import type { ComponentMeta, ComponentStory } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { Marquee } from ".";
 
-type T = typeof Marquee;
-
-export default {
+const meta: Meta<typeof Marquee> = {
 	title: "Marquee",
 	component: Marquee,
-	args: { text: "daichan132", baseVelocity: 20 },
-} as ComponentMeta<T>;
+	args: {
+		text: "daichan132",
+		baseVelocity: 20,
+	},
+} satisfies Meta<typeof Marquee>;
 
-const Template: ComponentStory<typeof Marquee> = (args) => {
-	return (
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+	render: (args) => (
 		<div
 			css={css`
         width: 100vw;
@@ -22,8 +27,6 @@ const Template: ComponentStory<typeof Marquee> = (args) => {
 		>
 			<Marquee {...args} />
 		</div>
-	);
+	),
+	args: {},
 };
-
-export const Default = Template.bind({});
-Default.args = {};

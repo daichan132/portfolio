@@ -1,15 +1,12 @@
-import type { ComponentMeta, ComponentStory } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { CustomCursor } from ".";
 
-type T = typeof CustomCursor;
-
-export default {
+const meta = {
 	title: "CustomCursor",
 	component: CustomCursor,
-	args: {},
-} as ComponentMeta<T>;
+} satisfies Meta<typeof CustomCursor>;
 
-const Template: ComponentStory<typeof CustomCursor> = () => <CustomCursor />;
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-Default.args = {};
+export const Default: Story = {};

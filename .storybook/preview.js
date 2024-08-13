@@ -1,14 +1,15 @@
-import * as NextImage from 'next/image';
+import { Decorator } from "./Decorator";
 
-const OriginalNextImage = NextImage.default;
-
-Object.defineProperty(NextImage, 'default', {
-  configurable: true,
-  value: (props) => <OriginalNextImage {...props} unoptimized />,
-});
+export const decorators = [
+  (Story) => (
+    <Decorator>
+      <Story />
+    </Decorator>
+  ),
+];
 
 export const parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
+  actions: {},
   controls: {
     matchers: {
       color: /(background|color)$/i,
@@ -16,3 +17,4 @@ export const parameters = {
     },
   },
 };
+export const tags = ["autodocs"];

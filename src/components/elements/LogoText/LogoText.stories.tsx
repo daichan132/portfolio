@@ -1,23 +1,23 @@
-import type { ComponentMeta, ComponentStory } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { LogoText } from ".";
 
-type T = typeof LogoText;
-
-export default {
+const meta = {
 	title: "LogoText",
 	component: LogoText,
 	args: {
 		text: "Daichan 132",
 		initialism: true,
 	},
-} as ComponentMeta<T>;
+} satisfies Meta<typeof LogoText>;
 
-const Template: ComponentStory<typeof LogoText> = (args) => (
-	<LogoText {...args} />
-);
+export default meta;
 
-export const Initialism = Template.bind({});
-Initialism.args = { id: "Initialism" };
+type Story = StoryObj<typeof meta>;
 
-export const FullText = Template.bind({});
-FullText.args = { initialism: false, id: "FullText" };
+export const Initialism: Story = {
+	args: { id: "Initialism" },
+};
+
+export const FullText: Story = {
+	args: { initialism: false, id: "FullText" },
+};

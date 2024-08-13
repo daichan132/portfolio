@@ -1,40 +1,66 @@
 import { css } from "@emotion/react";
-import type { ComponentMeta } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { Parallax } from ".";
 
-type T = typeof Parallax;
+interface ParallaxProps {
+	offset: number;
+	children: React.ReactNode;
+}
 
-export default {
+const meta: Meta<ParallaxProps> = {
 	title: "Parallax",
 	component: Parallax,
-	args: {},
-} as ComponentMeta<T>;
+	args: {
+		offset: 0,
+		children: <h1>Default Text</h1>,
+	},
+} satisfies Meta<typeof Parallax>;
 
-export const Default = () => {
-	return (
-		<div
-			css={css`
-        height: 200vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      `}
-		>
-			<Parallax offset={-50}>
-				<h1>|-50|</h1>
-			</Parallax>
-			<Parallax offset={-25}>
-				<h1>|-25|</h1>
-			</Parallax>
-			<Parallax offset={0}>
-				<h1>|0|</h1>
-			</Parallax>
-			<Parallax offset={25}>
-				<h1>|25|</h1>
-			</Parallax>
-			<Parallax offset={50}>
-				<h1>|50|</h1>
-			</Parallax>
-		</div>
-	);
+export default meta;
+
+type Story = StoryObj<ParallaxProps>;
+
+const Container = ({ children }: { children: React.ReactNode }) => (
+	<div
+		css={css`
+      height: 200vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    `}
+	>
+		{children}
+	</div>
+);
+
+export const Default: Story = {
+	render: (args) => (
+		<>
+			<Container>
+				<Parallax {...args} offset={-50}>
+					<h1>|-50|</h1>
+				</Parallax>
+			</Container>
+			<Container>
+				<Parallax {...args} offset={-25}>
+					<h1>|-25|</h1>
+				</Parallax>
+			</Container>
+			<Container>
+				<Parallax {...args} offset={0}>
+					<h1>|0|</h1>
+				</Parallax>
+			</Container>
+			<Container>
+				<Parallax {...args} offset={25}>
+					<h1>|25|</h1>
+				</Parallax>
+			</Container>
+			<Container>
+				<Parallax {...args} offset={50}>
+					<h1>|50|</h1>
+				</Parallax>
+			</Container>
+		</>
+	),
 };

@@ -1,11 +1,12 @@
-import type { ComponentMeta } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { Clock } from ".";
 
-type T = typeof Clock;
-
-export default {
+const meta = {
 	title: "Clock",
 	component: Clock,
-} as ComponentMeta<T>;
+} satisfies Meta<typeof Clock>;
 
-export const Default = <Clock />;
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {};

@@ -1,16 +1,18 @@
 import { css } from "@emotion/react";
-import type { ComponentMeta } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { SmoothScroll } from ".";
 
-type T = typeof SmoothScroll;
-
-export default {
+const meta: Meta<typeof SmoothScroll> = {
 	title: "SmoothScroll",
 	component: SmoothScroll,
-} as ComponentMeta<T>;
+} satisfies Meta<typeof SmoothScroll>;
 
-export const Default = () => {
-	return (
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+	render: () => (
 		<SmoothScroll>
 			<div
 				css={css`
@@ -29,5 +31,5 @@ export const Default = () => {
 				<h1>Scroll</h1>
 			</div>
 		</SmoothScroll>
-	);
+	),
 };

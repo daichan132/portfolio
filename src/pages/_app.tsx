@@ -1,5 +1,3 @@
-/* eslint-disable react/no-unknown-property */
-import type { AppProps } from "next/app";
 import "@/styles/globals.css";
 import { Layout } from "@/components/layout";
 import {

@@ -1,16 +1,17 @@
-import type { ComponentMeta } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { ExternalLink } from ".";
 
-type T = typeof ExternalLink;
-
-export default {
+const meta = {
 	title: "ExternalLink",
 	component: ExternalLink,
-	args: {},
-} as ComponentMeta<T>;
+} satisfies Meta<typeof ExternalLink>;
 
-export const Default = () => (
-	<ExternalLink href="https://unsplash.com/ja/%E5%86%99%E7%9C%9F/VLpRa5tFdNY?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
-		Unsplash
-	</ExternalLink>
-);
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+	args: {
+		href: "https://example.com",
+		children: "Example",
+	},
+};

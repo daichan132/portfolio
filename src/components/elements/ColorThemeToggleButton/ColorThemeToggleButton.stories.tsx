@@ -1,16 +1,12 @@
-import type { ComponentMeta, ComponentStory } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { ColorThemeToggleButton } from ".";
 
-type T = typeof ColorThemeToggleButton;
-
-export default {
+const meta = {
 	title: "ColorThemeToggleButton",
 	component: ColorThemeToggleButton,
-} as ComponentMeta<T>;
+} satisfies Meta<typeof ColorThemeToggleButton>;
 
-const Template: ComponentStory<typeof ColorThemeToggleButton> = (args) => (
-	<ColorThemeToggleButton {...args} />
-);
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-Default.args = {};
+export const Default: Story = {};
