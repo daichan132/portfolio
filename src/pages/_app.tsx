@@ -8,7 +8,6 @@ import {
 	MantineProvider,
 } from "@mantine/core";
 import { Provider } from "jotai";
-// eslint-disable-next-line camelcase
 import { Zen_Kaku_Gothic_New } from "next/font/google";
 import Head from "next/head";
 import { useState } from "react";

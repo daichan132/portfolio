@@ -1,23 +1,20 @@
 /** @type {import('next').NextConfig} */
-const path = require('path');
+const path = require("path");
 
 const nextConfig = {
   reactStrictMode: true,
-  experimental: {
-    fontLoaders: [{ loader: 'next/font/google', options: { subsets: ['latin'] } }],
-  },
   compiler: {
     emotion: true,
   },
   sassOptions: {
-    includePaths: [path.join(__dirname, 'styles')],
+    includePaths: [path.join(__dirname, "styles")],
   },
   webpack: (config) => {
     config.module.rules.push({
       test: /\.svg$/,
       use: [
         {
-          loader: '@svgr/webpack',
+          loader: "@svgr/webpack",
         },
       ],
     });
