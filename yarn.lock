@@ -1839,7 +1839,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chromatic-com/storybook@npm:^1":
+"@chromatic-com/storybook@npm:^1.6.1":
   version: 1.6.1
   resolution: "@chromatic-com/storybook@npm:1.6.1"
   dependencies:
@@ -10072,7 +10072,7 @@ __metadata:
   dependencies:
     "@babel/core": "npm:^7.25.2"
     "@biomejs/biome": "npm:1.8.3"
-    "@chromatic-com/storybook": "npm:^1"
+    "@chromatic-com/storybook": "npm:^1.6.1"
     "@emotion/babel-plugin": "npm:^11.12.0"
     "@emotion/react": "npm:^11.13.0"
     "@emotion/server": "npm:^11.11.0"
