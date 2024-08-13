@@ -17,7 +17,8 @@ const font = Zen_Kaku_Gothic_New({
 	style: ["normal"],
 	subsets: ["latin"],
 });
-const App = ({ Component, pageProps }: AppProps) => {
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+const App = ({ Component, pageProps }: any) => {
 	const [colorScheme, setColorScheme] = useState<ColorScheme>("light");
 	const toggleColorScheme = (value?: ColorScheme) =>
 		setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
