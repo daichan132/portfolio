@@ -56,7 +56,9 @@ export const CustomCursor = () => {
 			transition={{
 				type: "spring",
 				damping: 20,
-				stiffness: 170,
+				stiffness: 200,
+				restDelta: 0.001,
+				restSpeed: 0.001,
 			}}
 		/>
 	);

@@ -8523,9 +8523,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:^9.1.6":
-  version: 9.1.6
-  resolution: "framer-motion@npm:9.1.6"
+"framer-motion@npm:^10.18.0":
+  version: 10.18.0
+  resolution: "framer-motion@npm:10.18.0"
   dependencies:
     "@emotion/is-prop-valid": "npm:^0.8.2"
     tslib: "npm:^2.4.0"
@@ -8535,7 +8535,12 @@ __metadata:
   dependenciesMeta:
     "@emotion/is-prop-valid":
       optional: true
-  checksum: 10c0/f1a8a1460a78936a06a3466a1f95552802f715605305edf8d0e3dccb01876236b659f2bc9604bd1e979682e44e8ff5b54bd357931d26736af027c8b6eb4fea9d
+  peerDependenciesMeta:
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: 10c0/0aea1b3dc5cf06687e31f3b6c0b6b1a2cd070afdd4a9d38ebf15715c662ca1d6d1c25e6778695e5ebff37a6ce92b031d036c02570370e6057e66aa9de9f9370f
   languageName: node
   linkType: hard
 
@@ -12830,7 +12835,7 @@ __metadata:
     "@types/react-dom": "npm:18.0.11"
     "@vercel/analytics": "npm:^1.1.1"
     babel-loader: "npm:^8.3.0"
-    framer-motion: "npm:^9.1.6"
+    framer-motion: "npm:^10.18.0"
     husky: "npm:^8.0.0"
     hygen: "npm:^6.2.11"
     jotai: "npm:^2.0.3"
