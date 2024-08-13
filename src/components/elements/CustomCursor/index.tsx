@@ -1,1 +1,1 @@
-export * from './CustomCursor';
+export * from "./CustomCursor";

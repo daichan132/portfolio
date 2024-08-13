@@ -1,7 +1,7 @@
-import { cursorAtom } from '@/stores/cursorAtom';
-import { css } from '@emotion/react';
-import { useSetAtom } from 'jotai';
-import Link from 'next/link';
+import { cursorAtom } from "@/stores/cursorAtom";
+import { css } from "@emotion/react";
+import { useSetAtom } from "jotai";
+import Link from "next/link";
 
 const style = css`
   position: relative;
@@ -51,21 +51,21 @@ const style = css`
   }
 `;
 export const WorkButton = () => {
-  const setCursorData = useSetAtom(cursorAtom);
-  return (
-    <div css={style}>
-      <Link
-        href="/works"
-        className="btn"
-        onMouseEnter={() => {
-          setCursorData({ cursorVariant: 'hover' });
-        }}
-        onMouseLeave={() => {
-          setCursorData({ cursorVariant: 'default' });
-        }}
-      >
-        作品を見に行く
-      </Link>
-    </div>
-  );
+	const setCursorData = useSetAtom(cursorAtom);
+	return (
+		<div css={style}>
+			<Link
+				href="/works"
+				className="btn"
+				onMouseEnter={() => {
+					setCursorData({ cursorVariant: "hover" });
+				}}
+				onMouseLeave={() => {
+					setCursorData({ cursorVariant: "default" });
+				}}
+			>
+				作品を見に行く
+			</Link>
+		</div>
+	);
 };

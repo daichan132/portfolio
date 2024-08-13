@@ -1,40 +1,41 @@
 /* eslint-disable no-nested-ternary */
-import { panelDuration } from '@/utils/Const';
-import { css } from '@emotion/react';
-import { useViewportSize } from '@mantine/hooks';
-import { motion } from 'framer-motion';
-import React, { Dispatch, SetStateAction } from 'react';
+import { panelDuration } from "@/utils/Const";
+import { css } from "@emotion/react";
+import { useViewportSize } from "@mantine/hooks";
+import { motion } from "framer-motion";
+import React, { type Dispatch, type SetStateAction } from "react";
 
 const transition = { ease: [0.6, -0.05, 0.01, 0.9] };
 
 export const Panels = ({
-  setPanelComplete,
-  num = 2,
+	setPanelComplete,
+	num = 2,
 }: {
-  setPanelComplete: Dispatch<SetStateAction<boolean>>;
-  num?: number;
+	setPanelComplete: Dispatch<SetStateAction<boolean>>;
+	num?: number;
 }) => {
-  const { height } = useViewportSize();
-  return (
-    <>
-      {Array.from({ length: num }, (a: number, i) => (
-        <React.Fragment key={`${i}`}>
-          <motion.div
-            initial={{ height: 0 }}
-            animate={{
-              height: [0, height, 0],
-              bottom: i % 2 === 0 ? [height, 0, 0] : [0, 0, height],
-            }}
-            exit={{
-              height: [0, height, 0],
-              top: i % 2 === 0 ? [height, 0, 0] : [0, 0, height],
-            }}
-            transition={{
-              ...transition,
-              duration: panelDuration,
-              times: [0, 0.5, 1],
-            }}
-            css={css`
+	const { height } = useViewportSize();
+	return (
+		<>
+			{Array.from({ length: num }, (a: number, i) => (
+				// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+				<React.Fragment key={`panel-${i}`}>
+					<motion.div
+						initial={{ height: 0 }}
+						animate={{
+							height: [0, height, 0],
+							bottom: i % 2 === 0 ? [height, 0, 0] : [0, 0, height],
+						}}
+						exit={{
+							height: [0, height, 0],
+							top: i % 2 === 0 ? [height, 0, 0] : [0, 0, height],
+						}}
+						transition={{
+							...transition,
+							duration: panelDuration,
+							times: [0, 0.5, 1],
+						}}
+						css={css`
               height: 100vh;
               width: ${100 / num}vw;
               position: absolute;
@@ -42,23 +43,23 @@ export const Panels = ({
               left: ${(100 / num) * i}%;
               box-shadow: 0px 0px 33.3px rgba(0, 0, 0, 0.053);
             `}
-          />
-          <motion.div
-            initial={{ height: 0 }}
-            animate={{
-              height: [0, height, 0],
-              bottom: i % 2 === 0 ? [height, 0, 0] : [0, 0, height],
-            }}
-            exit={{
-              height: [0, height, 0],
-              top: i % 2 === 0 ? [height, 0, 0] : [0, 0, height],
-            }}
-            transition={{
-              ...transition,
-              duration: panelDuration,
-              times: [0, 0.5, 1],
-            }}
-            css={css`
+					/>
+					<motion.div
+						initial={{ height: 0 }}
+						animate={{
+							height: [0, height, 0],
+							bottom: i % 2 === 0 ? [height, 0, 0] : [0, 0, height],
+						}}
+						exit={{
+							height: [0, height, 0],
+							top: i % 2 === 0 ? [height, 0, 0] : [0, 0, height],
+						}}
+						transition={{
+							...transition,
+							duration: panelDuration,
+							times: [0, 0.5, 1],
+						}}
+						css={css`
               height: 100vh;
               width: ${100 / num}vw;
               position: absolute;
@@ -83,13 +84,13 @@ export const Panels = ({
               background-repeat: repeat;
               background-position: left top;
             `}
-            onAnimationComplete={() => {
-              // eslint-disable-next-line no-unused-expressions
-              i === 0 && setPanelComplete(true);
-            }}
-          />
-        </React.Fragment>
-      ))}
-    </>
-  );
+						onAnimationComplete={() => {
+							// eslint-disable-next-line no-unused-expressions
+							i === 0 && setPanelComplete(true);
+						}}
+					/>
+				</React.Fragment>
+			))}
+		</>
+	);
 };

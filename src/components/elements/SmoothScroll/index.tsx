@@ -1,1 +1,1 @@
-export * from './SmoothScroll';
+export * from "./SmoothScroll";

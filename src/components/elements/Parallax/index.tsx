@@ -1,2 +1,2 @@
-export * from './Parallax';
-export * from './ParallaxPc';
+export * from "./Parallax";
+export * from "./ParallaxPc";

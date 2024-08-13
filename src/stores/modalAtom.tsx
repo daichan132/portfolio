@@ -1,9 +1,9 @@
-import { atom } from 'jotai';
+import { atom } from "jotai";
 
 interface modalState {
-  modalVariant: '' | 'transition' | 'open';
+	modalVariant: "" | "transition" | "open";
 }
 
 export const modalAtom = atom<modalState>({
-  modalVariant: '',
+	modalVariant: "",
 });

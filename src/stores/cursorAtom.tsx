@@ -1,9 +1,9 @@
-import { atom } from 'jotai';
+import { atom } from "jotai";
 
 interface CursorState {
-  cursorVariant: string;
+	cursorVariant: string;
 }
 
 export const cursorAtom = atom<CursorState>({
-  cursorVariant: 'default',
+	cursorVariant: "default",
 });

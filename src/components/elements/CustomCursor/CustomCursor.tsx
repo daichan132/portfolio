@@ -1,10 +1,9 @@
-import { css } from '@emotion/react';
-import { useIdle, useMouse } from '@mantine/hooks';
-import { motion } from 'framer-motion';
-import { useAtom } from 'jotai';
-import { cursorAtom } from '@/stores/cursorAtom';
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { cursorAtom } from "@/stores/cursorAtom";
+import { css } from "@emotion/react";
+import { useIdle, useMouse } from "@mantine/hooks";
+import { motion } from "framer-motion";
+import { useAtom } from "jotai";
+import { useEffect } from "react";
 
 const smCursorSize = 18;
 const smallStyle = css`
@@ -20,46 +19,45 @@ const smallStyle = css`
 `;
 
 const smallVariants = (x: number, y: number, idle: boolean) => ({
-  default: {
-    opacity: idle ? 0 : 1,
-    x: x - smCursorSize / 2,
-    y: y - smCursorSize / 2,
-    height: `${smCursorSize}px`,
-    width: `${smCursorSize}px`,
-    backgroundColor: 'transparent',
-  },
-  hover: {
-    height: `${smCursorSize * 5}px`,
-    width: `${smCursorSize * 5}px`,
-    transition: {
-      type: 'spring',
-      damping: 17,
-      stiffness: 170,
-    },
-    x: x - (smCursorSize * 5) / 2,
-    y: y - (smCursorSize * 5) / 2,
-  },
+	default: {
+		opacity: idle ? 0 : 1,
+		x: x - smCursorSize / 2,
+		y: y - smCursorSize / 2,
+		height: `${smCursorSize}px`,
+		width: `${smCursorSize}px`,
+		backgroundColor: "transparent",
+	},
+	hover: {
+		height: `${smCursorSize * 5}px`,
+		width: `${smCursorSize * 5}px`,
+		transition: {
+			type: "spring",
+			damping: 17,
+			stiffness: 170,
+		},
+		x: x - (smCursorSize * 5) / 2,
+		y: y - (smCursorSize * 5) / 2,
+	},
 });
 
 export const CustomCursor = () => {
-  const { x, y } = useMouse();
-  const idle = useIdle(1000, { events: ['mousemove'] });
-  const [{ cursorVariant }, setCursorData] = useAtom(cursorAtom);
-  const router = useRouter();
-  useEffect(() => {
-    setCursorData({ cursorVariant: 'default' });
-  }, [router.pathname, setCursorData]);
+	const { x, y } = useMouse();
+	const idle = useIdle(1000, { events: ["mousemove"] });
+	const [{ cursorVariant }, setCursorData] = useAtom(cursorAtom);
+	useEffect(() => {
+		setCursorData({ cursorVariant: "default" });
+	}, [setCursorData]);
 
-  return (
-    <motion.div
-      variants={smallVariants(x, y, idle)}
-      animate={cursorVariant}
-      css={smallStyle}
-      transition={{
-        type: 'spring',
-        damping: 20,
-        stiffness: 170,
-      }}
-    />
-  );
+	return (
+		<motion.div
+			variants={smallVariants(x, y, idle)}
+			animate={cursorVariant}
+			css={smallStyle}
+			transition={{
+				type: "spring",
+				damping: 20,
+				stiffness: 170,
+			}}
+		/>
+	);
 };
